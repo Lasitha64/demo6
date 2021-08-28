@@ -1,0 +1,27 @@
+.root{
+    -fx-background-color:#011f4b;
+}
+
+.loginbox{
+    -fx-background-color:#03396c;
+    -fx-background-radius: 30 30 30 30;
+}
+
+.tfinput{
+    -fx-background-color: #b3cde0;
+    -fx-prompt-text-fill: black;
+}
+
+.logbtn{
+    -fx-background-color: #011f4b;
+    -fx-text-fill: white;
+}
+
+.logbtn:hover{
+    -fx-background-color:  #005b96;
+    -fx-text-fill: black;
+}
+
+.logbtn:pressed{
+    -fx-background-color:  #b3cde0;
+}

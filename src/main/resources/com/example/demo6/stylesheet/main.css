@@ -1,0 +1,26 @@
+.root{
+    -fx-background-color:#011f4b ;
+}
+
+.catbox{
+    -fx-background-color:#03396c;
+    -fx-background-radius: 30 30 30 30;
+}
+
+.btncat{
+    -fx-background-color:  #005b96;
+    -fx-text-fill: white;
+    -fx-background-radius: 20 20 20 20;
+
+}
+
+.btncat:hover{
+    -fx-background-color:  #b3cde0;
+    -fx-text-fill: black;
+    -fx-background-radius: 20 20 20 20;
+
+}
+
+.btncat:pressed{
+    -fx-background-color:  #005b96;
+}
