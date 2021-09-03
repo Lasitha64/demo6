@@ -3,14 +3,19 @@ package com.example.demo6;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class MainView {
+
+    private Stage stage;
+    private Scene scene;
 
     @FXML
     private Button btn_ve;
@@ -37,21 +42,91 @@ public class MainView {
     private Button btn_ad;
 
     @FXML
-    void adminaction(ActionEvent event) throws IOException {
-//        btn_cr.getScene().getWindow().hide();
-//        Stage signup = new Stage();
-//        Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
-//        Scene scene = new Scene(root);
-//        scene.getStylesheets().add("stylesheet/main.css");
-//        signup.setScene(scene);
-//        signup.show();
-//        signup.setResizable(false);
+    private Button btn_add;
+
+    @FXML
+    private Button btn_gen;
+
+    @FXML
+    private Button btn_sea;
+
+    @FXML
+    private Button btn_back;
+
+    @FXML
+    private TextField tx_id;
+
+    @FXML
+    private TextField tx_name;
+
+    @FXML
+    private TextField tx_quan;
+
+    @FXML
+    private TextField tx_pri;
+
+    @FXML
+    private TextField tx_date;
+
+
+    @FXML
+    private Button btn_add_parts;
+
+    @FXML
+    void AddParts(ActionEvent event) {
+
+    }
+
+
+    @FXML
+    void Add(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("crusher-parts-add.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/crusher.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
 
     }
 
     @FXML
-    void crusheraction(ActionEvent event) {
+    void Back(ActionEvent event) throws IOException {
 
+        Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/main.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    @FXML
+    void Generate(ActionEvent event) {
+
+    }
+
+    @FXML
+    void Search(ActionEvent event) {
+
+    }
+
+    @FXML
+    void adminaction(ActionEvent event) throws IOException {
+
+
+    }
+
+    @FXML
+    void crusheraction(ActionEvent event) throws IOException {
+
+
+        Parent root = FXMLLoader.load(getClass().getResource("crusher-view.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/crusher.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
