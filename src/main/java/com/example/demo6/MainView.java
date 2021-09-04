@@ -17,6 +17,7 @@ public class MainView {
     private Stage stage;
     private Scene scene;
 
+    //start of attributes in main-view fxml
     @FXML
     private Button btn_ve;
 
@@ -40,7 +41,9 @@ public class MainView {
 
     @FXML
     private Button btn_ad;
+    //end of attributes in main-view xml
 
+    //start of attributes in crusher-view fxml
     @FXML
     private Button btn_add;
 
@@ -49,10 +52,9 @@ public class MainView {
 
     @FXML
     private Button btn_sea;
+    //end of attributes in crusher-view xml
 
-    @FXML
-    private Button btn_back;
-
+    //start of attributes in crusher-parts-add fxml
     @FXML
     private TextField tx_id;
 
@@ -68,26 +70,24 @@ public class MainView {
     @FXML
     private TextField tx_date;
 
-
     @FXML
     private Button btn_add_parts;
+    //end of attributes in crusher-parts-add xml
 
+
+    // start attributes use in multiple views
+    @FXML
+    private Button btn_back;
+    // end attributes use in multiple views
+
+    //start -> functions use in crusher-parts fxml
     @FXML
     void AddParts(ActionEvent event) {
 
     }
+    //end -> functions use in crusher-parts fxml
 
 
-    @FXML
-    void Add(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("crusher-parts-add.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/crusher.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
-
-    }
 
     @FXML
     void Back(ActionEvent event) throws IOException {
@@ -96,6 +96,18 @@ public class MainView {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/main.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    //start -> functions use in crusher-view fxml
+    @FXML
+    void Add(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("crusher-parts-add.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/crusher-add.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
 
@@ -110,7 +122,9 @@ public class MainView {
     void Search(ActionEvent event) {
 
     }
+    //end -> functions use in crusher-view fxml
 
+    //start -> functions use in main-view fxml
     @FXML
     void adminaction(ActionEvent event) throws IOException {
 
@@ -158,4 +172,5 @@ public class MainView {
     void vechicleaction(ActionEvent event) {
 
     }
+    //end -> functions use in main-view fxml
 }
