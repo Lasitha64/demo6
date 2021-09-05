@@ -158,4 +158,20 @@ public class MainView {
     void vechicleaction(ActionEvent event) {
 
     }
+    //generator
+    @FXML
+    private Button btn_save;
+
+    @FXML
+    void generator(ActionEvent event) throws IOException {
+
+        Stage new_generator_form = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("generator_add_view.fxml"));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("stylesheet/generator_view.css").toExternalForm());
+        new_generator_form.setScene(scene);
+        new_generator_form.show();
+        new_generator_form.setResizable(false);
+    }
 }
