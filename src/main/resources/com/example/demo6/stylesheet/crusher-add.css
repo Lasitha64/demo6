@@ -12,19 +12,19 @@
     -fx-background-radius: 30 0 0 30;
 }
 
-.text-field{
+.text-field1{
     -fx-background-color:#b3cde0;
     -fx-prompt-text-fill: gray;
     -fx-background-radius: 0 30 30 0;
 }
 
-.text-field:hover{
+.text-field1:hover{
     -fx-background-color:#03396c;
     -fx-prompt-text-fill: black;
     -fx-background-radius: 0 30 30 0;
 }
 
-.text-field:pressed{
+.text-field1:pressed{
     -fx-background-color:gray;
     -fx-prompt-text-fill: black;
     -fx-background-radius: 0 30 30 0;
