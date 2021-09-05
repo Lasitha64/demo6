@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.MainView">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.crusherview">
    <children>
       <Label alignment="CENTER_RIGHT" layoutX="66.0" layoutY="14.0" prefHeight="110.0" prefWidth="682.0" text="Metal Crusher Management" textAlignment="CENTER" textFill="#aaaaaade">
          <font>
