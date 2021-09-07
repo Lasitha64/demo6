@@ -51,9 +51,9 @@
                     <children>
                         <TextField id="generor_id" prefHeight="28.0" prefWidth="332.0" promptText="Enter ID" styleClass="text-field" />
                         <TextField prefHeight="28.0" promptText="Enter brand" styleClass="text-field" />
-                        <TextField prefHeight="28.0" promptText="Enter Quantity of Part" styleClass="text-field" />
-                        <TextField prefHeight="28.0" promptText="Enter Total Price" styleClass="text-field" />
-                        <TextField prefHeight="28.0" promptText="Enter Date" styleClass="text-field" />
+                        <TextField prefHeight="28.0" promptText="Enter voranty exp date" styleClass="text-field" />
+                        <TextField prefHeight="28.0" promptText="Enter capacity" styleClass="text-field" />
+                        <TextField prefHeight="28.0" promptText="Enter Purchasing date" styleClass="text-field" />
                     </children>
                     <padding>
                         <Insets bottom="20.0" top="20.0" />
