@@ -74,13 +74,12 @@ public class MainView {
 
     }
 
-    @FXML
-    void salesaction(ActionEvent event) {
-
-    }
 
     @FXML
     void vechicleaction(ActionEvent event) {
 
+    }
+
+    public void genaratoraction(ActionEvent actionEvent) {
     }
 }
