@@ -1,0 +1,8 @@
+.root{
+    -fx-background-color:#03396c ;
+}
+
+.formbox{
+    -fx-background-color:#005b96;
+    -fx-background-radius: 30 30 30 30;
+}
