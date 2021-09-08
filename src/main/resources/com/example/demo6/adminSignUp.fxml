@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/adminSignUp.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.AdminSignUp">
+   <children>
+      <Label layoutX="245.0" layoutY="54.0" text="Admin Sign Up" textFill="#aaaaaa">
+         <font>
+            <Font name="Britannic Bold" size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="91.0" layoutY="162.0" text="Name" textFill="#f8f8f8">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="90.0" layoutY="210.0" text="Username" textFill="#f8f5f5">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="90.0" layoutY="254.0" text="Email" textFill="#f8f5f5">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="90.0" layoutY="306.0" text="NIC No" textFill="#fffafa">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="90.0" layoutY="350.0" text="Mobile No" textFill="#fffafa">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="90.0" layoutY="397.0" text="Password" textFill="#fcf7f7">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="239.0" layoutY="163.0" prefHeight="25.0" prefWidth="440.0" />
+      <Button layoutX="335.0" layoutY="451.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="129.0" text="Create Account">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER_RIGHT" layoutX="53.0" layoutY="533.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="85.0" styleClass="back" text="BACK">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView blendMode="MULTIPLY" fitHeight="25.0" fitWidth="23.0">
+               <image>
+                  <Image url="@img/arrow-left.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="654.0" layoutY="532.0" mnemonicParsing="false" styleClass="back" text="Main Menu">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <TextField layoutX="239.0" layoutY="211.0" prefHeight="25.0" prefWidth="440.0" />
+      <TextField layoutX="239.0" layoutY="255.0" prefHeight="25.0" prefWidth="440.0" />
+      <TextField layoutX="239.0" layoutY="307.0" prefHeight="25.0" prefWidth="440.0" />
+      <TextField layoutX="239.0" layoutY="351.0" prefHeight="25.0" prefWidth="440.0" />
+      <TextField layoutX="239.0" layoutY="398.0" prefHeight="25.0" prefWidth="440.0" />
+   </children>
+</AnchorPane>
