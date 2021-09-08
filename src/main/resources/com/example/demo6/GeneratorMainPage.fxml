@@ -1,52 +1,99 @@
-      <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-        <?import javafx.geometry.Insets?>
-        <?import javafx.scene.control.Button?>
-        <?import javafx.scene.control.Label?>
-        <?import javafx.scene.control.TextField?>
-        <?import javafx.scene.image.Image?>
-        <?import javafx.scene.image.ImageView?>
-        <?import javafx.scene.layout.AnchorPane?>
-        <?import javafx.scene.layout.VBox?>
-        <?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.GeneratorMainPage">
+
+<!--AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.demo6.GeneratorMainPage"
-            prefHeight="400.0" prefWidth="600.0">
-<children>
-    <ImageView fitHeight="133.0" fitWidth="200.0" layoutX="300.0" layoutY="20.0">
-        <image>
-            <Image url="@img/Logo.jpeg" />
-        </image>
-    </ImageView>
-    <VBox layoutX="178.0" layoutY="167.0" prefHeight="418.0" prefWidth="444.0" styleClass="loginbox">
-        <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="78.0" prefWidth="445.0" text="Login" textAlignment="JUSTIFY" textFill="#faf8f8">
-                <font>
-                    <Font name="System Bold" size="31.0" />
-                </font>
+            prefHeight="400.0" prefWidth="600.0"-->
+    <children>
+        <ImageView fitHeight="133.0" fitWidth="200.0" layoutX="300.0" layoutY="20.0">
+            <image>
+                <Image url="@img/Logo.jpeg" />
+            </image>
+        </ImageView>
+        <VBox layoutX="178.0" layoutY="167.0" prefHeight="408.0" prefWidth="444.0" styleClass="loginbox">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="78.0" prefWidth="445.0" text="Generator" textAlignment="JUSTIFY" textFill="#faf8f8">
+                    <font>
+                        <Font name="System Bold" size="41.0" />
+                    </font>
+                </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="78.0" prefWidth="445.0" text="Enter Generator ID" textAlignment="JUSTIFY" textFill="#faf8f8">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
             </Label>
-            <TextField minHeight="30.0" prefHeight="26.0" prefWidth="337.0" promptText="Enter username" styleClass="tfinput">
-                <VBox.margin>
-                    <Insets bottom="20.0" left="20.0" right="20.0" top="80.0" />
-                </VBox.margin>
-            </TextField>
-            <TextField minHeight="30.0" promptText="Enter password" styleClass="tfinput">
-                <VBox.margin>
-                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                </VBox.margin>
-            </TextField>
-            <Button fx:id="btn_lg" alignment="BOTTOM_CENTER" minHeight="25.0" mnemonicParsing="false" onAction="#login" prefWidth="80.0" styleClass="logbtn" text="LOGIN">
-                <VBox.margin>
-                    <Insets bottom="20.0" left="183.0" right="60.0" top="50.0" />
-                </VBox.margin>
-                <font>
-                    <Font name="Bell MT" size="14.0" />
-                </font>
-            </Button>
-        </children>
-    </VBox>
-</children>
+                <TextField minHeight="30.0" prefHeight="26.0" prefWidth="337.0" promptText="Enter username" styleClass="tfinput">
+                    <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="80.0" />
+                    </VBox.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+                </TextField>
+            <VBox prefHeight="62.0" prefWidth="444.0" />
+            <HBox fillHeight="false" minHeight="50.0" minWidth="-Infinity" prefHeight="20.0" prefWidth="100.0" stylesheets="@stylesheet/GeneratorA.css">
+               <children>
+                      <Button fx:id="Add_new_generator" alignment="CENTER" minHeight="25.0" mnemonicParsing="false" onAction="#Add_new_generator" prefHeight="49.0" prefWidth="147.0" stylesheets="@stylesheet/GeneratorA.css" styleClass="genAbtn" text="Add new generator">
+                          <font>
+                              <Font name="Bell MT" size="14.0" />
+                          </font>
+                          <opaqueInsets>
+                              <Insets />
+                          </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="30.0" right="50.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                      </Button>
+                      <Button fx:id="Search" alignment="CENTER" minHeight="25.0" mnemonicParsing="false" onAction="#Search" prefHeight="50.0" prefWidth="95.0" stylesheets="@stylesheet/GeneratorA.css" styleClass="genAbtn" text="Search">
+                          <font>
+                              <Font name="Bell MT" size="14.0" />
+                          </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets right="50.0" />
+                     </HBox.margin>
+                      </Button>
+                      <Button fx:id="Back" alignment="CENTER" minHeight="25.0" mnemonicParsing="false" onAction="#Back" prefHeight="50.0" prefWidth="92.0" stylesheets="@stylesheet/GeneratorA.css" styleClass="genAbtn" text="Back">
+                          <font>
+                              <Font name="Bell MT" size="14.0" />
+                          </font>
+                          <opaqueInsets>
+                              <Insets />
+                          </opaqueInsets>
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                      </Button>
+               </children>
+            </HBox>
+            </children>
+        </VBox>
+    </children>
+   <stylesheets>
+      <URL value="@stylesheet/main.css" />
+      <URL value="@stylesheet/login.css" />
+       <URL value="@stylesheet/GeneratorA.css" />
+   </stylesheets>
 </AnchorPane>
-

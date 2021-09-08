@@ -81,5 +81,20 @@ public class MainView {
     }
 
     public void genaratoraction(ActionEvent actionEvent) {
+        btn_cr.getScene().getWindow().hide();
+        Stage signup = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("GeneratorMainPage.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("stylesheet/main.css");
+        scene.getStylesheets().add("stylesheet/login.css");
+        scene.getStylesheets().add("stylesheet/GeneratorA.css");
+        signup.setScene(scene);
+        signup.show();
+        signup.setResizable(false);
     }
 }
