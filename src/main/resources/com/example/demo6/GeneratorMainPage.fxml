@@ -8,7 +8,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -38,56 +40,84 @@
             </Label>
                 <TextField minHeight="30.0" prefHeight="26.0" prefWidth="337.0" promptText="Enter username" styleClass="tfinput">
                     <VBox.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="80.0" />
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                     </VBox.margin>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                 </TextField>
-            <VBox prefHeight="62.0" prefWidth="444.0" />
-            <HBox fillHeight="false" minHeight="50.0" minWidth="-Infinity" prefHeight="20.0" prefWidth="100.0" stylesheets="@stylesheet/GeneratorA.css">
+            <VBox prefHeight="62.0" prefWidth="444.0">
                <children>
-                      <Button fx:id="Add_new_generator" alignment="CENTER" minHeight="25.0" mnemonicParsing="false" onAction="#Add_new_generator" prefHeight="49.0" prefWidth="147.0" stylesheets="@stylesheet/GeneratorA.css" styleClass="genAbtn" text="Add new generator">
-                          <font>
+                  <GridPane prefHeight="118.0" prefWidth="443.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+                      <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="Back1" alignment="CENTER" minHeight="25.0" mnemonicParsing="false" onAction="#Back" prefHeight="25.0" prefWidth="195.0" styleClass="genAbtn" stylesheets="@stylesheet/GeneratorA.css" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
                               <Font name="Bell MT" size="14.0" />
-                          </font>
-                          <opaqueInsets>
+                           </font>
+                           <opaqueInsets>
                               <Insets />
-                          </opaqueInsets>
-                     <HBox.margin>
-                        <Insets left="30.0" right="50.0" />
-                     </HBox.margin>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                      </Button>
-                      <Button fx:id="Search" alignment="CENTER" minHeight="25.0" mnemonicParsing="false" onAction="#Search" prefHeight="50.0" prefWidth="95.0" stylesheets="@stylesheet/GeneratorA.css" styleClass="genAbtn" text="Search">
-                          <font>
-                              <Font name="Bell MT" size="14.0" />
-                          </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <HBox.margin>
-                        <Insets right="50.0" />
-                     </HBox.margin>
-                      </Button>
-                      <Button fx:id="Back" alignment="CENTER" minHeight="25.0" mnemonicParsing="false" onAction="#Back" prefHeight="50.0" prefWidth="92.0" stylesheets="@stylesheet/GeneratorA.css" styleClass="genAbtn" text="Back">
-                          <font>
-                              <Font name="Bell MT" size="14.0" />
-                          </font>
-                          <opaqueInsets>
+                           </opaqueInsets>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <GridPane.margin>
+                              <Insets top="50.0" />
+                           </GridPane.margin>
+                        </Button>
+                            <Button fx:id="Back" alignment="CENTER" minHeight="25.0" mnemonicParsing="false" onAction="#Back" prefHeight="25.0" prefWidth="193.0" styleClass="genAbtn" stylesheets="@stylesheet/GeneratorA.css" text="Parts" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                <font>
+                                    <Font name="Bell MT" size="14.0" />
+                                </font>
+                                <opaqueInsets>
+                                    <Insets />
+                                </opaqueInsets>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                            </Button>
+                            <Button fx:id="Add_new_generator" alignment="CENTER" minHeight="25.0" mnemonicParsing="false" onAction="#Add_new_generator" prefHeight="25.0" prefWidth="183.0" styleClass="genAbtn" stylesheets="@stylesheet/GeneratorA.css" text="Add new generator" GridPane.rowIndex="4">
+                                <font>
+                                    <Font name="Bell MT" size="14.0" />
+                                </font>
+                                <opaqueInsets>
+                                    <Insets />
+                                </opaqueInsets>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <GridPane.margin>
+                              <Insets left="30.0" top="50.0" />
+                           </GridPane.margin>
+                            </Button>
+                            <Button fx:id="Search" alignment="CENTER" minHeight="25.0" mnemonicParsing="false" onAction="#Search" prefHeight="25.0" prefWidth="182.0" styleClass="genAbtn" stylesheets="@stylesheet/GeneratorA.css" text="Search" GridPane.rowIndex="1">
+                                <font>
+                                    <Font name="Bell MT" size="14.0" />
+                                </font>
+                           <opaqueInsets>
                               <Insets />
-                          </opaqueInsets>
-                     <HBox.margin>
-                        <Insets right="30.0" />
-                     </HBox.margin>
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets left="30.0" />
+                           </GridPane.margin>
+                            </Button>
+                     </children>
                      <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets top="50.0" />
                      </padding>
-                      </Button>
-               </children>
-            </HBox>
+                  </GridPane>
+               </children></VBox>
             </children>
         </VBox>
     </children>
