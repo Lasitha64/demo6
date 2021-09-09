@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/adminLogin.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.AdminLogin">
    <children>
       <Label layoutX="269.0" layoutY="43.0" text="Admin Login" textFill="#aaaaaa">
@@ -30,21 +29,21 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <TextField layoutX="377.0" layoutY="40.0" prefHeight="42.0" prefWidth="297.0" />
-            <TextField layoutX="376.0" layoutY="106.0" prefHeight="44.0" prefWidth="295.0" />
+            <TextField fx:id="inputusername" layoutX="377.0" layoutY="40.0" prefHeight="42.0" prefWidth="297.0" />
+            <TextField fx:id="inputpassword" layoutX="376.0" layoutY="106.0" prefHeight="44.0" prefWidth="295.0" />
          </children>
       </Pane>
-      <Button fx:id="button" layoutX="172.0" layoutY="408.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="164.0" text="Login">
+      <Button fx:id="loginbutton" layoutX="172.0" layoutY="408.0" mnemonicParsing="false" onAction="#login" prefHeight="51.0" prefWidth="164.0" text="Login">
          <font>
             <Font name="Britannic Bold" size="27.0" />
          </font>
       </Button>
-      <Button fx:id="button1" layoutX="456.0" layoutY="407.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="164.0" styleClass="button1" text="Alter">
+      <Button fx:id="alterbutton" layoutX="456.0" layoutY="407.0" mnemonicParsing="false" onAction="#alter" prefHeight="51.0" prefWidth="164.0" styleClass="button1" text="Alter">
          <font>
             <Font name="Britannic Bold" size="27.0" />
          </font>
       </Button>
-      <Button fx:id="button11" layoutX="407.0" layoutY="500.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="160.0" styleClass="button11" text="Create Account">
+      <Button fx:id="createaccountbutton" layoutX="407.0" layoutY="500.0" mnemonicParsing="false" onAction="#createaccount" prefHeight="38.0" prefWidth="160.0" styleClass="button11" text="Create Account">
          <font>
             <Font name="Britannic Bold" size="18.0" />
          </font>
@@ -54,7 +53,7 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <Button fx:id="back" alignment="CENTER" layoutX="40.0" layoutY="542.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="120.0" styleClass="back" text="BACK">
+      <Button fx:id="backbutton" alignment="CENTER" layoutX="40.0" layoutY="542.0" mnemonicParsing="false" onAction="#back" prefHeight="39.0" prefWidth="120.0" styleClass="back" text="BACK">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -67,7 +66,7 @@
             <Image url="@img/arrow-left.png" />
          </image>
       </ImageView>
-      <Button layoutX="647.0" layoutY="541.0" mnemonicParsing="false" styleClass="back" text="Main Menu">
+      <Button fx:id="mainmenu" layoutX="647.0" layoutY="541.0" mnemonicParsing="false" onAction="#mainmenu" styleClass="back" text="Main Menu">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

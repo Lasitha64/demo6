@@ -52,6 +52,12 @@ public class MainView {
     //start -> functions use in main-view fxml
     @FXML
     void adminaction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("adminDetails.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/adminDetails.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
 
 
     }

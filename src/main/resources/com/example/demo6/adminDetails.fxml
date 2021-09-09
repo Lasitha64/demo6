@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/adminDetails.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.AdminDetails">
    <children>
       <Label alignment="CENTER" layoutX="97.0" layoutY="36.0" prefHeight="88.0" prefWidth="675.0" text="Admin Details" textFill="#aaaaaa">
@@ -23,17 +22,34 @@
       </ImageView>
       <Pane layoutX="54.0" layoutY="198.0" prefHeight="283.0" prefWidth="694.0" styleClass="formbox">
          <children>
-            <Button layoutX="63.0" layoutY="119.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="239.0" text="Admin Login">
+            <Button fx:id="loginbutton" layoutX="63.0" layoutY="119.0" mnemonicParsing="false" onAction="#login" prefHeight="46.0" prefWidth="239.0" text="Admin Login">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Button>
-            <Button layoutX="371.0" layoutY="117.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="239.0" styleClass="button1" text="Admin Sign Up">
+            <Button fx:id="signupbutton" layoutX="371.0" layoutY="117.0" mnemonicParsing="false" onAction="#signup" prefHeight="46.0" prefWidth="239.0" styleClass="button1" text="Admin Sign Up">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Button>
          </children>
       </Pane>
+      <Button fx:id="backbutton" alignment="CENTER_RIGHT" layoutX="58.0" layoutY="536.0" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="85.0" styleClass="back" text="BACK">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView blendMode="MULTIPLY" fitHeight="25.0" fitWidth="23.0">
+               <image>
+                  <Image url="@img/arrow-left.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="mainmenu" layoutX="655.0" layoutY="537.0" mnemonicParsing="false" onAction="#mainmenu" styleClass="back" text="Main Menu">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
