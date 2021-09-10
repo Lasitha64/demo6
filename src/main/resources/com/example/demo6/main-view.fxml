@@ -91,7 +91,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="btn_ad" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="602.0" layoutY="341.0" mnemonicParsing="false" onAction="#adminaction" prefHeight="156.0" prefWidth="155.0" styleClass="btncat" text="Admin Management" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="btn_em" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="602.0" layoutY="341.0" mnemonicParsing="false" onAction="#employeeaction" prefHeight="156.0" prefWidth="155.0" styleClass="btncat" text="Employee management" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -106,7 +106,17 @@
             <Image url="@img/sales.png" />
          </image>
       </ImageView>
-      <ImageView blendMode="MULTIPLY" fitHeight="88.0" fitWidth="94.0" layoutX="633.0" layoutY="359.0">
+      <ImageView blendMode="DARKEN" fitHeight="112.0" fitWidth="122.0" layoutX="626.0" layoutY="347.0">
+         <image>
+            <Image url="@img/employee.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="adminbutton" alignment="BOTTOM_CENTER" layoutX="64.0" layoutY="30.0" mnemonicParsing="false" onAction="#admin" prefHeight="47.0" prefWidth="52.0">
+         <font>
+            <Font name="System Bold" size="6.0" />
+         </font>
+      </Button>
+      <ImageView blendMode="DARKEN" fitHeight="31.0" fitWidth="32.0" layoutX="74.0" layoutY="38.0">
          <image>
             <Image url="@img/admin.png" />
          </image>

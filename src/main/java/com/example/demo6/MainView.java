@@ -1,6 +1,5 @@
 package com.example.demo6;
 
-import com.mongodb.client.MongoCollection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,21 +7,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.bson.Document;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainView {
 
-    private Stage stage;
-    private Scene scene;
-
-
-    //start of attributes in main-view fxml
     @FXML
     private Button btn_ve;
 
@@ -45,33 +35,42 @@ public class MainView {
     private Button btn_sl;
 
     @FXML
-    private Button btn_ad;
-    //end of attributes in main-view xml
+    private Button btn_em;
 
-
-    //start -> functions use in main-view fxml
     @FXML
-    void adminaction(ActionEvent event) throws IOException {
+    private Button adminbutton;
+
+    @FXML
+    void admin(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("adminDetails.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/adminDetails.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
-
 
     }
 
     @FXML
     void crusheraction(ActionEvent event) throws IOException {
-
-
         Parent root = FXMLLoader.load(getClass().getResource("crusher-view.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/crusher.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
+
+    }
+
+    @FXML
+    void employeeaction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("employeeDetails.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/employeeDetails.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+
     }
 
     @FXML
@@ -103,5 +102,5 @@ public class MainView {
     void vechicleaction(ActionEvent event) {
 
     }
-    //end -> functions use in main-view fxml
+
 }
