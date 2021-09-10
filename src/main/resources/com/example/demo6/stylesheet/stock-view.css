@@ -1,0 +1,21 @@
+.root{
+    -fx-background-color:#03396c ;
+}
+
+.btnback{
+    -fx-background-color:  #005b96;
+    -fx-text-fill: white;
+    -fx-background-radius: 20 20 20 20;
+
+}
+
+.btnback:hover{
+    -fx-background-color:  #b3cde0;
+    -fx-text-fill: black;
+    -fx-background-radius: 20 20 20 20;
+
+}
+
+.btnback:pressed{
+    -fx-background-color:  #005b96;
+}
