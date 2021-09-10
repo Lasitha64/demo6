@@ -3,7 +3,6 @@ package com.example.demo6;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 
 public class EmployeeDetails {
 
@@ -17,7 +16,7 @@ public class EmployeeDetails {
     private Button employeeattendance;
 
     @FXML
-    private ImageView backbutton;
+    private Button backbutton;
 
     @FXML
     private Button mainmenu;
@@ -48,3 +47,4 @@ public class EmployeeDetails {
     }
 
 }
+
