@@ -1,5 +1,8 @@
 package com.example.demo6;
 
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +12,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.bson.Document;
+import org.bson.types.ObjectId;
+
 
 import java.io.IOException;
 
@@ -34,11 +40,15 @@ public class EmployeeAddNew {
 
     @FXML
     private Button mainmenu;
+    private MongoClient database;
 
     @FXML
     void addnewemployeebutton(ActionEvent event) {
 
+
+
     }
+
 
     @FXML
     void back(ActionEvent event) throws IOException {
