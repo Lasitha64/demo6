@@ -20,7 +20,14 @@ public class AddNewItem {
     private Button buttn_add;
 
     @FXML
-    void Add(ActionEvent event) {
+    void Add(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/main.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+
 
     }
 
