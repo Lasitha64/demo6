@@ -30,18 +30,6 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="buttn_add" mnemonicParsing="false" onAction="#Add" prefHeight="52.0" prefWidth="247.0" text="ADD NEW ITEM">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <graphic>
-                  <ImageView blendMode="MULTIPLY" fitHeight="40.0" fitWidth="40.0">
-                     <image>
-                        <Image url="@img/add.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
             <Button fx:id="buttn_lub" mnemonicParsing="false" onAction="#Viewlub" prefHeight="52.0" prefWidth="249.0" text="LUBRICANT">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -50,6 +38,18 @@
                   <ImageView blendMode="MULTIPLY" fitHeight="40.0" fitWidth="40.0">
                      <image>
                         <Image url="@img/lubricant.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="buttn_add" mnemonicParsing="false" onAction="#Add" prefHeight="52.0" prefWidth="247.0" text="ADD NEW ITEM">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView blendMode="MULTIPLY" fitHeight="40.0" fitWidth="40.0">
+                     <image>
+                        <Image url="@img/add.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -80,7 +80,7 @@
             </ImageView>
          </graphic>
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Button>
    </children>

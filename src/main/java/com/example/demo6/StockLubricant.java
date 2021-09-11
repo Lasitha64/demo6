@@ -11,16 +11,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class StockReport {
+public class StockLubricant {
 
     @FXML
-    private Button buttn_daliy;
+    private Button buttn_search;
 
     @FXML
-    private Button buttn_month;
-
-    @FXML
-    private Button buttn_back;
+    private Button buutn_back;
 
     @FXML
     void Back(ActionEvent event) throws IOException {
@@ -33,12 +30,7 @@ public class StockReport {
     }
 
     @FXML
-    void Generate(ActionEvent event) {
-
-    }
-
-    @FXML
-    void Report(ActionEvent event) {
+    void Search(ActionEvent event) {
 
     }
 

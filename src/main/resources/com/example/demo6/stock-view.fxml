@@ -11,12 +11,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/stock-view.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.StockView">
    <children>
-      <Label layoutX="287.0" layoutY="31.0" prefHeight="58.0" prefWidth="244.0" text="INVENTORY">
+      <Label layoutX="287.0" layoutY="31.0" prefHeight="70.0" prefWidth="287.0" text="INVENTORY" textFill="#000000e5">
          <font>
-            <Font name="Britannic Bold" size="48.0" />
+            <Font name="System Bold" size="48.0" />
          </font>
       </Label>
       <TextField layoutX="148.0" layoutY="113.0" prefHeight="33.0" prefWidth="444.0" promptText="Enter Item Name" />

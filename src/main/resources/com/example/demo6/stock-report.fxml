@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.demo6.StockReport"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/stock-report.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.StockReport">
+   <children>
+      <Label layoutX="173.0" layoutY="30.0" prefHeight="70.0" prefWidth="513.0" text="INVENTORY REPORTS" textFill="#000000e7">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Label>
+      <VBox layoutX="170.0" layoutY="127.0" prefHeight="368.0" prefWidth="489.0" spacing="80.0" styleClass="formbox">
+         <children>
+            <Button fx:id="buttn_daliy" mnemonicParsing="false" onAction="#Generate" prefHeight="48.0" prefWidth="277.0" text="DAILY INVENTORY REPORTS">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="110.0" top="100.0" />
+               </VBox.margin></Button>
+            <Button fx:id="buttn_month" mnemonicParsing="false" onAction="#Report" prefHeight="48.0" prefWidth="315.0" text="MONTHLY INVENTORY REPORTS">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="90.0" />
+               </VBox.margin></Button>
+         </children>
+      </VBox>
+      <Button fx:id="buttn_back" layoutX="27.0" layoutY="528.0" mnemonicParsing="false" onAction="#Back" prefHeight="41.0" prefWidth="105.0" styleClass="btnback" text="BACK">
+         <graphic>
+            <ImageView blendMode="MULTIPLY" fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/arrow-left.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>
