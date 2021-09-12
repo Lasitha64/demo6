@@ -17,9 +17,6 @@ public class StcockMngt {
     private Button buttn_view;
 
     @FXML
-    private Button buttn_add;
-
-    @FXML
     private Button buttn_lub;
 
     @FXML
@@ -27,16 +24,6 @@ public class StcockMngt {
 
     @FXML
     private Button buttn_back;
-
-    @FXML
-    void Add(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("add-new-item.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/add-new-item.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
-    }
 
     @FXML
     void Back(ActionEvent event) throws IOException {
@@ -60,20 +47,20 @@ public class StcockMngt {
 
     @FXML
     void View(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("stock-view.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("stock-item-main.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/stock-view.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("stylesheet/stock-item-main.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
 
     @FXML
     void Viewlub(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("stock-lubricant.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("lubricant-main.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/stock-lubricant.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("stylesheet/lubricant-main.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

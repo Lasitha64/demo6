@@ -10,7 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -19,7 +18,7 @@ import org.bson.types.ObjectId;
 
 import java.io.IOException;
 
-public class AddNewItem {
+public class AddNewLub {
 
     @FXML
     private TextField namefld;
@@ -36,7 +35,6 @@ public class AddNewItem {
     @FXML
     private TextArea Descipfld;
 
-
     @FXML
     private Button buttn_back;
 
@@ -45,7 +43,7 @@ public class AddNewItem {
 
     private MongoClient database;
 
-    MongoCollection<Document> ItemCollection;
+    MongoCollection<Document> LubricantCollection;
 
     @FXML
 
@@ -55,16 +53,15 @@ public class AddNewItem {
         MongoDatabase database = databaseController.connectToDB("HerathCMD");
 
         // get collection
-        ItemCollection = database.getCollection("Item");
+        LubricantCollection = database.getCollection("Lubricant");
     }
 
     @FXML
-
     void Add(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("lubricant-main.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("stylesheet/lubricant-main.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
 
@@ -72,7 +69,7 @@ public class AddNewItem {
 
 
             String namefldText = namefld.getText(), quantityfldText = quantityfld.getText(), pricefldText = pricefld.getText(), datefldText = datefld.getText(), DescipfldText = Descipfld.getText();
-            insertItem(ItemCollection, namefldText, quantityfldText, pricefldText, datefldText, DescipfldText);
+            insertLubricant(LubricantCollection, namefldText, quantityfldText, pricefldText, datefldText, DescipfldText);
 
 
         } catch (Exception e) {
@@ -81,7 +78,7 @@ public class AddNewItem {
 
     }
 
-    private void insertItem(MongoCollection<Document> itemCollection, String namefldText, String quantityfldText, String pricefldText, String datefldText, String DescipfldText) {
+    private void insertLubricant(MongoCollection<Document> lubricantCollection, String namefldText, String quantityfldText, String pricefldText, String datefldText, String DescipfldText) {
 
         Document item = new Document("_id", new ObjectId())
                 .append("Item_Name", namefldText)
@@ -89,17 +86,16 @@ public class AddNewItem {
                 .append("Price", pricefldText)
                 .append("Date", datefldText)
                 .append("Description", DescipfldText);
-        itemCollection.insertOne(item);
+        lubricantCollection.insertOne(item);
         System.out.println("Connection S3");
     }
 
-
     @FXML
     void Back(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("stcock-mngt.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("lubricant-main.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/stock-mngt.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("stylesheet/lubricant-main.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
