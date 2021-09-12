@@ -50,7 +50,7 @@
                         <Insets />
                     </VBox.margin>
                     <children>
-                        <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="174.0" styleClass="genAbtn" stylesheets="@stylesheet/GeneratorA.css" text="Back">
+                        <Button fx:id="back" mnemonicParsing="false" onAction="#back_to_c" prefHeight="70.0" prefWidth="174.0" styleClass="genAbtn" stylesheets="@stylesheet/GeneratorA.css" text="Back">
                             <font>
                                 <Font size="19.0" />
                             </font></Button>

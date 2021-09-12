@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.GeneMaintainance">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.GeneMaintainance">
     <children>
         <Label alignment="CENTER" layoutX="154.0" layoutY="14.0" prefHeight="82.0" prefWidth="491.0" text="Generator Maintenance" textAlignment="RIGHT" textFill="#dbdbe6" wrapText="true">
             <font>
@@ -45,13 +53,13 @@
                 </VBox>
                 <VBox layoutX="239.0" layoutY="15.0" prefHeight="272.0" prefWidth="332.0" spacing="30.0">
                     <children>
-                        <TextField prefHeight="28.0" prefWidth="332.0" promptText="Enter Stock ID" styleClass="text-field1" />
-                        <TextField prefHeight="28.0" promptText="Enter G_Stock_ID" styleClass="text-field1" />
-                        <DatePicker />
+                        <TextField fx:id="GeneratorID" prefHeight="28.0" prefWidth="332.0" promptText="Enter Stock ID" styleClass="text-field1" />
+                        <TextField fx:id="MaintenanceNO" prefHeight="28.0" promptText="Enter G_Stock_ID" styleClass="text-field1" />
+                        <DatePicker fx:id="MaintenanceDate" />
                   <HBox prefHeight="100.0" prefWidth="332.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" text="Service " textFill="#fff8f8" />
-                        <RadioButton mnemonicParsing="false" text="Repair " textFill="#eeeeee">
+                        <RadioButton fx:id="servise" mnemonicParsing="false" text="Service " textFill="#fff8f8" />
+                        <RadioButton fx:id="repair" mnemonicParsing="false" text="Repair " textFill="#eeeeee">
                            <HBox.margin>
                               <Insets left="100.0" />
                            </HBox.margin>
@@ -65,7 +73,7 @@
                 </VBox>
             </children>
         </Pane>
-        <Button fx:id="btn_back" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="96.0" layoutY="503.0" mnemonicParsing="false" onAction="#Back" prefHeight="43.0" prefWidth="102.0" styleClass="btnback" text="Back">
+        <Button fx:id="btn_back" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="96.0" layoutY="503.0" mnemonicParsing="false" onAction="#back_to_b" prefHeight="43.0" prefWidth="102.0" styleClass="btnback" text="Back">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -77,7 +85,7 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="593.0" layoutY="503.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="109.0" styleClass="btnback" text="Next">
+        <Button fx:id="Next" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="593.0" layoutY="503.0" mnemonicParsing="false" onAction="#move_to_d" prefHeight="43.0" prefWidth="109.0" styleClass="btnback" text="Next">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -89,7 +97,7 @@
                 </ImageView>
             </graphic>
         </Button>
-      <Button fx:id="btn_back1" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="273.0" layoutY="503.0" mnemonicParsing="false" onAction="#Back" prefHeight="43.0" prefWidth="254.0" styleClass="btnback" text="Veiw maintenance details">
+      <Button fx:id="Veiw_maintenance_details" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="273.0" layoutY="503.0" mnemonicParsing="false" onAction="#GviewMainteD" prefHeight="43.0" prefWidth="254.0" styleClass="btnback" text="Veiw maintenance details">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

@@ -1,3 +1,5 @@
+//page i
+
 package com.example.demo6;
 
 import javafx.event.ActionEvent;
@@ -14,20 +16,19 @@ public class GeneatorDeselUsage {
     private Spinner<?> g_remain_desel;
 
     @FXML
-    private Button backbutton;
+    private Button Back;
 
     @FXML
     private Button UsageChart;
 
     @FXML
-    void Back(ActionEvent event) {
+    void back_to_b(ActionEvent event) {
 
     }
 
     @FXML
-    void GUsageChart(ActionEvent event) {
+    void go_to_j(ActionEvent event) {
 
     }
 
 }
-
