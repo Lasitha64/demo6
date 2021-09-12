@@ -29,8 +29,8 @@ public class HelloApplication extends Application {
     //mongo db conection from the Database class singleton method
     public static void main(String[] args) {
 //        try (MongoClient mongoClient = Database.connect()) {
-//           /* List<Document> databases = mongoClient.listDatabases().into(new ArrayList<>());
-//            databases.forEach(db -> System.out.println(db.toJson()));*/
+//            List<Document> databases = mongoClient.listDatabases().into(new ArrayList<>());
+//            databases.forEach(db -> System.out.println(db.toJson()));
 //        }
 
         launch();
