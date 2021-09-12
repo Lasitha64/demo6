@@ -40,14 +40,58 @@ public class EmployeeAddNew {
 
     @FXML
     private Button mainmenu;
+
     private MongoClient database;
 
+    MongoCollection<Document> employeeCollection;
     @FXML
-    void addnewemployeebutton(ActionEvent event) {
+    public void initialize(){
+        //initialize database connection
+        Database databaseController = new Database();
+        MongoDatabase database = databaseController.connectToDB("HerathCMD");
 
+        // get collection
+        employeeCollection = database.getCollection("Employee");
+    }
+
+    @FXML
+    void addnewemployeebutton(ActionEvent event) throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/main.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+
+            try {
+
+
+                String employeeinputnameText = employeeinputname.getText(), employeeinputaddressText = employeeinputaddress.getText(), employeeinputnicText = employeeinputnic.getText(), employeeinputmobileText = employeeinputmobile.getText();
+                insertEmployee(employeeCollection, employeeinputnameText, employeeinputaddressText, employeeinputnicText, employeeinputmobileText);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
 
     }
+
+        private void insertEmployee(MongoCollection<Document> employeeCollection, String employeeinputnameText, String employeeinputaddressText, String employeeinputnicText, String employeeinputmobileText) {
+
+            Document employee = new Document("_id", new ObjectId())
+                    .append("Name", employeeinputnameText)
+                    .append("Address", employeeinputaddressText)
+                    .append("NIC No", employeeinputnicText)
+                    .append("Mobile No", employeeinputmobileText);
+            employeeCollection.insertOne(employee);
+            System.out.println("Connection S3");
+        }
+
+
+
+
 
 
     @FXML
