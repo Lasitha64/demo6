@@ -109,17 +109,17 @@ public class ViewServiceDetails {
     void Update(ActionEvent event) {
 
         // update one document
-        String vidText = vid.getText(), desText = des.getText(), pText = p.getText();
-        DatePicker dtDatePicker = (DatePicker) dt.getDayCellFactory();
+        String vidText = vid.getText(), desText = des.getText(), pText = p.getText(),dtText=dt.getValue().toString();
 
-        System.out.println(vidText + desText + pText + dtDatePicker);
+
+        System.out.println(vidText + desText + pText + dtText);
 
         Bson filter = eq("Vehicle_id", vidText);
 
 
         Bson updatedes = set("Description", desText); // creating an array with a comment.
         Bson updatep = set("Price", pText); // using addToSet so no effect.
-        Bson updatedate = set("Date", dtDatePicker); // using addToSet so no effect.
+        Bson updatedate = set("Date", dtText); // using addToSet so no effect.
 
         List<Bson> updatePredicates = new ArrayList<Bson>();
         updatePredicates.add(updatedes);
