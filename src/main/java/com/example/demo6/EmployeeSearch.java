@@ -50,6 +50,12 @@ public class EmployeeSearch {
 
     @FXML
     void searchemployee(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("employeeDetailsDisplay.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/employeeDetailsDisplay.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
 
 
     }

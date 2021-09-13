@@ -56,7 +56,13 @@ public class AdminUpdateDelete {
     }
 
     @FXML
-    void deleteaccount(ActionEvent event) {
+    void deleteaccount(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("adminLogin.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/adminLogin.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
 
     }
 
@@ -72,7 +78,13 @@ public class AdminUpdateDelete {
     }
 
     @FXML
-    void updateaccount(ActionEvent event) {
+    void updateaccount(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("adminLogin.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/adminLogin.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
 
     }
 
