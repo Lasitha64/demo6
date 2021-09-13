@@ -45,7 +45,7 @@
                                 <Insets />
                             </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="33.0" prefWidth="168.0" styleClass="label1" text="Unit Price">
+                        <Label alignment="CENTER" prefHeight="33.0" prefWidth="168.0" styleClass="label1" text="Price">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>

@@ -1,5 +1,12 @@
 package com.example.demo6;
 
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.FindOneAndUpdateOptions;
+import com.mongodb.client.model.ReturnDocument;
+import com.mongodb.client.model.Updates;
+import com.mongodb.client.result.DeleteResult;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,8 +19,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.bson.Document;
+import org.bson.conversions.Bson;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Updates.set;
 
 public class StockLubricant {
 
@@ -59,6 +73,21 @@ public class StockLubricant {
     @FXML
     private Button buutn_back;
 
+    private MongoClient database;
+
+    MongoCollection<Document> LubricantCollection;
+
+    @FXML
+
+    public void initialize(){
+        //initialize database connection
+        Database databaseController = new Database();
+        MongoDatabase database = databaseController.connectToDB("HerathCMD");
+
+        // get collection
+        LubricantCollection = database.getCollection("Lubricant");
+    }
+
     @FXML
     void Back(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("stcock-mngt.fxml"));
@@ -71,7 +100,10 @@ public class StockLubricant {
 
     @FXML
     void Delete(ActionEvent event) {
-
+        String idfldText = idfld.getText();
+        Bson filter = eq("Item_ID", idfldText);
+        DeleteResult result = LubricantCollection.deleteOne(filter);
+        System.out.println(result);
     }
 
     @FXML
@@ -81,7 +113,37 @@ public class StockLubricant {
 
     @FXML
     void Update(ActionEvent event) {
+// update one document
+        String idfldText = idfld.getText(), namefldText = namefld.getText(), quantityfldText = quantityfld.getText(), pricefldText = pricefld.getText(), datefldText = datefld.getValue().toString(), DescipfldText = Descipfld.getText();
 
+        System.out.println(idfldText + namefldText + quantityfldText + pricefldText + datefldText + DescipfldText);
+
+        Bson filter = eq("Item_ID", idfldText);
+
+
+        Bson updateName = set("Item_Name", namefldText); // creating an array with a comment.
+        Bson updateQuantity = set("Quantity", quantityfldText); // using addToSet so no effect.
+        Bson updatePrice = set("Price", pricefldText); // using addToSet so no effect.
+        Bson updateDate = set("Date", datefldText);
+        Bson updateDescription = set("Description", DescipfldText);
+
+        List<Bson> updatePredicates = new ArrayList<Bson>();
+        updatePredicates.add(updateName);
+        updatePredicates.add(updateQuantity);
+        updatePredicates.add(updatePrice);
+        updatePredicates.add(updateDate);
+        updatePredicates.add(updateDescription);
+
+
+        //Bson updateOperation = set("Name", NameText);
+        /*.append("Name", NameText)
+                .append("Quantity", QuantityText)
+                .append("Prise", PriseText);*/
+        FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
+        Document newVersion = LubricantCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
+
+        System.out.println("Updating the stock");
+        System.out.println(newVersion);
     }
 
 }

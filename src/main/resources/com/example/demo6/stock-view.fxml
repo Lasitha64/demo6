@@ -76,7 +76,7 @@
                                 <Insets />
                             </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="168.0" styleClass="label1" text="Unit Price">
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="168.0" styleClass="label1" text="Price">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -129,7 +129,7 @@
                             </font>
                         </TextArea>
                     </children></VBox>
-                <Button fx:id="buttn_add" layoutX="35.0" layoutY="422.0" mnemonicParsing="false" onAction="#Update" prefHeight="35.0" styleClass="bttn2" text="ADD">
+                <Button fx:id="buttn_add" layoutX="35.0" layoutY="422.0" mnemonicParsing="false" onAction="#Update" prefHeight="35.0" styleClass="bttn2" text="UPDATE">
                     <graphic>
                         <ImageView blendMode="MULTIPLY" fitHeight="27.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                             <image>
