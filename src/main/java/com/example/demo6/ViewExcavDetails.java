@@ -3,6 +3,9 @@ package com.example.demo6;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.FindOneAndUpdateOptions;
+import com.mongodb.client.model.ReturnDocument;
+import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.DeleteResult;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +23,8 @@ import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Updates.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ViewExcavDetails {
@@ -79,7 +84,42 @@ public class ViewExcavDetails {
         stage.setScene(scene);
         stage.show();}
     @FXML
-    void Update(ActionEvent event){}
+    void Update(ActionEvent event){
+        // update one document
+        String eidText = eid.getText(), ebrandText = ebrand.getText(), esiteText = esite.getText(), econText = econ.getText(), eregText = ereg.getText();
+
+
+        System.out.println(eidText + ebrandText + esiteText + econText + eregText);
+
+        Bson filter = eq("ExcavatorID", eidText);
+
+
+        Bson updateBrand = set("Brand", ebrandText); // creating an array with a comment.
+        Bson updateReg = set("Registration No", eregText); // using addToSet so no effect.
+        Bson updateCon = set("Condition", econText); // using addToSet so no effect.
+        Bson updateSite = set("Site", esiteText); // using addToSet so no effect.
+
+
+
+
+        List<Bson> updatePredicates = new ArrayList<Bson>();
+        updatePredicates.add(updateBrand);
+        updatePredicates.add(updateReg);
+        updatePredicates.add(updateCon);
+        updatePredicates.add(updateSite);
+
+
+        //Bson updateOperation = set("Name", NameText);
+        /*.append("Name", NameText)
+                .append("Quantity", QuantityText)
+                .append("Prise", PriseText);*/
+        FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
+        Document newVersion = ExcavatorCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
+
+        System.out.println("Updating the Excavator Details");
+        System.out.println(newVersion);
+
+    }
     @FXML
     void Delete(ActionEvent event){
         String eidText = eid.getText();
