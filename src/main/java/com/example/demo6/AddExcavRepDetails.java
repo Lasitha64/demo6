@@ -70,9 +70,9 @@ public class AddExcavRepDetails {
         try {
 
 
-            String eidText = eid.getText(), edescriptionText = edescription.getText(),  epriceText = eprice.getText();
-            Date edateDate = (Date)edate.getDayCellFactory();
-            insertExcavatorRepair(ExcavatorRepairCollection, eidText, edescriptionText, edateDate, epriceText);
+            String eidText = eid.getText(), edescriptionText = edescription.getText(),  epriceText = eprice.getText(),edateText = edate.getValue().toString();
+
+            insertExcavatorRepair(ExcavatorRepairCollection, eidText, edescriptionText, edateText, epriceText);
 
 
         } catch (Exception e) {
@@ -80,7 +80,7 @@ public class AddExcavRepDetails {
         }
 
     }
-    private void insertExcavatorRepair(MongoCollection<Document> excavatorRepairCollection, String eidText, String edescriptionText, Date edateText, String epriceText) {
+    private void insertExcavatorRepair(MongoCollection<Document> excavatorRepairCollection, String eidText, String edescriptionText, String edateText, String epriceText) {
 
         Document excavatorRepair = new Document("_id", new ObjectId())
                 .append("ExcavatorID", eidText)
