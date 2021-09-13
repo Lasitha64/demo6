@@ -2,16 +2,21 @@
 
 package com.example.demo6;
 
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import java.io.IOException;
 
@@ -29,6 +34,10 @@ public class GeneMaintainance {
     @FXML
     private RadioButton servise;
 
+
+    @FXML
+    private ToggleGroup Mtype;
+
     @FXML
     private RadioButton repair;
 
@@ -40,6 +49,52 @@ public class GeneMaintainance {
 
     @FXML
     private Button Veiw_maintenance_details;
+
+//    //radio
+//    private final ToggleGroup toggles = new ToggleGroup();
+//
+//    public void start(Stage stage) {
+//
+//        VBox root = new VBox(5);
+//        root.setPadding(new Insets(20));
+//
+//        root.getChildren().add(createToggle("Option 1"));
+//        root.getChildren().add(createToggle("Option 2"));
+//
+//        Scene scene = new Scene(root);
+//
+//        stage.setScene(scene);
+//        stage.show();
+//    }
+//
+//    private ButtonBase createToggle(String name) {
+//        RadioButton toggle = new RadioButton(name);
+//        toggle.addEventFilter(MouseEvent.MOUSE_PRESSED, e -> {
+//            if (toggle.isSelected()) {
+//                toggles.selectToggle(null);
+//                e.consume();
+//            }
+//        });
+//        toggle.setToggleGroup(toggles);
+//        return toggle;
+//    }
+
+    //database
+    MongoCollection<Document> generatorsCollection;
+
+    @FXML
+    public void initialize(){
+        //initialize database connection
+        Database databaseController = new Database();
+        MongoDatabase database = databaseController.connectToDB("HerathCMD");
+
+        // get collection
+        generatorsCollection = database.getCollection("GeneMaintenance");
+    }
+
+
+    MongoDatabase database;
+    
 
     @FXML
     void GviewMainteD(ActionEvent event) {
@@ -85,6 +140,22 @@ public class GeneMaintainance {
 
     @FXML
     void move_to_d(ActionEvent event) {
+        try {
+            //Get the values from the UI
+            //Enter the id
+            String GeneratorIDIDText = GeneratorID.getText();
+            String MaintenanceNOText = MaintenanceNO.getText();
+            Callback<DatePicker, DateCell> MaintenanceDateText = MaintenanceDate.getDayCellFactory();
+            String serviseText = servise.getText();
+            String repairText = repair.getText();
+            insertGeneratorMaintenance(generatorsCollection, GeneratorIDIDText, MaintenanceNOText, MaintenanceDateText, serviseText, repairText);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        
+        //Direct to next page
         Next.getScene().getWindow().hide();
         Stage signup = new Stage();
         Parent root = null;
@@ -102,6 +173,15 @@ public class GeneMaintainance {
         signup.show();
         signup.setResizable(false);
 
+    }
+    public void insertGeneratorMaintenance(MongoCollection<Document> generatorsCollection, String GeneratorIDIDText, String MaintenanceNOText, Callback<DatePicker, DateCell> MaintenanceDateText, String serviseText, String PriseText) {
+        Document generator = new Document("_id", new ObjectId()).append("Generator ID", GeneratorIDIDText)
+                .append("MaintenanceNO", MaintenanceNOText)
+                .append("Quantity", MaintenanceDateText)
+                .append("Type", serviseText)
+                .append("Type", PriseText);
+        generatorsCollection.insertOne(generator);
+        System.out.println("Connection S3");
     }
 
 }

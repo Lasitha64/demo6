@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -58,8 +59,11 @@
                         <DatePicker fx:id="MaintenanceDate" />
                   <HBox prefHeight="100.0" prefWidth="332.0">
                      <children>
-                        <RadioButton fx:id="servise" mnemonicParsing="false" text="Service " textFill="#fff8f8" />
-                        <RadioButton fx:id="repair" mnemonicParsing="false" text="Repair " textFill="#eeeeee">
+                        <RadioButton fx:id="servise" mnemonicParsing="false" text="Service " textFill="#fff8f8">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="Mtype" />
+                           </toggleGroup></RadioButton>
+                        <RadioButton fx:id="repair" mnemonicParsing="false" text="Repair " textFill="#eeeeee" toggleGroup="$Mtype">
                            <HBox.margin>
                               <Insets left="100.0" />
                            </HBox.margin>

@@ -102,7 +102,7 @@ public class GeneratorMainPage {
         Stage signup = new Stage();
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
+            root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
