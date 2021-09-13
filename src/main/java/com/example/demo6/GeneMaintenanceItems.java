@@ -1,5 +1,10 @@
 //page d
 
+/*
+@author..Lasitha
+@edited..Kisaja
+ */
+
 package com.example.demo6;
 
 import javafx.event.ActionEvent;

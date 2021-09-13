@@ -93,7 +93,6 @@ public class MainView {
         scene.getStylesheets().add("stylesheet/main.css");
         scene.getStylesheets().add("stylesheet/login.css");
         scene.getStylesheets().add("stylesheet/GeneratorA.css");
-        scene.getStylesheets().add("stylesheet/GeneratorB.css");
         signup.setScene(scene);
         signup.show();
         signup.setResizable(false);
