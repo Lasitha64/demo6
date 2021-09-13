@@ -47,7 +47,7 @@
                   <Insets top="150.0" />
                </VBox.margin>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="174.0" styleClass="genAbtn" stylesheets="@stylesheet/GeneratorA.css" text="Maintenance" />
+                  <Button fx:id="Maintenence" mnemonicParsing="false" onAction="#go_to_c" prefHeight="70.0" prefWidth="174.0" styleClass="genAbtn" stylesheets="@stylesheet/GeneratorA.css" text="Maintenance" />
                   <Button fx:id="DeselComp" mnemonicParsing="false" onAction="#move_to_i" prefHeight="70.0" prefWidth="174.0" styleClass="genAbtn" stylesheets="@stylesheet/GeneratorA.css" text="Desel Consumption">
                      <HBox.margin>
                         <Insets left="50.0" right="50.0" />
