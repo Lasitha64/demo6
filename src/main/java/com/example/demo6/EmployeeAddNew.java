@@ -30,7 +30,7 @@ public class EmployeeAddNew {
     private TextField employeeinputaddress;
 
     @FXML
-    private TextField employeeinputnic;
+    private TextField nicdisplay;
 
     @FXML
     private TextField employeeinputmobile;
@@ -67,8 +67,8 @@ public class EmployeeAddNew {
             try {
 
 
-                String employeeinputnameText = employeeinputname.getText(), employeeinputaddressText = employeeinputaddress.getText(), employeeinputnicText = employeeinputnic.getText(), employeeinputmobileText = employeeinputmobile.getText();
-                insertEmployee(employeeCollection, employeeinputnameText, employeeinputaddressText, employeeinputnicText, employeeinputmobileText);
+                String employeeinputnameText = employeeinputname.getText(), employeeinputaddressText = employeeinputaddress.getText(), nicdisplayText = nicdisplay.getText(), employeeinputmobileText = employeeinputmobile.getText();
+                insertEmployee(employeeCollection, employeeinputnameText, employeeinputaddressText, nicdisplayText, employeeinputmobileText);
 
 
             } catch (Exception e) {
@@ -78,12 +78,12 @@ public class EmployeeAddNew {
 
     }
 
-        private void insertEmployee(MongoCollection<Document> employeeCollection, String employeeinputnameText, String employeeinputaddressText, String employeeinputnicText, String employeeinputmobileText) {
+        private void insertEmployee(MongoCollection<Document> employeeCollection, String employeeinputnameText, String employeeinputaddressText, String nicdisplayText, String employeeinputmobileText) {
 
             Document employee = new Document("_id", new ObjectId())
                     .append("Name", employeeinputnameText)
                     .append("Address", employeeinputaddressText)
-                    .append("NIC No", employeeinputnicText)
+                    .append("NIC No", nicdisplayText)
                     .append("Mobile No", employeeinputmobileText);
             employeeCollection.insertOne(employee);
             System.out.println("Connection S3");

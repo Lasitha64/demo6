@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/employeeAddNew.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.EmployeeAddNew">
    <children>
       <Label alignment="CENTER" layoutX="64.0" layoutY="16.0" prefHeight="88.0" prefWidth="675.0" text="Add New Employee" textFill="#aaaaaa">
@@ -48,7 +47,7 @@
       </Label>
       <TextField fx:id="employeeinputname" layoutX="259.0" layoutY="183.0" prefHeight="25.0" prefWidth="440.0" />
       <TextField fx:id="employeeinputaddress" layoutX="259.0" layoutY="231.0" prefHeight="25.0" prefWidth="440.0" />
-      <TextField fx:id="employeeinputnic" layoutX="259.0" layoutY="275.0" prefHeight="25.0" prefWidth="440.0" />
+      <TextField fx:id="nicdisplay" layoutX="259.0" layoutY="275.0" prefHeight="25.0" prefWidth="440.0" />
       <TextField fx:id="employeeinputmobile" layoutX="259.0" layoutY="327.0" prefHeight="25.0" prefWidth="440.0" />
       <Button fx:id="backbutton" alignment="CENTER_RIGHT" layoutX="49.0" layoutY="535.0" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="85.0" styleClass="back" stylesheets="@stylesheet/employeeAddNew.css" text="BACK">
          <font>

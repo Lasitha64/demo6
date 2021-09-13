@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/employeeDetailsDisplay.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.EmployeeDetailsDisplay">
    <children>
       <Label layoutX="223.0" layoutY="22.0" text="Employee Details" textFill="#aaaaaa">
@@ -56,10 +55,10 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="namedisplay" layoutX="259.0" layoutY="183.0" prefHeight="25.0" prefWidth="440.0" />
-      <TextField fx:id="adressdisplay" layoutX="259.0" layoutY="231.0" prefHeight="25.0" prefWidth="440.0" />
+      <TextField fx:id="employeeinputname" layoutX="259.0" layoutY="183.0" prefHeight="25.0" prefWidth="440.0" />
+      <TextField fx:id="employeeinputaddress" layoutX="259.0" layoutY="231.0" prefHeight="25.0" prefWidth="440.0" />
       <TextField fx:id="nicdisplay" layoutX="259.0" layoutY="275.0" prefHeight="25.0" prefWidth="440.0" />
-      <TextField fx:id="mobiledisplay" layoutX="259.0" layoutY="327.0" prefHeight="25.0" prefWidth="440.0" />
+      <TextField fx:id="employeeinputmobile" layoutX="259.0" layoutY="327.0" prefHeight="25.0" prefWidth="440.0" />
       <Button fx:id="backbutton" alignment="CENTER_RIGHT" layoutX="56.0" layoutY="534.0" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="85.0" styleClass="back" text="BACK">
          <font>
             <Font name="System Bold" size="14.0" />
