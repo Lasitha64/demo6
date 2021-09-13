@@ -140,13 +140,13 @@ public class EmployeeDetailsDisplay {
 
 
         Bson updateName = set("Name", employeeinputnameText); // creating an array with a comment.
-        Bson updateQuantity = set("Address", employeeinputaddressText); // using addToSet so no effect.
-        Bson updatePrise = set("Mobile No", employeeinputmobileText); // using addToSet so no effect.
+        Bson updateAddress = set("Address", employeeinputaddressText); // using addToSet so no effect.
+        Bson updateMobile = set("Mobile No", employeeinputmobileText); // using addToSet so no effect.
 
         List<Bson> updatePredicates = new ArrayList<Bson>();
         updatePredicates.add(updateName);
-        updatePredicates.add(updateQuantity);
-        updatePredicates.add(updatePrise);
+        updatePredicates.add(updateAddress);
+        updatePredicates.add(updateMobile);
 
 
         //Bson updateOperation = set("Name", NameText);
