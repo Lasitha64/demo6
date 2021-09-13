@@ -9,10 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -20,6 +17,9 @@ import org.bson.types.ObjectId;
 import java.io.IOException;
 
 public class AddNewItem {
+
+    @FXML
+    private TextField idfld;
 
     @FXML
     private TextField namefld;
@@ -31,7 +31,7 @@ public class AddNewItem {
     private TextField pricefld;
 
     @FXML
-    private TextField datefld;
+    private DatePicker datefld;
 
     @FXML
     private TextArea Descipfld;
@@ -71,8 +71,8 @@ public class AddNewItem {
         try {
 
 
-            String namefldText = namefld.getText(), quantityfldText = quantityfld.getText(), pricefldText = pricefld.getText(), datefldText = datefld.getText(), DescipfldText = Descipfld.getText();
-            insertItem(ItemCollection, namefldText, quantityfldText, pricefldText, datefldText, DescipfldText);
+            String idfldText = idfld.getText(), namefldText = namefld.getText(), quantityfldText = quantityfld.getText(), pricefldText = pricefld.getText(), datefldText = datefld.getValue().toString(), DescipfldText = Descipfld.getText();
+            insertItem(ItemCollection, idfldText, namefldText, quantityfldText, pricefldText, datefldText, DescipfldText);
 
 
         } catch (Exception e) {
@@ -81,9 +81,10 @@ public class AddNewItem {
 
     }
 
-    private void insertItem(MongoCollection<Document> itemCollection, String namefldText, String quantityfldText, String pricefldText, String datefldText, String DescipfldText) {
+    private void insertItem(MongoCollection<Document> itemCollection, String idfldText, String namefldText, String quantityfldText, String pricefldText, String datefldText, String DescipfldText) {
 
         Document item = new Document("_id", new ObjectId())
+                .append("Item_ID", idfldText)
                 .append("Item_Name", namefldText)
                 .append("Quantity", quantityfldText)
                 .append("Price", pricefldText)

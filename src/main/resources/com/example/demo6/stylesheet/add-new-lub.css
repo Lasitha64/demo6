@@ -30,6 +30,32 @@
     -fx-background-radius: 0 30 30 0;
 }
 
+.text-area {
+    -fx-prompt-text-fill: gray;
+    -fx-focus-color: black;
+}
+
+.text-area .content {
+    -fx-background-color:#b3cde0;
+}
+
+.text-area:hover{
+    -fx-prompt-text-fill: black;
+}
+
+.text-area .content:hover {
+    -fx-background-color:#03396c;
+}
+
+.text-area .content:pressed{
+    -fx-background-color:gray;
+}
+
+.date-picker > .text-field {
+    -fx-prompt-text-fill: gray;
+    -fx-background-color:#b3cde0;
+}
+
 .btnback{
     -fx-background-color:  #005b96;
     -fx-text-fill: white;

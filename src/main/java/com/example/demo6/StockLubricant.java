@@ -7,6 +7,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,7 +18,43 @@ import java.io.IOException;
 public class StockLubricant {
 
     @FXML
+    private TextField search_fld;
+
+    @FXML
     private Button buttn_search;
+
+    @FXML
+    private TableColumn<?, ?> item_id;
+
+    @FXML
+    private TableColumn<?, ?> item_name;
+
+    @FXML
+    private TableColumn<?, ?> Item_qunt;
+
+    @FXML
+    private TextField idfld;
+
+    @FXML
+    private TextField namefld;
+
+    @FXML
+    private TextField quantityfld;
+
+    @FXML
+    private TextField pricefld;
+
+    @FXML
+    private DatePicker datefld;
+
+    @FXML
+    private TextArea Descipfld;
+
+    @FXML
+    private Button buttn_add;
+
+    @FXML
+    private Button buttn_dlt;
 
     @FXML
     private Button buutn_back;
@@ -30,9 +70,18 @@ public class StockLubricant {
     }
 
     @FXML
+    void Delete(ActionEvent event) {
+
+    }
+
+    @FXML
     void Search(ActionEvent event) {
 
     }
 
-}
+    @FXML
+    void Update(ActionEvent event) {
 
+    }
+
+}

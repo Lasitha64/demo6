@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -21,6 +22,9 @@ import java.io.IOException;
 public class AddNewLub {
 
     @FXML
+    private TextField idfld;
+
+    @FXML
     private TextField namefld;
 
     @FXML
@@ -30,7 +34,7 @@ public class AddNewLub {
     private TextField pricefld;
 
     @FXML
-    private TextField datefld;
+    private DatePicker datefld;
 
     @FXML
     private TextArea Descipfld;
@@ -68,8 +72,8 @@ public class AddNewLub {
         try {
 
 
-            String namefldText = namefld.getText(), quantityfldText = quantityfld.getText(), pricefldText = pricefld.getText(), datefldText = datefld.getText(), DescipfldText = Descipfld.getText();
-            insertLubricant(LubricantCollection, namefldText, quantityfldText, pricefldText, datefldText, DescipfldText);
+            String idfldText = idfld.getText(), namefldText = namefld.getText(), quantityfldText = quantityfld.getText(), pricefldText = pricefld.getText(), datefldText = datefld.getValue().toString(), DescipfldText = Descipfld.getText();
+            insertLubricant(LubricantCollection, idfldText, namefldText, quantityfldText, pricefldText, datefldText, DescipfldText);
 
 
         } catch (Exception e) {
@@ -78,9 +82,10 @@ public class AddNewLub {
 
     }
 
-    private void insertLubricant(MongoCollection<Document> lubricantCollection, String namefldText, String quantityfldText, String pricefldText, String datefldText, String DescipfldText) {
+    private void insertLubricant(MongoCollection<Document> lubricantCollection, String idfldText, String namefldText, String quantityfldText, String pricefldText, String datefldText, String DescipfldText) {
 
         Document item = new Document("_id", new ObjectId())
+                .append("Item_ID", idfldText)
                 .append("Item_Name", namefldText)
                 .append("Quantity", quantityfldText)
                 .append("Price", pricefldText)
