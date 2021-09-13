@@ -13,9 +13,9 @@
     <children>
         <Pane layoutX="86.0" layoutY="81.0" prefHeight="454.0" prefWidth="626.0" styleClass="formbox" stylesheets="@stylesheet/Excav-main.css">
             <children>
-                <TextField layoutX="214.0" layoutY="34.0" prefHeight="42.0" prefWidth="340.0" />
-                <TextField layoutX="214.0" layoutY="108.0" prefHeight="42.0" prefWidth="340.0" />
-                <TextField layoutX="214.0" layoutY="319.0" prefHeight="42.0" prefWidth="340.0" />
+                <TextField fx:id="eid" layoutX="214.0" layoutY="34.0" prefHeight="42.0" prefWidth="340.0" />
+                <TextField fx:id="ebrand" layoutX="214.0" layoutY="108.0" prefHeight="42.0" prefWidth="340.0" />
+                <TextField fx:id="esite" layoutX="214.0" layoutY="319.0" prefHeight="42.0" prefWidth="340.0" />
                 <Label layoutX="126.0" layoutY="114.0" text="Brand :">
                     <font>
                         <Font name="System Bold" size="20.0" />
@@ -36,18 +36,18 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-                <Button layoutX="272.0" layoutY="391.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="161.0" text="Add Details">
+                <Button fx:id="addDetails" layoutX="272.0" layoutY="391.0" mnemonicParsing="false" onAction="#add" prefHeight="42.0" prefWidth="161.0" text="Add Details">
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Button>
-            <TextField layoutX="214.0" layoutY="241.0" prefHeight="42.0" prefWidth="340.0" />
+            <TextField fx:id="econ" layoutX="214.0" layoutY="241.0" prefHeight="42.0" prefWidth="340.0" />
             <Label layoutX="112.0" layoutY="180.0" text="Reg.No :">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <TextField layoutX="214.0" layoutY="174.0" prefHeight="42.0" prefWidth="340.0" />
+            <TextField fx:id="ereg" layoutX="214.0" layoutY="174.0" prefHeight="42.0" prefWidth="340.0" />
             </children>
         </Pane>
         <Label alignment="CENTER" layoutX="33.0" layoutY="-8.0" prefHeight="110.0" prefWidth="682.0" stylesheets="@stylesheet/Excav-main.css" text="Add Excavator Details" textAlignment="CENTER" textFill="#aaaaaade">

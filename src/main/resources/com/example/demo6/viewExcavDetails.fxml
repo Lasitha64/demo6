@@ -78,11 +78,11 @@
                 </VBox>
                 <VBox alignment="TOP_CENTER" layoutX="116.0" layoutY="14.0" prefHeight="294.0" prefWidth="178.0" spacing="30.0">
                     <children>
-                        <TextField fx:id="tf_id" promptText="Enter Part ID" styleClass="text-field1" />
-                        <TextField fx:id="tf_name" promptText="Enter Brand" styleClass="text-field1" />
-                        <TextField fx:id="tf_quan" promptText="Enter Registration Number" styleClass="text-field1" />
-                        <TextField fx:id="tf_price" promptText="Enter Condition" styleClass="text-field1" />
-                        <TextField fx:id="tf_date1" promptText="Enter Site" styleClass="text-field1" />
+                        <TextField fx:id="eid" promptText="Enter Part ID" styleClass="text-field1" />
+                        <TextField fx:id="ebrand" promptText="Enter Brand" styleClass="text-field1" />
+                        <TextField fx:id="ereg" promptText="Enter Registration Number" styleClass="text-field1" />
+                        <TextField fx:id="econ" promptText="Enter Condition" styleClass="text-field1" />
+                        <TextField fx:id="esite" promptText="Enter Site" styleClass="text-field1" />
                     </children>
                     <padding>
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />

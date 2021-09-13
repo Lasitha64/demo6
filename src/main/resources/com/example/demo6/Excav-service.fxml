@@ -37,7 +37,7 @@
         </Button>
         <Pane layoutX="93.0" layoutY="109.0" prefHeight="423.0" prefWidth="630.0" styleClass="formbox">
             <children>
-                <Button fx:id="btn_gen" alignment="CENTER" graphicTextGap="8.0" layoutX="197.0" layoutY="172.0" mnemonicParsing="false" onAction="#Generate" prefHeight="46.0" prefWidth="236.0" text="View Service Details" wrapText="true">
+                <Button fx:id="btn_gen" alignment="CENTER" graphicTextGap="8.0" layoutX="197.0" layoutY="247.0" mnemonicParsing="false" onAction="#Generate" prefHeight="46.0" prefWidth="236.0" text="View Service Details" wrapText="true">
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
@@ -61,16 +61,6 @@
                         <Font name="System Bold" size="17.0" />
                     </font>
                 </Button>
-                <Button fx:id="btn_gen1" graphicTextGap="2.0" layoutX="197.0" layoutY="275.0" mnemonicParsing="false" onAction="#Generate" prefHeight="46.0" prefWidth="236.0" text="Reports" wrapText="true">
-                    <font>
-                        <Font name="System Bold" size="17.0" />
-                    </font>
-                </Button>
-                <ImageView blendMode="MULTIPLY" fitHeight="34.0" fitWidth="33.0" layoutX="225.0" layoutY="278.0">
-                    <image>
-                        <Image url="@img/report1.png" />
-                    </image>
-                </ImageView>
             </children>
         </Pane>
     </children>
