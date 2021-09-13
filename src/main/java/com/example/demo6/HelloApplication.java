@@ -1,11 +1,16 @@
 package com.example.demo6;
 
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.bson.Document;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HelloApplication extends Application {
     @Override
@@ -19,6 +24,13 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
+//        //String connectionString = System.getProperty("mongodb.uri");
+//        String connectionString = "mongodb+srv://DBkisaja:MC123456@cluster0.xi6ys.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+//        try (MongoClient mongoClient = MongoClients.create(connectionString)) {
+//            List<Document> databases = mongoClient.listDatabases().into(new ArrayList<>());
+//            databases.forEach(db -> System.out.println(db.toJson()));
+//        }
+
         launch();
     }
 }

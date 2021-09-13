@@ -9,74 +9,79 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.MainView">
+<AnchorPane blendMode="MULTIPLY" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.vehicle">
     <children>
-        <Label alignment="TOP_CENTER" layoutX="66.0" layoutY="14.0" prefHeight="88.0" prefWidth="675.0" text="Vehicle Management" textAlignment="CENTER" textFill="#aaaaaade">
+        <Label alignment="TOP_CENTER" layoutX="78.0" layoutY="19.0" prefHeight="88.0" prefWidth="675.0" text="Vehicle Management" textAlignment="CENTER" textFill="#aaaaaade">
             <font>
                 <Font name="Britannic Bold" size="48.0" />
             </font>
         </Label>
+      <ImageView blendMode="MULTIPLY" fitHeight="101.0" fitWidth="115.0" layoutX="69.0" layoutY="-6.0">
+         <image>
+            <Image url="@img/vechicle.png" />
+         </image>
+      </ImageView>
         <VBox layoutX="122.0" layoutY="107.0" prefHeight="384.0" prefWidth="519.0" styleClass="formbox" stylesheets="@stylesheet/Vehicle.css">
             <children>
-            <Button fx:id="btn_add1" alignment="CENTER" graphicTextGap="12.0" mnemonicParsing="false" onAction="#Add" prefHeight="46.0" prefWidth="239.0" text="Vehicle Details" textOverrun="WORD_ELLIPSIS" wrapText="true">
-               <graphic>
-                  <ImageView blendMode="MULTIPLY" fitHeight="35.0" fitWidth="38.0">
-                     <image>
-                        <Image url="@img/add.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
+            <Button fx:id="btn_add1" alignment="CENTER" graphicTextGap="12.0" mnemonicParsing="false" onAction="#vd" prefHeight="46.0" prefWidth="239.0" text="Vehicle Details" textOverrun="WORD_ELLIPSIS" wrapText="true">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
                <VBox.margin>
                   <Insets left="150.0" top="50.0" />
                </VBox.margin>
+               <graphic>
+                  <ImageView blendMode="MULTIPLY" fitHeight="30.0" fitWidth="31.0">
+                     <image>
+                        <Image url="@img/vd.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-                <Button fx:id="btn_add" alignment="CENTER" graphicTextGap="12.0" mnemonicParsing="false" onAction="#Add" prefHeight="46.0" prefWidth="239.0" text="Service Details" textOverrun="WORD_ELLIPSIS" wrapText="true" VBox.vgrow="ALWAYS">
+                <Button fx:id="btn_add" alignment="CENTER" graphicTextGap="12.0" mnemonicParsing="false" onAction="#sd" prefHeight="46.0" prefWidth="237.0" text="Service Details" textOverrun="WORD_ELLIPSIS" wrapText="true" VBox.vgrow="ALWAYS">
                     <VBox.margin>
                         <Insets bottom="50.0" left="150.0" right="100.0" top="50.0" />
                     </VBox.margin>
-                    <graphic>
-                        <ImageView blendMode="MULTIPLY" fitHeight="35.0" fitWidth="38.0">
-                            <image>
-                                <Image url="@img/add.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
+               <graphic>
+                  <ImageView blendMode="MULTIPLY" fitHeight="30.0" fitWidth="34.0">
+                     <image>
+                        <Image url="@img/service.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                 </Button>
-                <Button fx:id="btn_gen" alignment="CENTER" mnemonicParsing="false" onAction="#Generate" prefHeight="46.0" prefWidth="239.0" text="Repair Details" wrapText="true">
+                <Button fx:id="btn_gen" alignment="CENTER" graphicTextGap="7.0" mnemonicParsing="false" onAction="#rd" prefHeight="46.0" prefWidth="239.0" text="Repair Details" wrapText="true">
                     <VBox.margin>
-                        <Insets bottom="50.0" left="150.0" right="150.0" />
+                        <Insets bottom="50.0" left="150.0" right="100.0" />
                     </VBox.margin>
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
-                    <graphic>
-                        <ImageView blendMode="MULTIPLY" fitHeight="30.0" fitWidth="31.0">
-                            <image>
-                                <Image url="@img/report.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
+               <graphic>
+                  <ImageView blendMode="MULTIPLY" fitHeight="30.0" fitWidth="34.0">
+                     <image>
+                        <Image url="@img/repair.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                 </Button>
-                <Button fx:id="btn_sea" alignment="CENTER" mnemonicParsing="false" onAction="#Search" prefHeight="46.0" prefWidth="239.0" text="Expenses" wrapText="true">
+                <Button fx:id="btn_sea" alignment="CENTER" graphicTextGap="11.0" mnemonicParsing="false" onAction="#e" prefHeight="46.0" prefWidth="239.0" text="Expenses" wrapText="true">
                     <VBox.margin>
-                        <Insets bottom="50.0" left="150.0" right="150.0" />
+                        <Insets bottom="50.0" left="150.0" right="100.0" />
                     </VBox.margin>
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
-                    <graphic>
-                        <ImageView blendMode="MULTIPLY" fitHeight="34.0" fitWidth="33.0">
-                            <image>
-                                <Image url="@img/se.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
+               <graphic>
+                  <ImageView blendMode="MULTIPLY" fitHeight="30.0" fitWidth="34.0">
+                     <image>
+                        <Image url="@img/expenses.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                 </Button>
             </children>
         </VBox>
@@ -92,10 +97,5 @@
                 </ImageView>
             </graphic>
         </Button>
-      <ImageView blendMode="MULTIPLY" fitHeight="101.0" fitWidth="115.0" layoutX="69.0" layoutY="-6.0">
-         <image>
-            <Image url="@img/vechicle.png" />
-         </image>
-      </ImageView>
     </children>
 </AnchorPane>

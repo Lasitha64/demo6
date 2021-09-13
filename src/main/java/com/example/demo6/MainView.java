@@ -94,7 +94,14 @@ public class MainView {
     }
 
     @FXML
-    void vechicleaction(ActionEvent event) {
+    void vechicleaction(ActionEvent event) throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("Vehicle.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/Vehicle.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
 
     }
     //end -> functions use in main-view fxml
