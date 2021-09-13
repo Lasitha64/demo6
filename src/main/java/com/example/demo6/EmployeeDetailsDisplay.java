@@ -88,7 +88,7 @@ public class EmployeeDetailsDisplay {
         stage.setScene(scene);
         stage.show();
 
-        String nicdisplayText = deleteemployeebutton.getText();
+        String nicdisplayText = nicdisplay.getText();
         Bson filter = eq("NIC No", nicdisplayText);
         DeleteResult result = employeeCollection.deleteOne(filter);
         System.out.println(result);
