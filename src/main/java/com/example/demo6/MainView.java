@@ -78,10 +78,7 @@ public class MainView {
 
     }
 
-    @FXML
-    void hammeraction(ActionEvent event) {
 
-    }
 
     @FXML
     void loaderaction(ActionEvent event) throws IOException {
@@ -93,6 +90,8 @@ public class MainView {
         stage.show();
 
     }
+
+
 
     @FXML
     void otheraction(ActionEvent event) throws IOException {
