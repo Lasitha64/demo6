@@ -81,7 +81,7 @@ public class ViewVehicleDetails {
 
     @FXML
 
-    public void initialize(){
+    public void initialize() {
         //initialize database connection
         Database databaseController = new Database();
         MongoDatabase database = databaseController.connectToDB("HerathCMD");
@@ -111,7 +111,7 @@ public class ViewVehicleDetails {
         DeleteResult result = VehicleCollection.deleteOne(filter);
         System.out.println(result);
 
-        ab.display("Done"," Data Deleted Successfully");
+        ab.display("Done", " Data Deleted Successfully");
 
     }
 
@@ -150,26 +150,13 @@ public class ViewVehicleDetails {
             System.out.println("Updating the Vehicle Details");
             System.out.println(newVersion);
 
-            ab.display("Done"," Data Updated Successfully");
+            ab.display("Done", " Data Updated Successfully");
 
 
         }
     }
-
-<<<<<<< HEAD:src/main/java/com/example/demo6/ViewVehicleDetails.java
-=======
-    @FXML
-    void Delete(ActionEvent event) {
-        String eidText = eid.getText();
-        Bson filter = eq("ExcavatorID", eidText);
-        DeleteResult result = ExcavatorRepairCollection.deleteOne(filter);
-        System.out.println(result);
-        ab.display("Data Delete ","Data Delete Successfull");
-    }
-<<<<<<< HEAD:src/main/java/com/example/demo6/ViewVehicleDetails.java
-    
->>>>>>> Nimith:src/main/java/com/example/demo6/ViewExcavRepDetails.java
-=======
->>>>>>> Nimith:src/main/java/com/example/demo6/ViewExcavRepDetails.java
 }
+
+
+
 
