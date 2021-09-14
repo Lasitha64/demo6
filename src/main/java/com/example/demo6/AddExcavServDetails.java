@@ -21,6 +21,7 @@ import java.util.Date;
 public class AddExcavServDetails {
     private Stage stage;
     private Scene scene;
+    private AlertBox ab;
 
     @FXML
     private TextField eid;
@@ -67,18 +68,27 @@ public class AddExcavServDetails {
     }
     @FXML
     void add(ActionEvent event) {
-        try {
-
-
-            String eidText = eid.getText(), edescriptionText = edescription.getText(),  epriceText = eprice.getText(),edateText = edate.getValue().toString();
-
-            insertExcavatorService(ExcavatorServiceCollection, eidText, edescriptionText, edateText, epriceText);
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (eid.getText().isEmpty() || edescription.getText().isEmpty() || edate.getValue().toString().isEmpty() || eprice.getText().isEmpty() ) {
+            ab.display("Error", " Input Fields can't be empty");
         }
+        else if(!eprice.getText().matches("[0-9]+(\\.){0,1}[0-9]*")){
+            ab.display("Error","Price needs to be a double (ex: 200.90)");
+        }
+        else {
+            try {
 
+
+                String eidText = eid.getText(), edescriptionText = edescription.getText(), epriceText = eprice.getText(), edateText = edate.getValue().toString();
+
+                insertExcavatorService(ExcavatorServiceCollection, eidText, edescriptionText, edateText, epriceText);
+                ab.display("Data Entry ","Data Entry Successfull");
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
     }
     private void insertExcavatorService(MongoCollection<Document> excavatorServiceCollection, String eidText, String edescriptionText, String edateText, String epriceText) {
 

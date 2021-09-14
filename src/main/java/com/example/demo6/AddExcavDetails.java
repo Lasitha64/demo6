@@ -19,6 +19,7 @@ import java.io.IOException;
 public class AddExcavDetails {
     private Stage stage;
     private Scene scene;
+    private AlertBox ab;
 
     @FXML
     private Button btn_back;
@@ -68,16 +69,29 @@ public class AddExcavDetails {
     }
     @FXML
     void add(ActionEvent event) {
-        try {
-
-
-            String eidText = eid.getText(), ebrandText = ebrand.getText(), esiteText = esite.getText(), econText = econ.getText(), eregText = ereg.getText();
-            insertExcavator(ExcavatorCollection, eidText, ebrandText, esiteText, econText, eregText);
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(eid.getText().isEmpty() || ebrand.getText().isEmpty() || esite.getText().isEmpty() || econ.getText().isEmpty() || ereg.getText().isEmpty()){
+            ab.display("Error"," Input Fields can't be empty");
         }
+        else if(!ereg.getText().matches("[0-9]+")){
+            ab.display("Error","Registration No. needs to be a number");
+        }
+
+        else {
+
+
+            try {
+
+
+                String eidText = eid.getText(), ebrandText = ebrand.getText(), esiteText = esite.getText(), econText = econ.getText(), eregText = ereg.getText();
+                insertExcavator(ExcavatorCollection, eidText, ebrandText, esiteText, econText, eregText);
+                ab.display("Data Entry ","Data Entry Successfull");
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
 
     }
 

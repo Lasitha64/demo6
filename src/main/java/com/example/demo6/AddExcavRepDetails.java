@@ -21,6 +21,7 @@ import java.util.Date;
 public class AddExcavRepDetails {
     private Stage stage;
     private Scene scene;
+    private AlertBox ab;
 
     @FXML
     private TextField eid;
@@ -67,18 +68,25 @@ public class AddExcavRepDetails {
     }
     @FXML
     void add(ActionEvent event) {
-        try {
+        if (eid.getText().isEmpty() || edescription.getText().isEmpty() || edate.getValue().toString().isEmpty() || eprice.getText().isEmpty()) {
+            ab.display("Error", " Input Fields can't be empty");
+        }  else if (!eprice.getText().matches("[0-9]+(\\.){0,1}[0-9]*")) {
+            ab.display("Error", "Price needs to be a double (ex: 200.90)");
+        } else {
+            try {
 
 
-            String eidText = eid.getText(), edescriptionText = edescription.getText(),  epriceText = eprice.getText(),edateText = edate.getValue().toString();
+                String eidText = eid.getText(), edescriptionText = edescription.getText(), epriceText = eprice.getText(), edateText = edate.getValue().toString();
 
-            insertExcavatorRepair(ExcavatorRepairCollection, eidText, edescriptionText, edateText, epriceText);
+                insertExcavatorRepair(ExcavatorRepairCollection, eidText, edescriptionText, edateText, epriceText);
+                ab.display("Data Entry ","Data Entry Successfull");
 
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
-
     }
     private void insertExcavatorRepair(MongoCollection<Document> excavatorRepairCollection, String eidText, String edescriptionText, String edateText, String epriceText) {
 

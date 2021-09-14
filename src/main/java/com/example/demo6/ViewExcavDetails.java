@@ -31,6 +31,8 @@ public class ViewExcavDetails {
 
     private Stage stage;
     private Scene scene;
+    private AlertBox ab;
+
     @FXML
     private TextField eid;
 
@@ -84,41 +86,45 @@ public class ViewExcavDetails {
         stage.setScene(scene);
         stage.show();}
     @FXML
-    void Update(ActionEvent event){
-        // update one document
-        String eidText = eid.getText(), ebrandText = ebrand.getText(), esiteText = esite.getText(), econText = econ.getText(), eregText = ereg.getText();
+    void Update(ActionEvent event) {
+        if (eid.getText().isEmpty() || ebrand.getText().isEmpty() || econ.getText().isEmpty() || esite.getText().isEmpty() || ereg.getText().isEmpty()) {
+            ab.display("Error", " Input Fields can't be empty");
+        } else if (!ereg.getText().matches("[0-9]+")) {
+            ab.display("Error", "Quantity needs to be a number");
+        } else {
+            // update one document
+            String eidText = eid.getText(), ebrandText = ebrand.getText(), esiteText = esite.getText(), econText = econ.getText(), eregText = ereg.getText();
 
 
-        System.out.println(eidText + ebrandText + esiteText + econText + eregText);
+            System.out.println(eidText + ebrandText + esiteText + econText + eregText);
 
-        Bson filter = eq("ExcavatorID", eidText);
-
-
-        Bson updateBrand = set("Brand", ebrandText); // creating an array with a comment.
-        Bson updateReg = set("Registration No", eregText); // using addToSet so no effect.
-        Bson updateCon = set("Condition", econText); // using addToSet so no effect.
-        Bson updateSite = set("Site", esiteText); // using addToSet so no effect.
+            Bson filter = eq("ExcavatorID", eidText);
 
 
+            Bson updateBrand = set("Brand", ebrandText); // creating an array with a comment.
+            Bson updateReg = set("Registration No", eregText); // using addToSet so no effect.
+            Bson updateCon = set("Condition", econText); // using addToSet so no effect.
+            Bson updateSite = set("Site", esiteText); // using addToSet so no effect.
 
 
-        List<Bson> updatePredicates = new ArrayList<Bson>();
-        updatePredicates.add(updateBrand);
-        updatePredicates.add(updateReg);
-        updatePredicates.add(updateCon);
-        updatePredicates.add(updateSite);
+            List<Bson> updatePredicates = new ArrayList<Bson>();
+            updatePredicates.add(updateBrand);
+            updatePredicates.add(updateReg);
+            updatePredicates.add(updateCon);
+            updatePredicates.add(updateSite);
 
 
-        //Bson updateOperation = set("Name", NameText);
+            //Bson updateOperation = set("Name", NameText);
         /*.append("Name", NameText)
                 .append("Quantity", QuantityText)
                 .append("Prise", PriseText);*/
-        FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
-        Document newVersion = ExcavatorCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
+            FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
+            Document newVersion = ExcavatorCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
 
-        System.out.println("Updating the Excavator Details");
-        System.out.println(newVersion);
+            System.out.println("Updating the Excavator Details");
+            System.out.println(newVersion);
 
+        }
     }
     @FXML
     void Delete(ActionEvent event){
