@@ -86,7 +86,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btn_sl" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="409.0" layoutY="341.0" mnemonicParsing="false" onAction="#salesaction" prefHeight="156.0" prefWidth="155.0" styleClass="btncat" text="Sales management" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="btn_sl" alignment="BOTTOM_CENTER" contentDisplay="TOP" layoutX="409.0" layoutY="341.0" mnemonicParsing="false" onAction="#genaratoraction" prefHeight="156.0" prefWidth="155.0" styleClass="btncat" text="Generator management" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -103,7 +103,7 @@
       </ImageView>
       <ImageView blendMode="MULTIPLY" fitHeight="88.0" fitWidth="88.0" layoutX="443.0" layoutY="359.0">
          <image>
-            <Image url="@img/sales.png" />
+            <Image url="@img/gene.jpg" />
          </image>
       </ImageView>
       <ImageView blendMode="DARKEN" fitHeight="112.0" fitWidth="122.0" layoutX="626.0" layoutY="347.0">
