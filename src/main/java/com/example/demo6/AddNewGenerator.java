@@ -34,6 +34,8 @@ import static java.util.Arrays.asList;
 
 public class AddNewGenerator {
 
+    private AlertBox ab;
+
     @FXML
     public TextField gid;
 
@@ -99,16 +101,27 @@ public class AddNewGenerator {
     }
 
     public void AddNewGenerator(ActionEvent actionEvent) {
-              try {
-                  //Get the values from the UI
-                  //Enter the id
-                  String gidText = gid.getText() , gbrandText = gbrand.getText() ,
-                          gmanyearText = gmanyear.getText() ,
-                          gcountryText = gcountry.getText() ,
-                          gwarrantyText = gwarranty.getText();;
-                  insertGenerators(generatorsCollection, gidText, gbrandText, gmanyearText, gcountryText, gwarrantyText);
 
-                  //Enter the brand
+        if(gid.getText().isEmpty() || gbrand.getText().isEmpty() || gmanyear.getText().isEmpty() || gcountry.getText().isEmpty() || gwarranty.getText().isEmpty()){
+            ab.display("Error"," Input Fields can't be empty");
+        }
+        else if(!gmanyear.getText().matches("[0-9]+")){
+            ab.display("Error","Generator manufacture year needs to be a number");
+        }
+        else {
+
+
+            try {
+                //Get the values from the UI
+                //Enter the id
+                String gidText = gid.getText(), gbrandText = gbrand.getText(),
+                        gmanyearText = gmanyear.getText(),
+                        gcountryText = gcountry.getText(),
+                        gwarrantyText = gwarranty.getText();
+                ;
+                insertGenerators(generatorsCollection, gidText, gbrandText, gmanyearText, gcountryText, gwarrantyText);
+
+                //Enter the brand
 //                  String gbrandText = gbrand.getText();
 //                  insertGenerators(generatorsCollection, gbrandText);
 //
@@ -124,9 +137,12 @@ public class AddNewGenerator {
 //                  String gwarrantyText = gwarranty.getText();
 //                  insertGenerators(generatorsCollection, gwarrantyText);
 
+                ab.display("Success","Success Data entry");
+
             } catch (Exception e) {
-                  e.printStackTrace();
-              }
+                e.printStackTrace();
+            }
+        }
 
     }
 
@@ -137,43 +153,57 @@ public class AddNewGenerator {
         DeleteResult result = generatorsCollection.deleteOne(filter);
         System.out.println(result);
 
+        ab.display("Deleted","Success Data Deleted");
+
     }
 
     @FXML
     void updategen(ActionEvent event) {
-        // update one document
-        String gidText = gid.getText(),
-                gbrandText = gbrand.getText() ,
-                gmanyearText = gmanyear.getText() ,
-                gcountryText = gcountry.getText(),
-                gwarrantyText = gcountry.getText();
 
-        System.out.println(gid + gbrandText + gmanyearText + gcountryText + gwarrantyText);
+        if(gid.getText().isEmpty()){
+            ab.display("Error"," gid can't be empty");
+        }
+        else if(!gmanyear.getText().matches("[0-9]+")){
+            ab.display("Error","Generator manufacture year needs to be a number");
+        }
+        else {
 
-        Bson filter = eq("generator_id", gidText);
+            // update one document
+            String gidText = gid.getText(),
+                    gbrandText = gbrand.getText(),
+                    gmanyearText = gmanyear.getText(),
+                    gcountryText = gcountry.getText(),
+                    gwarrantyText = gcountry.getText();
 
+            System.out.println(gid + gbrandText + gmanyearText + gcountryText + gwarrantyText);
 
-        Bson updatebrand = set("brand", gbrandText); // creating an array with a comment.
-        Bson updatemanyear = set("manyear", gmanyearText); // using addToSet so no effect.
-        Bson updatecountry = set("country", gcountryText);
-        Bson updatewarranty = set("warranty", gwarrantyText);// using addToSet so no effect.
-
-        List<Bson> updatePredicates = new ArrayList<Bson>();
-        updatePredicates.add(updatebrand);
-        updatePredicates.add(updatemanyear);
-        updatePredicates.add(updatecountry);
-        updatePredicates.add(updatewarranty);
+            Bson filter = eq("generator_id", gidText);
 
 
-        //Bson updateOperation = set("Name", NameText);
+            Bson updatebrand = set("brand", gbrandText); // creating an array with a comment.
+            Bson updatemanyear = set("manyear", gmanyearText); // using addToSet so no effect.
+            Bson updatecountry = set("country", gcountryText);
+            Bson updatewarranty = set("warranty", gwarrantyText);// using addToSet so no effect.
+
+            List<Bson> updatePredicates = new ArrayList<Bson>();
+            updatePredicates.add(updatebrand);
+            updatePredicates.add(updatemanyear);
+            updatePredicates.add(updatecountry);
+            updatePredicates.add(updatewarranty);
+
+
+            //Bson updateOperation = set("Name", NameText);
         /*.append("Name", NameText)
                 .append("Quantity", QuantityText)
                 .append("Prise", PriseText);*/
-        FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
-        Document newVersion = generatorsCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
+            FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
+            Document newVersion = generatorsCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
 
-        System.out.println("Updating the generator maintenence stock");
-        System.out.println(newVersion);
+            System.out.println("Updating the generator maintenence stock");
+            System.out.println(newVersion);
+
+            ab.display("Success","Success Data update");
+        }
 
 
     }
