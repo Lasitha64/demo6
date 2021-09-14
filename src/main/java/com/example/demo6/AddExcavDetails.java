@@ -106,6 +106,7 @@ public class AddExcavDetails {
 
         excavatorCollection.insertOne(excavator);
         System.out.println("Connection S3");
+
     }
 
 
