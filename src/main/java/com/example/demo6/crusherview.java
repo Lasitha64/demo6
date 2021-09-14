@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import com.example.demo6.MainView;
+
 import java.io.IOException;
 
 public class crusherview {
