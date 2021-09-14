@@ -6,6 +6,7 @@ module com.example.demo6 {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
     requires mongo.java.driver;
+    requires java.sql;
 
     opens com.example.demo6 to javafx.fxml;
     exports com.example.demo6;

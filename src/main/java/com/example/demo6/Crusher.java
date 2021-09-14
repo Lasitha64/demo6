@@ -8,6 +8,9 @@ public class Crusher {
     private double price;
     private String date;
 
+    public Crusher(int pos, String cruid, String cruname, String cruquan, String crupri, String crudate) {
+    }
+
     public String getId() {
         return id;
     }
@@ -24,7 +27,7 @@ public class Crusher {
         this.name = name;
     }
 
-    public int getQuantity() {
+    public int  getQuantity() {
         return quantity;
     }
 
