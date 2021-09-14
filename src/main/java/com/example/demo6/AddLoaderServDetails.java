@@ -21,7 +21,7 @@ import java.util.Date;
 public class AddLoaderServDetails {
     private Stage stage;
     private Scene scene;
-    private alertbox ab;
+    public AlertBox ab;
 
     @FXML
     private TextField Lid;

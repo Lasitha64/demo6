@@ -19,7 +19,7 @@ import java.io.IOException;
 public class AddLoaderDetails {
     private Stage stage;
     private Scene scene;
-    private alertbox ab;
+    private AlertBox ab;
     @FXML
     private TextField loaderid;
 

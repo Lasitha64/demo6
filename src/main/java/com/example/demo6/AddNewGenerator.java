@@ -87,17 +87,18 @@ public class AddNewGenerator {
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource("GeneratorMainPage.fxml"));
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add("stylesheet/main.css");
+            scene.getStylesheets().add("stylesheet/login.css");
+            scene.getStylesheets().add("stylesheet/GeneratorA.css");
+            scene.getStylesheets().add("stylesheet/GeneratorB.css");
+            signup.setScene(scene);
+            signup.show();
+            signup.setResizable(false);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add("stylesheet/main.css");
-        scene.getStylesheets().add("stylesheet/login.css");
-        scene.getStylesheets().add("stylesheet/GeneratorA.css");
-        scene.getStylesheets().add("stylesheet/GeneratorB.css");
-        signup.setScene(scene);
-        signup.show();
-        signup.setResizable(false);
+
     }
 
     public void AddNewGenerator(ActionEvent actionEvent) {

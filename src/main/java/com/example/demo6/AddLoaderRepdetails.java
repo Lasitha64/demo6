@@ -21,7 +21,7 @@ import java.util.Date;
 public class AddLoaderRepdetails {
     private Stage stage;
     private Scene scene;
-    private alertbox ab;
+    private AlertBox ab;
     @FXML
     private TextField Lid;
 
