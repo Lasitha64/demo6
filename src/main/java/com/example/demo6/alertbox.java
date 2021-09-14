@@ -1,16 +1,15 @@
-
 package com.example.demo6;
 
-        import javafx.geometry.Pos;
-        import javafx.scene.Scene;
-        import javafx.scene.control.Button;
-        import javafx.scene.control.Label;
-        import javafx.scene.layout.VBox;
-        import javafx.stage.Modality;
-        import javafx.stage.Stage;
-        import javafx.stage.Window;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
-public class alertbox {
+public class AlertBox {
 
     public static void display(String title, String message){
         Stage window = new Stage();
