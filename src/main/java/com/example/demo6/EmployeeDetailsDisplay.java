@@ -93,6 +93,7 @@ public class EmployeeDetailsDisplay {
         Bson filter = eq("NIC No", nicdisplayText);
         DeleteResult result = employeeCollection.deleteOne(filter);
         System.out.println(result);
+        ab.display("OK", "Employee Deleted Successfully");
 
 
     }
@@ -163,6 +164,7 @@ public class EmployeeDetailsDisplay {
 
             System.out.println("Updating Employee Details");
             System.out.println(newVersion);
+            ab.display("OK", "Employee Updated Successfully");
 
 
         }

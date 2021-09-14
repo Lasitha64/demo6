@@ -96,6 +96,7 @@ public class AdminUpdateDelete {
         Bson filter = eq("NIC No", inputnicText);
         DeleteResult result = adminCollection.deleteOne(filter);
         System.out.println(result);
+        ab.display("OK", "Admin Deleted Successfully");
 
     }
 
@@ -160,6 +161,7 @@ public class AdminUpdateDelete {
 
             System.out.println("Updating Admin Details");
             System.out.println(newVersion);
+            ab.display("OK", "Admin Updated Successfully");
 
 
         }

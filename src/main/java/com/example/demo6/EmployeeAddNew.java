@@ -80,6 +80,7 @@ public class EmployeeAddNew {
 
                 String employeeinputnameText = employeeinputname.getText(), employeeinputaddressText = employeeinputaddress.getText(), nicdisplayText = nicdisplay.getText(), employeeinputmobileText = employeeinputmobile.getText();
                 insertEmployee(employeeCollection, employeeinputnameText, employeeinputaddressText, nicdisplayText, employeeinputmobileText);
+                ab.display("OK", "Employee Added Successfully");
 
 
             } catch (Exception e) {

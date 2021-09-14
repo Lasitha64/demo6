@@ -97,6 +97,7 @@ public class AdminSignUp {
 
                 String inputnameText = inputname.getText(), inputusenameText = inputusename.getText(), inputemailText = inputemail.getText(), inputnicText = inputnic.getText(), inputmobileText = inputmobile.getText(), inputpasswordText = inputpassword.getText();
                 insertAdmin(AdminCollection, inputnameText, inputusenameText, inputemailText, inputnicText, inputmobileText, inputpasswordText);
+                ab.display("OK", "Admin Added Successfully");
 
 
             } catch (Exception e) {
