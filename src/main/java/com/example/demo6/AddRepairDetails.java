@@ -21,6 +21,8 @@ import java.util.Date;
 
 public class AddRepairDetails {
 
+    private AlertBox ab;
+
     private Stage stage;
     private Scene scene;
 
@@ -68,27 +70,39 @@ public class AddRepairDetails {
     @FXML
     void ad(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("RepairDetails.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/Vehicle.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
-
-        try {
 
 
-            String vidText = vid.getText(), desText = des.getText(), pText = p.getText(),dtText=dt.getValue().toString();
+        if (vid.getText().isEmpty() || des.getText().isEmpty() || p.getText().isEmpty() || dt.getValue().toString().isEmpty()) {
+            ab.display("Error", " Input Fields can't be empty");
 
-            insertvRepair(vRepairCollection, vidText, desText, pText, dtText);
-            System.out.println("Connection S2");
+        }else if(!p.getText().matches("[0-9]+")){
+                ab.display("Error","Price needs to be a number");
+        } else {
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            try {
+
+
+                String vidText = vid.getText(), desText = des.getText(), pText = p.getText(), dtText = dt.getValue().toString();
+
+                insertvRepair(vRepairCollection, vidText, desText, pText, dtText);
+                System.out.println("Connection S2");
+
+                ab.display("Done"," Data Inserted Successfully");
+
+                Parent root = FXMLLoader.load(getClass().getResource("RepairDetails.fxml"));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("stylesheet/Vehicle.css").toExternalForm());
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            System.out.println("Connection a1");
+
+
         }
-        System.out.println("Connection a1");
-
-
     }
 
     private void insertvRepair(MongoCollection<Document> vRepairCollection, String vidText, String desText, String pText, String dtText) {

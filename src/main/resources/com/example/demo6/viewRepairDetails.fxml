@@ -98,7 +98,7 @@
             <TextField fx:id="vid" layoutX="125.0" layoutY="25.0" prefHeight="30.0" prefWidth="159.0" promptText="Enter Vehicle ID" styleClass="text-field1" />
             <TextField fx:id="des" layoutX="124.0" layoutY="74.0" prefHeight="71.0" prefWidth="149.0" promptText="Enter Description" styleClass="text-field1" />
             <DatePicker fx:id="dt" layoutX="120.0" layoutY="161.0" prefHeight="30.0" prefWidth="159.0" promptText="Enter Date" styleClass="text-field1" />
-            <TextField fx:id="p" layoutX="120.0" layoutY="241.0" prefHeight="30.0" prefWidth="159.0" promptText="Enter Part ID" styleClass="text-field1" />
+            <TextField fx:id="p" layoutX="120.0" layoutY="241.0" prefHeight="30.0" prefWidth="159.0" promptText="Enter Price" styleClass="text-field1" />
             </children>
         </Pane>
         <Button fx:id="btn_back" layoutX="14.0" layoutY="546.0" mnemonicParsing="false" onAction="#Back" prefHeight="39.0" prefWidth="95.0" styleClass="btnback" text="Back">

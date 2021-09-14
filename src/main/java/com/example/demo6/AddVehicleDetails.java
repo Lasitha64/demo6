@@ -19,7 +19,7 @@ import java.io.IOException;
 
 public class AddVehicleDetails {
 
-    
+    private AlertBox ab;
 
     @FXML
     private TextField vt;
@@ -76,24 +76,37 @@ public class AddVehicleDetails {
     @FXML
     void addDt(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("VehicleDetails.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/Vehicle.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
-
-        try {
 
 
-            String vtText = vt.getText(), stText = st.getText(), cText = c.getText(), rpnText = rpn.getText();
-            insertVehicle(VehicleCollection, vtText, stText, cText, rpnText);
-            System.out.println("Connection S2");
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(vt.getText().isEmpty() || st.getText().isEmpty() || c.getText().isEmpty() || rpn.getText().isEmpty()){
+            ab.display("Error"," Input Fields can't be empty");
         }
-        System.out.println("Connection a1");
+
+        else {
+
+
+            try {
+
+
+                String vtText = vt.getText(), stText = st.getText(), cText = c.getText(), rpnText = rpn.getText();
+                insertVehicle(VehicleCollection, vtText, stText, cText, rpnText);
+                System.out.println("Connection S2");
+
+                ab.display("Done"," Data Inserted Successfully");
+
+                Parent root = FXMLLoader.load(getClass().getResource("VehicleDetails.fxml"));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("stylesheet/Vehicle.css").toExternalForm());
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            System.out.println("Connection a1");
+
+        }
 
 
     }

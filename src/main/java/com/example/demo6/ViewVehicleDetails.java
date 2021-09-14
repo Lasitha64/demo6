@@ -31,6 +31,8 @@ import java.util.List;
 
 public class ViewVehicleDetails {
 
+    private AlertBox ab;
+
     private Stage stage;
     private Scene scene;
 
@@ -109,40 +111,49 @@ public class ViewVehicleDetails {
         DeleteResult result = VehicleCollection.deleteOne(filter);
         System.out.println(result);
 
+        ab.display("Done"," Data Deleted Successfully");
+
     }
 
     @FXML
     void Update(ActionEvent event) {
 
-        // update one document
-        String vtText = vt.getText(), stText = st.getText(), cText = c.getText(), rpnText = rpn.getText();
+        if (vt.getText().isEmpty() || st.getText().isEmpty() || c.getText().isEmpty() || rpn.getText().isEmpty()) {
+            ab.display("Error", " Input Fields can't be empty");
+        } else {
 
-        System.out.println(vtText + stText + cText + rpnText);
+            // update one document
+            String vtText = vt.getText(), stText = st.getText(), cText = c.getText(), rpnText = rpn.getText();
 
-        Bson filter = eq("Reg_No", rpnText);
+            System.out.println(vtText + stText + cText + rpnText);
 
-
-        Bson updateVtype = set("Vehicle_Type", vtText); // creating an array with a comment.
-        Bson updateCondition = set("Condition", cText); // using addToSet so no effect.
-        Bson updateSite = set("Site", stText); // using addToSet so no effect.
-
-        List<Bson> updatePredicates = new ArrayList<Bson>();
-        updatePredicates.add(updateVtype);
-        updatePredicates.add(updateCondition);
-        updatePredicates.add(updateSite);
+            Bson filter = eq("Reg_No", rpnText);
 
 
-        //Bson updateOperation = set("Name", NameText);
+            Bson updateVtype = set("Vehicle_Type", vtText); // creating an array with a comment.
+            Bson updateCondition = set("Condition", cText); // using addToSet so no effect.
+            Bson updateSite = set("Site", stText); // using addToSet so no effect.
+
+            List<Bson> updatePredicates = new ArrayList<Bson>();
+            updatePredicates.add(updateVtype);
+            updatePredicates.add(updateCondition);
+            updatePredicates.add(updateSite);
+
+
+            //Bson updateOperation = set("Name", NameText);
         /*.append("Name", NameText)
                 .append("Quantity", QuantityText)
                 .append("Prise", PriseText);*/
-        FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
-        Document newVersion = VehicleCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
+            FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
+            Document newVersion = VehicleCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
 
-        System.out.println("Updating the Vehicle Details");
-        System.out.println(newVersion);
+            System.out.println("Updating the Vehicle Details");
+            System.out.println(newVersion);
+
+            ab.display("Done"," Data Updated Successfully");
 
 
+        }
     }
 
 }

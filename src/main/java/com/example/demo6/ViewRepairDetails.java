@@ -29,6 +29,9 @@ import java.util.List;
 
 public class ViewRepairDetails {
 
+    private AlertBox ab;
+
+
     private Stage stage;
     private Scene scene;
 
@@ -106,41 +109,53 @@ public class ViewRepairDetails {
         DeleteResult result = vRepairCollection.deleteOne(filter);
         System.out.println(result);
 
+        ab.display("Done"," Data Deleted Successfully");
+
 
     }
 
     @FXML
     void Update(ActionEvent event) {
 
-        // update one document
-        String vidText = vid.getText(), desText = des.getText(), pText = p.getText(),dtText=dt.getValue().toString();
+        if (vid.getText().isEmpty() || des.getText().isEmpty() || p.getText().isEmpty() || dt.getValue().toString().isEmpty()) {
+            ab.display("Error", " Input Fields can't be empty");
+
+        } else if (!p.getText().matches("[0-9]+")) {
+            ab.display("Error", "Price needs to be a number");
+        } else {
+
+            // update one document
+            String vidText = vid.getText(), desText = des.getText(), pText = p.getText(), dtText = dt.getValue().toString();
 
 
-        System.out.println(vidText + desText + pText + dtText);
+            System.out.println(vidText + desText + pText + dtText);
 
-        Bson filter = eq("Vehicle_id", vidText);
-
-
-        Bson updatedes = set("Description", desText); // creating an array with a comment.
-        Bson updatep = set("Price", pText); // using addToSet so no effect.
-        Bson updatedate = set("Date", dtText); // using addToSet so no effect.
-
-        List<Bson> updatePredicates = new ArrayList<Bson>();
-        updatePredicates.add(updatedes);
-        updatePredicates.add(updatep);
-        updatePredicates.add(updatedate);
+            Bson filter = eq("Vehicle_id", vidText);
 
 
-        //Bson updateOperation = set("Name", NameText);
+            Bson updatedes = set("Description", desText); // creating an array with a comment.
+            Bson updatep = set("Price", pText); // using addToSet so no effect.
+            Bson updatedate = set("Date", dtText); // using addToSet so no effect.
+
+            List<Bson> updatePredicates = new ArrayList<Bson>();
+            updatePredicates.add(updatedes);
+            updatePredicates.add(updatep);
+            updatePredicates.add(updatedate);
+
+
+            //Bson updateOperation = set("Name", NameText);
         /*.append("Name", NameText)
                 .append("Quantity", QuantityText)
                 .append("Prise", PriseText);*/
-        FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
-        Document newVersion = vRepairCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
+            FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
+            Document newVersion = vRepairCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
 
-        System.out.println("Updating the Vehicle repair Details");
-        System.out.println(newVersion);
+            System.out.println("Updating the Vehicle repair Details");
+            System.out.println(newVersion);
 
+            ab.display("Done"," Data Updated Successfully");
+
+        }
     }
 
 }

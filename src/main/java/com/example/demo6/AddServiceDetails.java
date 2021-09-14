@@ -21,6 +21,8 @@ import java.util.Date;
 
 public class AddServiceDetails {
 
+    private AlertBox ab;
+
     private Stage stage;
     private Scene scene;
     @FXML
@@ -70,12 +72,14 @@ public class AddServiceDetails {
     @FXML
     void ad(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("ServiceDetails.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/Vehicle.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
+
+
+        if (vid.getText().isEmpty() || des.getText().isEmpty() || p.getText().isEmpty() || dt.getValue().toString().isEmpty()) {
+            ab.display("Error", " Input Fields can't be empty");
+
+        }else if(!p.getText().matches("[0-9]+")){
+            ab.display("Error","Price needs to be a number");
+        } else
 
         try {
 
@@ -84,6 +88,15 @@ public class AddServiceDetails {
 
             insertvRepair(vServiceCollection, vidText, desText, pText, dtText);
             System.out.println("Connection S2");
+
+            ab.display("Done"," Data Inserted Successfully");
+
+            Parent root = FXMLLoader.load(getClass().getResource("ServiceDetails.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("stylesheet/Vehicle.css").toExternalForm());
+            stage.setScene(scene);
+            stage.show();
 
         } catch (Exception e) {
             e.printStackTrace();
