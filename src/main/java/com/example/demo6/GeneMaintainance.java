@@ -18,7 +18,13 @@ import javafx.util.Callback;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class GeneMaintainance {
 
@@ -145,10 +151,13 @@ public class GeneMaintainance {
             //Enter the id
             String GeneratorIDIDText = GeneratorID.getText();
             String MaintenanceNOText = MaintenanceNO.getText();
-            Callback<DatePicker, DateCell> MaintenanceDateText = MaintenanceDate.getDayCellFactory();
+            LocalDate MaintenanceDateText = MaintenanceDate.getValue();
+            //Callback<DatePicker, DateCell> MaintenanceDateText = MaintenanceDate.getDayCellFactory();
             String serviseText = servise.getText();
             String repairText = repair.getText();
             insertGeneratorMaintenance(generatorsCollection, GeneratorIDIDText, MaintenanceNOText, MaintenanceDateText, serviseText, repairText);
+
+            System.out.println(MaintenanceDateText);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -174,10 +183,10 @@ public class GeneMaintainance {
         signup.setResizable(false);
 
     }
-    public void insertGeneratorMaintenance(MongoCollection<Document> generatorsCollection, String GeneratorIDIDText, String MaintenanceNOText, Callback<DatePicker, DateCell> MaintenanceDateText, String serviseText, String PriseText) {
+    public void insertGeneratorMaintenance(MongoCollection<Document> generatorsCollection, String GeneratorIDIDText, String MaintenanceNOText, java.time.LocalDate MaintenanceDateText, String serviseText, String PriseText) {
         Document generator = new Document("_id", new ObjectId()).append("Generator ID", GeneratorIDIDText)
                 .append("MaintenanceNO", MaintenanceNOText)
-                .append("Quantity", MaintenanceDateText)
+                .append("MaintenanceDateText", MaintenanceDateText)
                 .append("Type", serviseText)
                 .append("Type", PriseText);
         generatorsCollection.insertOne(generator);
