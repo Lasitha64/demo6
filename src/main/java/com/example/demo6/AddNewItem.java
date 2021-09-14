@@ -44,6 +44,7 @@ public class AddNewItem {
     private Button buttn_add;
 
     private MongoClient database;
+    private AlertBox ab;
 
     MongoCollection<Document> ItemCollection;
 
@@ -68,17 +69,28 @@ public class AddNewItem {
         stage.setScene(scene);
         stage.show();
 
-        try {
-
-
-            String idfldText = idfld.getText(), namefldText = namefld.getText(), quantityfldText = quantityfld.getText(), pricefldText = pricefld.getText(), datefldText = datefld.getValue().toString(), DescipfldText = Descipfld.getText();
-            insertItem(ItemCollection, idfldText, namefldText, quantityfldText, pricefldText, datefldText, DescipfldText);
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(idfld.getText().isEmpty() || namefld.getText().isEmpty() || quantityfld.getText().isEmpty() || pricefld.getText().isEmpty() || datefld.getValue().toString().isEmpty() || Descipfld.getText().isEmpty()){
+            ab.display("Error"," Input Fields can't be empty");
         }
+        else if(!quantityfld.getText().matches("[0-9]+")){
+            ab.display("Error","Quantity needs to be a number");
+        }
+        else if(!pricefld.getText().matches("[0-9]+(\\.){0,1}[0-9]*")){
+            ab.display("Error","Price needs to be a double (ex: 1000.90)");
+        }
+        else {
 
+            try {
+
+
+                String idfldText = idfld.getText(), namefldText = namefld.getText(), quantityfldText = quantityfld.getText(), pricefldText = pricefld.getText(), datefldText = datefld.getValue().toString(), DescipfldText = Descipfld.getText();
+                insertItem(ItemCollection, idfldText, namefldText, quantityfldText, pricefldText, datefldText, DescipfldText);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void insertItem(MongoCollection<Document> itemCollection, String idfldText, String namefldText, String quantityfldText, String pricefldText, String datefldText, String DescipfldText) {
@@ -92,6 +104,7 @@ public class AddNewItem {
                 .append("Description", DescipfldText);
         itemCollection.insertOne(item);
         System.out.println("Connection S3");
+        ab.display("Success","Data Inserted Successfully!");
     }
 
 

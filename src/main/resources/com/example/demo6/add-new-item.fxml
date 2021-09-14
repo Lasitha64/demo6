@@ -15,10 +15,17 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/add-new-item.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.AddNewItem">
    <children>
-      <Label layoutX="234.0" layoutY="6.0" prefHeight="70.0" prefWidth="365.0" text="ADD NEW ITEM" textFill="#000000e5">
+      <Label layoutX="180.0" layoutY="6.0" prefHeight="70.0" prefWidth="440.0" text="ADD NEW ITEM" textFill="#000000e5">
          <font>
             <Font name="System Bold" size="48.0" />
          </font>
+         <graphic>
+            <ImageView blendMode="MULTIPLY" fitHeight="68.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Label>
       <Pane layoutX="90.0" layoutY="89.0" prefHeight="438.0" prefWidth="610.0" styleClass="formbox">
          <children>

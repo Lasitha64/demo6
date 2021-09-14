@@ -15,10 +15,17 @@
 
 <AnchorPane prefHeight="600" prefWidth="800" stylesheets="@stylesheet/add-new-lub.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.AddNewLub">
     <children>
-        <Label layoutX="63.0" layoutY="6.0" prefHeight="70.0" prefWidth="703.0" text="ADD NEW LUBRICANT STOCK" textFill="#000000e5">
+        <Label layoutX="17.0" prefHeight="75.0" prefWidth="766.0" text="ADD NEW LUBRICANT STOCK" textFill="#000000e5">
             <font>
                 <Font name="System Bold" size="48.0" />
             </font>
+         <graphic>
+            <ImageView blendMode="MULTIPLY" fitHeight="75.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
         </Label>
         <Pane layoutX="90.0" layoutY="89.0" prefHeight="443.0" prefWidth="610.0" styleClass="formbox">
             <children>

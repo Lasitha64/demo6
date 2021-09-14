@@ -73,6 +73,7 @@ public class StockView {
     @FXML
     private Button buutn_back;
 
+    private AlertBox ab;
     private MongoClient database;
 
     MongoCollection<Document> ItemCollection;
@@ -104,6 +105,7 @@ public class StockView {
         Bson filter = eq("Item_ID", idfldText);
         DeleteResult result = ItemCollection.deleteOne(filter);
         System.out.println(result);
+        ab.display("Success","Data Deleted Successfully!");
     }
 
     @FXML
@@ -113,38 +115,50 @@ public class StockView {
 
     @FXML
     void Update(ActionEvent event) {
-// update one document
-        String idfldText = idfld.getText(), namefldText = namefld.getText(), quantityfldText = quantityfld.getText(), pricefldText = pricefld.getText(), datefldText = datefld.getValue().toString(), DescipfldText = Descipfld.getText();
 
-        System.out.println(idfldText + namefldText + quantityfldText + pricefldText + datefldText + DescipfldText);
+        if(idfld.getText().isEmpty() || namefld.getText().isEmpty() || quantityfld.getText().isEmpty() || pricefld.getText().isEmpty() || datefld.getValue().toString().isEmpty() || Descipfld.getText().isEmpty()){
+            ab.display("Error"," Input Fields can't be empty");
+        }
+        else if(!quantityfld.getText().matches("[0-9]+")){
+            ab.display("Error","Quantity needs to be a number");
+        }
+        else if(!pricefld.getText().matches("[0-9]+(\\.){0,1}[0-9]*")){
+            ab.display("Error","Price needs to be a double (ex: 1000.90)");
+        }
+        else {
+            // update one document
+            String idfldText = idfld.getText(), namefldText = namefld.getText(), quantityfldText = quantityfld.getText(), pricefldText = pricefld.getText(), datefldText = datefld.getValue().toString(), DescipfldText = Descipfld.getText();
 
-        Bson filter = eq("Item_ID", idfldText);
+            System.out.println(idfldText + namefldText + quantityfldText + pricefldText + datefldText + DescipfldText);
 
-
-        Bson updateName = set("Item_Name", namefldText); // creating an array with a comment.
-        Bson updateQuantity = set("Quantity", quantityfldText); // using addToSet so no effect.
-        Bson updatePrice = set("Price", pricefldText); // using addToSet so no effect.
-        Bson updateDate = set("Date", datefldText);
-        Bson updateDescription = set("Description", DescipfldText);
-
-        List<Bson> updatePredicates = new ArrayList<Bson>();
-        updatePredicates.add(updateName);
-        updatePredicates.add(updateQuantity);
-        updatePredicates.add(updatePrice);
-        updatePredicates.add(updateDate);
-        updatePredicates.add(updateDescription);
+            Bson filter = eq("Item_ID", idfldText);
 
 
-        //Bson updateOperation = set("Name", NameText);
+            Bson updateName = set("Item_Name", namefldText); // creating an array with a comment.
+            Bson updateQuantity = set("Quantity", quantityfldText); // using addToSet so no effect.
+            Bson updatePrice = set("Price", pricefldText); // using addToSet so no effect.
+            Bson updateDate = set("Date", datefldText);
+            Bson updateDescription = set("Description", DescipfldText);
+
+            List<Bson> updatePredicates = new ArrayList<Bson>();
+            updatePredicates.add(updateName);
+            updatePredicates.add(updateQuantity);
+            updatePredicates.add(updatePrice);
+            updatePredicates.add(updateDate);
+            updatePredicates.add(updateDescription);
+
+
+            //Bson updateOperation = set("Name", NameText);
         /*.append("Name", NameText)
                 .append("Quantity", QuantityText)
                 .append("Prise", PriseText);*/
-        FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
-        Document newVersion = ItemCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
+            FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
+            Document newVersion = ItemCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
 
-        System.out.println("Updating the stock");
-        System.out.println(newVersion);
-
+            System.out.println("Updating the stock");
+            System.out.println(newVersion);
+            ab.display("Success","Data Updated Successfully!");
+        }
     }
 
 }
