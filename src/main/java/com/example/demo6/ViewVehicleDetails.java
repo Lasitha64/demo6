@@ -156,5 +156,17 @@ public class ViewVehicleDetails {
         }
     }
 
+<<<<<<< HEAD:src/main/java/com/example/demo6/ViewVehicleDetails.java
+=======
+    @FXML
+    void Delete(ActionEvent event) {
+        String eidText = eid.getText();
+        Bson filter = eq("ExcavatorID", eidText);
+        DeleteResult result = ExcavatorRepairCollection.deleteOne(filter);
+        System.out.println(result);
+        ab.display("Data Delete ","Data Delete Successfull");
+    }
+    
+>>>>>>> Nimith:src/main/java/com/example/demo6/ViewExcavRepDetails.java
 }
 
