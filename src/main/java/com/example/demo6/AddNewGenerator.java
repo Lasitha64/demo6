@@ -8,6 +8,10 @@ package com.example.demo6;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.FindOneAndUpdateOptions;
+import com.mongodb.client.model.ReturnDocument;
+import com.mongodb.client.model.Updates;
+import com.mongodb.client.result.DeleteResult;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,12 +21,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Updates.set;
 import static java.util.Arrays.asList;
 
 public class AddNewGenerator {
@@ -47,6 +54,12 @@ public class AddNewGenerator {
 
     @FXML
     private Button addbtn;
+
+    @FXML
+    private Button deletebn;
+
+    @FXML
+    private Button updatebn;
 
 
 
@@ -116,6 +129,55 @@ public class AddNewGenerator {
               }
 
     }
+
+    @FXML
+    void deleteGenerator(ActionEvent event) {
+        String gidText = gid.getText();
+        Bson filter = eq("generator_id", gidText);
+        DeleteResult result = generatorsCollection.deleteOne(filter);
+        System.out.println(result);
+
+    }
+
+    @FXML
+    void updategen(ActionEvent event) {
+        // update one document
+        String gidText = gid.getText(),
+                gbrandText = gbrand.getText() ,
+                gmanyearText = gmanyear.getText() ,
+                gcountryText = gcountry.getText(),
+                gwarrantyText = gcountry.getText();
+
+        System.out.println(gid + gbrandText + gmanyearText + gcountryText + gwarrantyText);
+
+        Bson filter = eq("generator_id", gidText);
+
+
+        Bson updatebrand = set("brand", gbrandText); // creating an array with a comment.
+        Bson updatemanyear = set("manyear", gmanyearText); // using addToSet so no effect.
+        Bson updatecountry = set("country", gcountryText);
+        Bson updatewarranty = set("warranty", gwarrantyText);// using addToSet so no effect.
+
+        List<Bson> updatePredicates = new ArrayList<Bson>();
+        updatePredicates.add(updatebrand);
+        updatePredicates.add(updatemanyear);
+        updatePredicates.add(updatecountry);
+        updatePredicates.add(updatewarranty);
+
+
+        //Bson updateOperation = set("Name", NameText);
+        /*.append("Name", NameText)
+                .append("Quantity", QuantityText)
+                .append("Prise", PriseText);*/
+        FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
+        Document newVersion = generatorsCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
+
+        System.out.println("Updating the generator maintenence stock");
+        System.out.println(newVersion);
+
+
+    }
+
 
     public void insertGenerators(MongoCollection<Document> generatorsCollection, String gidText, String gbrandText, String gmanyearText, String gcountryText, String gwarrantyText) {
         Document generator = new Document("_id", new ObjectId()).append("generator_id", gidText)
