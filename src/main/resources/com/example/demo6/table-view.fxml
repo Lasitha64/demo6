@@ -33,5 +33,4 @@
       <Button layoutX="530.0" layoutY="536.0" mnemonicParsing="false" text="Button" />
       <Button layoutX="607.0" layoutY="536.0" mnemonicParsing="false" text="Button" />
    </children>
-
 </AnchorPane>

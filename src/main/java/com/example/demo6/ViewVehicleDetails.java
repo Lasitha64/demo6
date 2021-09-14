@@ -166,7 +166,10 @@ public class ViewVehicleDetails {
         System.out.println(result);
         ab.display("Data Delete ","Data Delete Successfull");
     }
+<<<<<<< HEAD:src/main/java/com/example/demo6/ViewVehicleDetails.java
     
+>>>>>>> Nimith:src/main/java/com/example/demo6/ViewExcavRepDetails.java
+=======
 >>>>>>> Nimith:src/main/java/com/example/demo6/ViewExcavRepDetails.java
 }
 
