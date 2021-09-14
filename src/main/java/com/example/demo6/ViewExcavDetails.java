@@ -123,6 +123,7 @@ public class ViewExcavDetails {
 
             System.out.println("Updating the Excavator Details");
             System.out.println(newVersion);
+            ab.display("Data Update ","Data Update Successfull");
 
         }
     }
@@ -132,6 +133,7 @@ public class ViewExcavDetails {
         Bson filter = eq("ExcavatorID", eidText);
         DeleteResult result = ExcavatorCollection.deleteOne(filter);
         System.out.println(result);
+        ab.display("Data Delete ","Data Delete Successfull");
     }
 
 
