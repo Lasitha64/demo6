@@ -18,6 +18,7 @@ import org.bson.types.ObjectId;
 import java.io.IOException;
 
 public class AdminSignUp {
+    private AlertBox ab;
 
     @FXML
     private TextField inputname;
@@ -82,15 +83,25 @@ public class AdminSignUp {
         stage.setScene(scene);
         stage.show();
 
-        try {
+        if(inputname.getText().isEmpty() || inputusename.getText().isEmpty() || inputemail.getText().isEmpty() || inputnic.getText().isEmpty() || inputmobile.getText().isEmpty() || inputpassword.getText().isEmpty()){
+            ab.display("Error"," Input Fields can't be empty");
+        }
+        else if(!inputmobile.getText().matches("[0-9]+")){
+            ab.display("Error","Quantity needs to be a number");
+        }
+
+        else {
+
+            try {
 
 
-            String inputnameText = inputname.getText(), inputusenameText = inputusename.getText(), inputemailText = inputemail.getText(), inputnicText = inputnic.getText(), inputmobileText = inputmobile.getText(), inputpasswordText = inputpassword.getText();
-            insertAdmin(AdminCollection, inputnameText, inputusenameText, inputemailText, inputnicText, inputmobileText, inputpasswordText);
+                String inputnameText = inputname.getText(), inputusenameText = inputusename.getText(), inputemailText = inputemail.getText(), inputnicText = inputnic.getText(), inputmobileText = inputmobile.getText(), inputpasswordText = inputpassword.getText();
+                insertAdmin(AdminCollection, inputnameText, inputusenameText, inputemailText, inputnicText, inputmobileText, inputpasswordText);
 
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
     }

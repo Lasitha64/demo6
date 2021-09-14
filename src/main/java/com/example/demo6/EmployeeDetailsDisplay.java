@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeDetailsDisplay {
+    private AlertBox ab;
 
     @FXML
     private Button searchamotheremployeebutton;
@@ -126,45 +127,45 @@ public class EmployeeDetailsDisplay {
         scene.getStylesheets().add(getClass().getResource("stylesheet/employeeSearch.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
+        if (employeeinputname.getText().isEmpty() || employeeinputaddress.getText().isEmpty() || nicdisplay.getText().isEmpty() || employeeinputmobile.getText().isEmpty()) {
+            ab.display("Error", " Input Fields can't be empty");
+        } else if (!employeeinputmobile.getText().matches("[0-9]+")) {
+            ab.display("Error", "Mobile No needs to be a number");
+        } else {
 
-        //updateemployeebutton
+            //updateemployeebutton
 
-        // update one document
-        String employeeinputnameText = employeeinputname.getText(), employeeinputaddressText = employeeinputaddress.getText(), nicdisplayText = nicdisplay.getText(), employeeinputmobileText = employeeinputmobile.getText();
+            // update one document
+            String employeeinputnameText = employeeinputname.getText(), employeeinputaddressText = employeeinputaddress.getText(), nicdisplayText = nicdisplay.getText(), employeeinputmobileText = employeeinputmobile.getText();
 
-        System.out.println(employeeinputnameText + employeeinputaddressText + nicdisplayText + employeeinputmobileText);
-
-
-
-        Bson filter = eq("NIC No", nicdisplayText);
-
-
-        Bson updateName = set("Name", employeeinputnameText); // creating an array with a comment.
-        Bson updateAddress = set("Address", employeeinputaddressText); // using addToSet so no effect.
-        Bson updateMobile = set("Mobile No", employeeinputmobileText); // using addToSet so no effect.
-
-        List<Bson> updatePredicates = new ArrayList<Bson>();
-        updatePredicates.add(updateName);
-        updatePredicates.add(updateAddress);
-        updatePredicates.add(updateMobile);
+            System.out.println(employeeinputnameText + employeeinputaddressText + nicdisplayText + employeeinputmobileText);
 
 
-        //Bson updateOperation = set("Name", NameText);
+            Bson filter = eq("NIC No", nicdisplayText);
+
+
+            Bson updateName = set("Name", employeeinputnameText); // creating an array with a comment.
+            Bson updateAddress = set("Address", employeeinputaddressText); // using addToSet so no effect.
+            Bson updateMobile = set("Mobile No", employeeinputmobileText); // using addToSet so no effect.
+
+            List<Bson> updatePredicates = new ArrayList<Bson>();
+            updatePredicates.add(updateName);
+            updatePredicates.add(updateAddress);
+            updatePredicates.add(updateMobile);
+
+
+            //Bson updateOperation = set("Name", NameText);
         /*.append("Name", NameText)
                 .append("Quantity", QuantityText)
                 .append("Prise", PriseText);*/
-        FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
-        Document newVersion = employeeCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
+            FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
+            Document newVersion = employeeCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
 
-        System.out.println("Updating Employee Details");
-        System.out.println(newVersion);
-
-
+            System.out.println("Updating Employee Details");
+            System.out.println(newVersion);
 
 
-
-
-
+        }
     }
 
 }

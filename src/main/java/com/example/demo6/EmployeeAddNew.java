@@ -18,7 +18,9 @@ import org.bson.types.ObjectId;
 
 import java.io.IOException;
 
+
 public class EmployeeAddNew {
+    private AlertBox ab;
 
     @FXML
     private Button employeeaddnewbutton;
@@ -64,6 +66,15 @@ public class EmployeeAddNew {
         stage.setScene(scene);
         stage.show();
 
+        if(employeeinputname.getText().isEmpty() || employeeinputaddress.getText().isEmpty() || nicdisplay.getText().isEmpty() || employeeinputmobile.getText().isEmpty()){
+            ab.display("Error"," Input Fields can't be empty");
+        }
+        else if(!employeeinputmobile.getText().matches("[0-9]+")){
+            ab.display("Error","Mobile No needs to be a number");
+        }
+
+        else {
+
             try {
 
 
@@ -74,6 +85,7 @@ public class EmployeeAddNew {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
 
 
     }
