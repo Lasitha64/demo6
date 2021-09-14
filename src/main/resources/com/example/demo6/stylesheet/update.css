@@ -19,7 +19,7 @@
 }
 
 .text-field1:hover{
-    -fx-background-color:#03396c;
+    -fx-background-color:white;
     -fx-prompt-text-fill: black;
     -fx-background-radius: 0 30 30 0;
 }
