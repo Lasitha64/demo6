@@ -65,7 +65,6 @@
                 </ImageView>
             </graphic>
         </Button>
-
     </children>
 
 </AnchorPane>

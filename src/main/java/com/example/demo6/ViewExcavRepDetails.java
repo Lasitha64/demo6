@@ -132,5 +132,4 @@ public class ViewExcavRepDetails {
         System.out.println(result);
         ab.display("Data Delete ","Data Delete Successfull");
     }
-    
 }
