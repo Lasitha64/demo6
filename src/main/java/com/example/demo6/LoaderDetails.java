@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ExcavService {
+public class LoaderDetails {
     private Stage stage;
     private Scene scene;
 
@@ -26,7 +26,7 @@ public class ExcavService {
 
     @FXML
     void Add(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("addExcavServDetails.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("addLoaderDetails.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
@@ -37,18 +37,19 @@ public class ExcavService {
 
     @FXML
     void Back(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Excav-main.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
+
+            Parent root = FXMLLoader.load(getClass().getResource("Loader-main.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
+            stage.setScene(scene);
+            stage.show();
 
     }
 
     @FXML
     void Generate(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("viewExcavServDetails.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("viewLoaderDetails.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
@@ -58,3 +59,4 @@ public class ExcavService {
     }
 
 }
+

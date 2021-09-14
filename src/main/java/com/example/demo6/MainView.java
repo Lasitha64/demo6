@@ -70,12 +70,6 @@ public class MainView {
 
     @FXML
     void excavatoraction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Excav-main.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
 
     }
 
@@ -85,7 +79,13 @@ public class MainView {
     }
 
     @FXML
-    void loaderaction(ActionEvent event) {
+    void loaderaction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Loader-main.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
 
     }
 

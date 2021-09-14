@@ -9,23 +9,23 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/Excav-main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.Excavmain">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/Excav-main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.LoaderMain">
     <children>
-        <Label alignment="TOP_CENTER" layoutX="66.0" layoutY="14.0" prefHeight="88.0" prefWidth="675.0" text="Excavator Management" textAlignment="CENTER" textFill="#aaaaaade">
+        <Label alignment="TOP_CENTER" layoutX="66.0" layoutY="14.0" prefHeight="88.0" prefWidth="675.0" text="Loader Management" textAlignment="CENTER" textFill="#aaaaaade">
             <font>
                 <Font name="Britannic Bold" size="48.0" />
             </font>
          <graphic>
-            <ImageView blendMode="MULTIPLY" fitHeight="55.0" fitWidth="60.0">
+            <ImageView blendMode="MULTIPLY" fitHeight="73.0" fitWidth="71.0">
                <image>
-                  <Image url="@img/exca.png" />
+                  <Image url="@img/loader.png" />
                </image>
             </ImageView>
          </graphic>
         </Label>
         <VBox layoutX="122.0" layoutY="107.0" prefHeight="384.0" prefWidth="519.0" styleClass="formbox" stylesheets="@stylesheet/Excav-main.css">
             <children>
-                <Button fx:id="btn_add1" alignment="CENTER" graphicTextGap="12.0" mnemonicParsing="false" onAction="#ed" prefHeight="46.0" prefWidth="239.0" text="Excavator Details" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                <Button fx:id="btn_add1" alignment="CENTER" graphicTextGap="12.0" mnemonicParsing="false" onAction="#ed" prefHeight="7.0" prefWidth="239.0" text="Loader Details" textOverrun="WORD_ELLIPSIS" wrapText="true">
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
@@ -33,9 +33,9 @@
                         <Insets left="150.0" top="50.0" />
                     </VBox.margin>
                <graphic>
-                  <ImageView blendMode="MULTIPLY" fitHeight="25.0" fitWidth="37.0">
+                  <ImageView blendMode="MULTIPLY" fitHeight="41.0" fitWidth="41.0">
                      <image>
-                        <Image url="@img/exca.png" />
+                        <Image url="@img/loader.png" />
                      </image>
                   </ImageView>
                </graphic>

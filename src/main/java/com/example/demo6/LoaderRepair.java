@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ExcavDetails {
+public class LoaderRepair {
     private Stage stage;
     private Scene scene;
 
@@ -26,7 +26,7 @@ public class ExcavDetails {
 
     @FXML
     void Add(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("addExcavDetails.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("addLoaderepDetails.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
@@ -37,19 +37,18 @@ public class ExcavDetails {
 
     @FXML
     void Back(ActionEvent event) throws IOException {
-
-            Parent root = FXMLLoader.load(getClass().getResource("Excav-main.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
-            stage.setScene(scene);
-            stage.show();
+        Parent root = FXMLLoader.load(getClass().getResource("Loader-main.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
 
     }
 
     @FXML
     void Generate(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("viewExcavDetails.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("viewLoaderRepDetails.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
@@ -59,4 +58,3 @@ public class ExcavDetails {
     }
 
 }
-
