@@ -4,11 +4,16 @@ public class Crusher {
 
     private String id;
     private String name;
-    private int quantity;
-    private double price;
+    private String quantity;
+    private String price;
     private String date;
 
-    public Crusher(int pos, String cruid, String cruname, String cruquan, String crupri, String crudate) {
+    public Crusher(String id, String name, String quantity, String price, String date) {
+        this.id = id;
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+        this.date = date;
     }
 
     public String getId() {
@@ -27,19 +32,19 @@ public class Crusher {
         this.name = name;
     }
 
-    public int  getQuantity() {
+    public String  getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -51,11 +56,5 @@ public class Crusher {
         this.date = date;
     }
 
-    public Crusher(String id, String name, int quantity, double price, String date) {
-        this.id = id;
-        this.name = name;
-        this.quantity = quantity;
-        this.price = price;
-        this.date = date;
-    }
+
 }

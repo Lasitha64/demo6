@@ -8,6 +8,7 @@ import com.mongodb.client.model.FindOneAndUpdateOptions;
 import com.mongodb.client.model.ReturnDocument;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.DeleteResult;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -39,8 +41,8 @@ public class CrusherPartUpdate implements Initializable {
     private int pos;
     private String cruid;
     private String cruname;
-    private int cruquan;
-    private Double crupri;
+    private String cruquan;
+    private String crupri;
     private String crudate;
     MongoClient database;
     MongoCollection<Document> crusherCollection;
@@ -56,10 +58,10 @@ public class CrusherPartUpdate implements Initializable {
     private TableColumn<Crusher, String> cname;
 
     @FXML
-    private TableColumn<Crusher, Integer> cquan;
+    private TableColumn<Crusher, String> cquan;
 
     @FXML
-    private TableColumn<Crusher, Double> cprice;
+    private TableColumn<Crusher, String> cprice;
 
     @FXML
     private TableColumn<Crusher, String> cdate;
@@ -93,12 +95,33 @@ public class CrusherPartUpdate implements Initializable {
 
     public ObservableList<Crusher> list;
 
-    public List attend = new ArrayList();
+   // public List attend = new ArrayList();
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //TODO
+        showCrusher();
+
+    }
+
+
+    public void showCrusher() {
+
+        ObservableList<Crusher>  list = getCrusherList();
+
+        cid.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getId()));
+        cname.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Name"));
+        cquan.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Quantity"));
+        cprice.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Price"));
+        cdate.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Date"));
+
+        CrusherParts.setItems(list);
+
+    }
+
+    private ObservableList<Crusher> getCrusherList() {
+        ObservableList<Crusher> attend = FXCollections.observableArrayList();
 
         //initialize database connection
         Database databaseController = new Database();
@@ -106,48 +129,32 @@ public class CrusherPartUpdate implements Initializable {
         // get collection
         crusherCollection = database.getCollection("Metal Crusher");
         MongoCursor<Document> cursor = crusherCollection.find().iterator();
-//        try {
+        try {
 
-//            for (int i = 0; i < crusherCollection.count(); i++) {
-//                pos = i + 1;
-//
-//                Document doc = cursor.next();
-//                cruid = doc.getString("cid");
-//                cruname = doc.getString("cname");
+            for (int i = 0; i < crusherCollection.count(); i++) {
 
-//                //  System.out.println(cruid+cruname);
-//
-//                cruquan = doc.getInteger("cquan");
-//                crupri = doc.getDouble("cprice");
-//                crudate = doc.getString("cdate");
-//
-//
-//                attend.add(new Crusher(cruid, cruname, cruquan, crupri, crudate));
-//            }
-//            list = FXCollections.observableArrayList(attend);
-//        } finally {
-////          close the connection
-//            cursor.close();
-//        }
-//
-////      call the setTable method
-//        showCrusher();
+
+                Document doc = cursor.next();
+                cruid = doc.getString("ID");
+              //  System.out.println(cruid);
+                cruname = doc.getString("Name");
+                cruquan = doc.getString("Quantity");
+                crupri = doc.getString("Price");
+                crudate = doc.getString("Date");
+
+                attend.add(new Crusher(cruid, cruname, cruquan, crupri, crudate));
+
+            }
+          //  list = FXCollections.observableArrayList(attend);
+        } finally {
+//          close the connection
+            cursor.close();
+        }
+        return  attend;
+//      call the setTable method
+
 
     }
-
-
-//    public void showCrusher() {
-//
-//
-//        cid.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Part ID"));
-//        cname.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Name"));
-//        cquan.setCellValueFactory(new PropertyValueFactory<Crusher, Integer>("Quantity"));
-//        cprice.setCellValueFactory(new PropertyValueFactory<Crusher, Double>("Price"));
-//        cdate.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Date"));
-//
-//        CrusherParts.setItems(list);
-//
-//    }
 
 
     @FXML
@@ -163,13 +170,24 @@ public class CrusherPartUpdate implements Initializable {
     @FXML
     void Delete(ActionEvent event) {
         String Stock_ID = tf_id.getText();
-        Bson filter = eq("Part ID", Stock_ID);
+        Bson filter = eq("ID", Stock_ID);
         DeleteResult result = crusherCollection.deleteOne(filter);
+        showCrusher();
         System.out.println(result);
         ab.display("OK", "Delete Successful");
 
-    }
 
+    }
+    @FXML
+    void handleMouseAction(MouseEvent event) {
+        Crusher crusher = CrusherParts.getSelectionModel().getSelectedItem();
+        tf_id.setText(crusher.getId());
+        tf_name.setText(crusher.getName());
+        tf_quan.setText(crusher.getQuantity());
+        tf_price.setText(crusher.getPrice());
+        tf_date1.setText(crusher.getDate());
+
+    }
     @FXML
     void Update(ActionEvent event) {
         if (tf_id.getText().isEmpty() || tf_name.getText().isEmpty() || tf_quan.getText().isEmpty() || tf_price.getText().isEmpty() || tf_date1.getText().isEmpty()) {
@@ -188,7 +206,7 @@ public class CrusherPartUpdate implements Initializable {
 
             System.out.println(Stock_ID + NameText + QuantityText + PriceText + DateText);
 
-            Bson filter = eq("Part ID", Stock_ID);
+            Bson filter = eq("ID", Stock_ID);
 
             Bson updateName = set("Name", NameText);
             Bson updateQuan = set("Quantity", QuantityText);
@@ -204,9 +222,11 @@ public class CrusherPartUpdate implements Initializable {
             FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
             Document newVersion = crusherCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
 
+            showCrusher();
             System.out.println("Updating the generator maintenence stock");
             System.out.println(newVersion);
             ab.display("OK", "Update Successful");
+
 
         }
 

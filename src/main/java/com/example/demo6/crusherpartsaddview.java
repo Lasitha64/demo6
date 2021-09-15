@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -89,7 +90,7 @@ public class crusherpartsaddview {
 
 
         Document admin = new Document("_id", new ObjectId())
-                .append("Part ID", crusherid)
+                .append("ID", crusherid)
                 .append("Name", crushername)
                 .append("Quantity", crusherquan)
                 .append("Price", crusherpri)
@@ -111,5 +112,7 @@ public class crusherpartsaddview {
         stage.show();
 
     }
+
+
     //end -> functions use in crusher-parts fxml
 }
