@@ -51,8 +51,13 @@ public class MainView {
 
     //start -> functions use in main-view fxml
     @FXML
-    void adminaction(ActionEvent event) throws IOException {
-
+    void admin(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("adminDetails.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/adminDetails.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
 
     }
 
@@ -73,10 +78,7 @@ public class MainView {
 
     }
 
-    @FXML
-    void hammeraction(ActionEvent event) {
 
-    }
 
     @FXML
     void loaderaction(ActionEvent event) throws IOException {
@@ -89,18 +91,58 @@ public class MainView {
 
     }
 
+
+
     @FXML
-    void otheraction(ActionEvent event) {
+    void otheraction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("stcock-mngt.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/stock-mngt.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+
+    @FXML
+    void genaratoraction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("GeneratorMainPage.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("stylesheet/login.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("stylesheet/GeneratorA.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("stylesheet/GeneratorB.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
 
     }
 
     @FXML
-    void salesaction(ActionEvent event) {
+    void employeeaction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("employeeDetails.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/employeeDetails.css").toExternalForm());
 
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
-    void vechicleaction(ActionEvent event) {
+    void vechicleaction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("vehicle.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/Vehicle.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+    @FXML
+    void hammeraction(ActionEvent event) {
 
     }
     //end -> functions use in main-view fxml

@@ -8,7 +8,7 @@
       <jdbc-url>mongodb://localhost:27017/crusherDB</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="MongoDB - test@cluster0.ro9s7.mongodb.net" uuid="017ef484-9861-4064-adc6-30089dc742ca">
+    <data-source source="LOCAL" name="test@cluster0.ro9s7.mongodb.net" uuid="611bd204-3903-4218-8e5b-27e3274739ff">
       <driver-ref>mongo</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.dbschema.MongoJdbcDriver</jdbc-driver>

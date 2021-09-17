@@ -31,7 +31,7 @@ public class ViewLoaderDetails {
 
     private Stage stage;
     private Scene scene;
-    private alertbox ab;
+    private AlertBox ab;
 
     MongoCollection<Document> LoaderCollection;
 

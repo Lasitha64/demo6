@@ -19,7 +19,7 @@ import java.io.IOException;
 public class AddLoaderDetails {
     private Stage stage;
     private Scene scene;
-    private alertbox ab;
+    private AlertBox ab;
     @FXML
     private TextField loaderid;
 
@@ -75,16 +75,16 @@ public class AddLoaderDetails {
         else {
 
 
-        }
-        try {
+            try {
 
 
-            String loaderidText = loaderid.getText(), brandText = brand.getText(), workingsiteText = workingsite.getText(), conditionText = condition.getText(), regnoText = regno.getText();
-            insertLoader(LoaderCollection, loaderidText, brandText, workingsiteText, conditionText, regnoText);
-            ab.display("Data Entry"," Data Entry Sucessfull");
+                String loaderidText = loaderid.getText(), brandText = brand.getText(), workingsiteText = workingsite.getText(), conditionText = condition.getText(), regnoText = regno.getText();
+                insertLoader(LoaderCollection, loaderidText, brandText, workingsiteText, conditionText, regnoText);
+                ab.display("Data Entry", " Data Entry Sucessfull");
 
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
     }
