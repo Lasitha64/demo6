@@ -72,6 +72,7 @@ public class AddLoaderDetails {
         else if(!regno.getText().matches("[0-9]+(\\.){0,1}[0-9]*")){
             ab.display("Error","RegNo must be a Number");
         }
+
         else {
 
 

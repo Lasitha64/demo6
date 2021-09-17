@@ -1,7 +1,9 @@
 package com.example.demo6;
 
-public class Crusher {
+import org.bson.codecs.pojo.annotations.BsonId;
 
+public class Crusher {
+@BsonId
     private String id;
     private String name;
     private String quantity;
