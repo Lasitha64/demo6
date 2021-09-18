@@ -4,20 +4,16 @@
 
 .formbox{
     -fx-background-color:#005b96;
-    -fx-background-radius: 30 30 30 30;
 }
 
 .label1{
     -fx-background-color:#b3cde0;
-    -fx-background-radius: 30 0 0 30;
 }
 
-.text-field1{
-    -fx-background-color:#b3cde0;
+.text-field1 {
+    -fx-background-color: #b3cde0;
     -fx-prompt-text-fill: gray;
-    -fx-background-radius: 0 30 30 0;
 }
-
 .text-field1:hover{
     -fx-background-color:white;
     -fx-prompt-text-fill: black;
@@ -33,15 +29,11 @@
 .btnback{
     -fx-background-color:  #005b96;
     -fx-text-fill: white;
-    -fx-background-radius: 20 20 20 20;
-
 }
 
 .btnback:hover{
     -fx-background-color:  #b3cde0;
     -fx-text-fill: black;
-    -fx-background-radius: 20 20 20 20;
-
 }
 
 .btnback:pressed {
@@ -51,14 +43,12 @@
 .button1{
     -fx-background-color:  #03396c ;
     -fx-text-fill: white;
-    -fx-background-radius: 20 20 20 20;
 }
 
 
 .button1:hover{
     -fx-background-color:  #b3cde0;
     -fx-text-fill: black;
-    -fx-background-radius: 20 20 20 20;
 
 }
 
