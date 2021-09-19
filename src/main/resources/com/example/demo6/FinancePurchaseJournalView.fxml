@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.FinanceGeneralJournalView">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.FinanceSalesJournalEntry">
     <children>
-        <Label alignment="CENTER" layoutX="154.0" layoutY="14.0" prefHeight="82.0" prefWidth="491.0" text="General Journal" textAlignment="RIGHT" textFill="#dbdbe6" wrapText="true">
+        <Label alignment="CENTER" layoutX="154.0" layoutY="14.0" prefHeight="82.0" prefWidth="491.0" text="Purchase Journal" textAlignment="RIGHT" textFill="#dbdbe6" wrapText="true">
             <font>
                 <Font name="System Bold" size="36.0" />
             </font>
@@ -23,10 +23,10 @@
                 <TableView layoutX="9.0" layoutY="7.0" prefHeight="384.0" prefWidth="593.0">
                     <columns>
                         <TableColumn prefWidth="115.0" text="Date" />
-                        <TableColumn prefWidth="106.0" text="Voucher No" />
-                        <TableColumn prefWidth="159.0" text="Description" />
-                        <TableColumn prefWidth="103.0" text="Dr" />
-                  <TableColumn prefWidth="106.0" text="Cr" />
+                        <TableColumn prefWidth="106.0" text="Invoice No" />
+                        <TableColumn prefWidth="140.0" text="Supplieer" />
+                        <TableColumn prefWidth="122.0" text="Total Value" />
+                        <TableColumn prefWidth="106.0" text="Ledger page" />
                     </columns>
                 </TableView>
             </children>
@@ -43,11 +43,11 @@
                 </ImageView>
             </graphic>
         </Button>
-      <Button fx:id="btn_back1" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="552.0" layoutY="525.0" mnemonicParsing="false" onAction="#back_to_a" prefHeight="43.0" prefWidth="155.0" styleClass="btnback" text="Finance Home">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
+        <Button fx:id="btn_back1" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="552.0" layoutY="525.0" mnemonicParsing="false" onAction="#back_to_a" prefHeight="43.0" prefWidth="155.0" styleClass="btnback" text="Finance Home">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Button>
     </children>
     <stylesheets>
         <URL value="@stylesheet/Finance.css" />
