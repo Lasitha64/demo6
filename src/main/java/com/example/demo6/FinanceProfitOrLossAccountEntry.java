@@ -10,6 +10,9 @@ import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.DeleteResult;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -119,6 +122,19 @@ public class FinanceProfitOrLossAccountEntry {
 
     @FXML
     void back_to_b(ActionEvent event) {
+        btn_back.getScene().getWindow().hide();
+        Stage signup = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("FinanceEntries.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("stylesheet/Finance.css");
+        signup.setScene(scene);
+        signup.show();
+        signup.setResizable(false);
 
     }
 
@@ -133,6 +149,22 @@ public class FinanceProfitOrLossAccountEntry {
 
     @FXML
     void move_to_h(ActionEvent event) {
+        Next.getScene().getWindow().hide();
+        Stage signup = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("FinanceProfitOrLossAccountEntryCnfermation.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("stylesheet/Finance.css");
+        signup.setScene(scene);
+        signup.show();
+        signup.setResizable(false);
+
+
+        //entering the values
         try {
             //Get the values from the UI
             //Enter the id
