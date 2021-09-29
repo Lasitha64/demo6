@@ -80,7 +80,7 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="add" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="593.0" layoutY="503.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="109.0" styleClass="btnback" text="Add">
+        <Button fx:id="add" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="593.0" layoutY="503.0" mnemonicParsing="false" onAction="#add_to_db" prefHeight="43.0" prefWidth="109.0" styleClass="btnback" text="Add">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -92,7 +92,7 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="Next1" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="298.0" layoutY="503.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="204.0" styleClass="btnback" text="Veiw Sales Journal">
+        <Button fx:id="VeiwSalesJournal" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="298.0" layoutY="503.0" mnemonicParsing="false" onAction="#move_to_p" prefHeight="43.0" prefWidth="204.0" styleClass="btnback" text="Veiw Sales Journal">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
