@@ -22,14 +22,14 @@
         </Button>
           <TableView layoutX="27.0" layoutY="108.0" prefHeight="384.0" prefWidth="746.0">
               <columns>
-                  <TableColumn prefWidth="92.0" text="Date" />
-                  <TableColumn prefWidth="129.0" text="Discription" />
-                  <TableColumn prefWidth="40.0" text="LF(Ledger Forlio)" />
-                  <TableColumn prefWidth="110.0" text="Value" />
-            <TableColumn prefWidth="92.0" text="Date" />
-            <TableColumn prefWidth="129.0" text="Discription" />
-            <TableColumn prefWidth="40.0" text="LF(Ledger Forlio)" />
-            <TableColumn prefWidth="110.0" text="Value" />
+                  <TableColumn fx:id="DateCr" prefWidth="92.0" text="Date" />
+                  <TableColumn fx:id="DiscriptionCr" prefWidth="129.0" text="Discription" />
+                  <TableColumn fx:id="LFcr" prefWidth="40.0" text="LF(Ledger Forlio)" />
+                  <TableColumn fx:id="ValueCr" prefWidth="110.0" text="Value" />
+            <TableColumn fx:id="DateDr" prefWidth="92.0" text="Date" />
+            <TableColumn fx:id="DiscriptionDr" prefWidth="129.0" text="Discription" />
+            <TableColumn fx:id="LFdr" prefWidth="40.0" text="LF(Ledger Forlio)" />
+            <TableColumn fx:id="ValueDr" prefWidth="110.0" text="Value" />
               </columns>
           </TableView>
     </children>

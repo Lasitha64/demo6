@@ -68,7 +68,7 @@
                 </VBox>
             </children>
         </Pane>
-        <Button fx:id="btn_back" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="96.0" layoutY="503.0" mnemonicParsing="false" onAction="#back_to_b" prefHeight="43.0" prefWidth="102.0" styleClass="btnback" text="Back">
+        <Button fx:id="btn_back" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="96.0" layoutY="503.0" mnemonicParsing="false" onAction="#move_to_b" prefHeight="43.0" prefWidth="102.0" styleClass="btnback" text="Back">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -80,7 +80,7 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="Next" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="593.0" layoutY="503.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="109.0" styleClass="btnback" text="Add">
+        <Button fx:id="add" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="593.0" layoutY="503.0" mnemonicParsing="false" onAction="#add_to_database" prefHeight="43.0" prefWidth="109.0" styleClass="btnback" text="Add">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -92,7 +92,7 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="Next1" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="291.0" layoutY="503.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="218.0" styleClass="btnback" text="Veiw General Journal">
+        <Button fx:id="VeiwGeneralJournal" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="291.0" layoutY="503.0" mnemonicParsing="false" onAction="#move_to_o" prefHeight="43.0" prefWidth="218.0" styleClass="btnback" text="Veiw General Journal">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>

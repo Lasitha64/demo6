@@ -31,7 +31,7 @@
         </Button>
         <Pane layoutX="190.0" layoutY="102.0" prefHeight="361.0" prefWidth="438.0" style="-fx-background-color: #1d71e8;">
             <children>
-                <Button fx:id="Next11" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="66.0" layoutY="14.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="298.0" styleClass="btnback" text="Cash Book" textAlignment="CENTER">
+                <Button fx:id="CashBook" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="66.0" layoutY="14.0" mnemonicParsing="false" onAction="#move_to_c" prefHeight="43.0" prefWidth="298.0" styleClass="btnback" text="Cash Book" textAlignment="CENTER">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -39,7 +39,7 @@
                         <Insets right="100.0" />
                     </padding>
                 </Button>
-                <Button fx:id="Next111" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="66.0" layoutY="148.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="298.0" styleClass="btnback" text="Sales Journal">
+                <Button fx:id="SalesJournal" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="66.0" layoutY="148.0" mnemonicParsing="false" onAction="#move_to_f" prefHeight="43.0" prefWidth="298.0" styleClass="btnback" text="Sales Journal">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -47,7 +47,7 @@
                         <Insets right="90.0" />
                     </padding>
                 </Button>
-                <Button fx:id="Next1111" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="66.0" layoutY="214.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="298.0" styleClass="btnback" text="Purchase Journal">
+                <Button fx:id="PurchaseJournal" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="66.0" layoutY="214.0" mnemonicParsing="false" onAction="#move_to_g" prefHeight="43.0" prefWidth="298.0" styleClass="btnback" text="Purchase Journal">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -55,7 +55,7 @@
                         <Insets right="75.0" />
                     </padding>
                 </Button>
-            <Button fx:id="Next112" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="66.0" layoutY="81.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="298.0" styleClass="btnback" text="General Journal" textAlignment="CENTER">
+            <Button fx:id="GeneralJournal" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="66.0" layoutY="81.0" mnemonicParsing="false" onAction="#move_to_d" prefHeight="43.0" prefWidth="298.0" styleClass="btnback" text="General Journal" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -63,7 +63,7 @@
                   <Insets right="75.0" />
                </padding>
             </Button>
-            <Button fx:id="Next113" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="66.0" layoutY="283.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="298.0" styleClass="btnback" text="Profit Or Loss Account" textAlignment="CENTER">
+            <Button fx:id="POL" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="66.0" layoutY="283.0" mnemonicParsing="false" onAction="#move_to_e" prefHeight="43.0" prefWidth="298.0" styleClass="btnback" text="Profit Or Loss Account" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
