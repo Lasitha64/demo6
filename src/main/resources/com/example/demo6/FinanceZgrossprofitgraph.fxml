@@ -18,7 +18,7 @@
                 <Font name="System Bold" size="36.0" />
             </font>
         </Label>
-        <Button fx:id="Back" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="99.0" layoutY="525.0" mnemonicParsing="false" onAction="#go_to_j" prefHeight="43.0" prefWidth="111.0" styleClass="btnback" text="Back">
+        <Button fx:id="Back" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="108.0" layoutY="525.0" mnemonicParsing="false" onAction="#go_to_j" prefHeight="43.0" prefWidth="111.0" styleClass="btnback" text="Back">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -37,10 +37,10 @@
         </Button>
         <LineChart layoutX="18.0" layoutY="100.0" prefHeight="400.0" prefWidth="774.0">
             <xAxis>
-                <CategoryAxis side="BOTTOM" />
+                <CategoryAxis fx:id="month" side="BOTTOM" tickLabelFill="WHITE" />
             </xAxis>
             <yAxis>
-                <NumberAxis side="LEFT" tickLabelFill="WHITE" />
+                <NumberAxis fx:id="rupees" side="LEFT" tickLabelFill="WHITE" />
             </yAxis>
         </LineChart>
     </children>
