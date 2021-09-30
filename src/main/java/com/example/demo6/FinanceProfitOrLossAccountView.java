@@ -39,7 +39,7 @@ public class FinanceProfitOrLossAccountView {
         Stage signup = new Stage();
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("XXX.fxml"));
+            root = FXMLLoader.load(getClass().getResource("FinanceMain.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }

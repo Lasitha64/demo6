@@ -38,11 +38,11 @@ public class FinanceGeneralJournalView {
 
     @FXML
     void back_to_a(ActionEvent event) {
-        back.getScene().getWindow().hide();
+        btn_back1.getScene().getWindow().hide();
         Stage signup = new Stage();
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("FinanceProfitGraphs.fxml"));
+            root = FXMLLoader.load(getClass().getResource("FinanceMain.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -56,11 +56,11 @@ public class FinanceGeneralJournalView {
 
     @FXML
     void back_to_n(ActionEvent event) {
-        btn_back1.getScene().getWindow().hide();
+        back.getScene().getWindow().hide();
         Stage signup = new Stage();
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("FinanceProfitGraphs.fxml"));
+            root = FXMLLoader.load(getClass().getResource("FinanceJournals.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }

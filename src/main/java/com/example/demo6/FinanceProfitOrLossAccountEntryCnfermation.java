@@ -44,6 +44,9 @@ public class FinanceProfitOrLossAccountEntryCnfermation {
     private Button Add;
 
     @FXML
+    private Button POLview;
+
+    @FXML
     void Add_to_db(ActionEvent event) {
 
     }
@@ -68,6 +71,24 @@ public class FinanceProfitOrLossAccountEntryCnfermation {
 
     @FXML
     void get_date(ActionEvent event) {
+
+    }
+
+    @FXML
+    void move_to_i(ActionEvent event) {
+        POLview.getScene().getWindow().hide();
+        Stage signup = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("FinanceProfitOrLossAccountView.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("stylesheet/Finance.css");
+        signup.setScene(scene);
+        signup.show();
+        signup.setResizable(false);
 
     }
 
