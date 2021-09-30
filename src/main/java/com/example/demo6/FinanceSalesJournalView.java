@@ -47,7 +47,7 @@ public class FinanceSalesJournalView {
             e.printStackTrace();
         }
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("stylesheet/Finance.css");
+        scene.getStylesheets().add(getClass().getResource("stylesheet/Finance.css").toExternalForm());
         signup.setScene(scene);
         signup.show();
         signup.setResizable(false);
@@ -65,7 +65,7 @@ public class FinanceSalesJournalView {
             e.printStackTrace();
         }
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("stylesheet/Finance.css");
+        scene.getStylesheets().add(getClass().getResource("stylesheet/Finance.css").toExternalForm());
         signup.setScene(scene);
         signup.show();
         signup.setResizable(false);
