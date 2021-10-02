@@ -56,7 +56,9 @@ public class AddNewStock implements Initializable{
 
     MongoCollection<Document> LubricantCollection;
     MongoCollection<Document> ItemCollection;
-    MongoCollection<Document> SparePartsCollection;
+    MongoCollection<Document> LubricantAddReportCollection;
+    MongoCollection<Document> ItemAddReportCollection;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -67,11 +69,11 @@ public class AddNewStock implements Initializable{
         // get collection
         LubricantCollection = database.getCollection("Lubricant");
         ItemCollection = database.getCollection("Item");
-        SparePartsCollection = database.getCollection("SpareParts");
+        LubricantAddReportCollection = database.getCollection("LubricantAddReport");
+        ItemAddReportCollection = database.getCollection("ItemAddReport");
 
         choiceBox.getItems().add("LUBRICANTS");
         choiceBox.getItems().add("OTHER ITEMS");
-        choiceBox.getItems().add("SPARE PARTS");
     }
 
     @FXML
@@ -95,19 +97,15 @@ public class AddNewStock implements Initializable{
                     String choicetxt = choiceBox.getValue(), idfldText = idfld.getText(), namefldText = namefld.getText(), quantityfldText = quantityfld.getText(), pricefldText = pricefld.getText(), datefldText = datefld.getValue().toString(), DescipfldText = Descipfld.getText();
                     if (Objects.equals(choiceBox.getValue(), "LUBRICANTS")) {
                         insertLubricant(LubricantCollection,choicetxt, idfldText, namefldText, quantityfldText, pricefldText, datefldText, DescipfldText);
+                        insertLubricantAddReport(LubricantAddReportCollection,choicetxt, idfldText, namefldText, quantityfldText, pricefldText, datefldText, DescipfldText);
                     }
 
 
                     String choicetxt1 = choiceBox.getValue(), idfldText1 = idfld.getText(), namefldText1 = namefld.getText(), quantityfldText1 = quantityfld.getText(), pricefldText1 = pricefld.getText(), datefldText1 = datefld.getValue().toString(), DescipfldText1 = Descipfld.getText();
                     if (Objects.equals(choiceBox.getValue(), "OTHER ITEMS")){
                         insertItem(ItemCollection, choicetxt1, idfldText1, namefldText1, quantityfldText1, pricefldText1, datefldText1, DescipfldText1);
+                        insertItemAddReport(ItemAddReportCollection,choicetxt1, idfldText1, namefldText1, quantityfldText1, pricefldText1, datefldText1, DescipfldText1);
                     }
-
-                    String choicetxt2 = choiceBox.getValue(), idfldText2 = idfld.getText(), namefldText2 = namefld.getText(), quantityfldText2 = quantityfld.getText(), pricefldText2 = pricefld.getText(), datefldText2 = datefld.getValue().toString(), DescipfldText2 = Descipfld.getText();
-                    if (Objects.equals(choiceBox.getValue(), "SPARE PARTS")){
-                        insertLSpareParts(SparePartsCollection, choicetxt2, idfldText2, namefldText2, quantityfldText2, pricefldText2, datefldText2, DescipfldText2);
-                    }
-
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -144,18 +142,30 @@ public class AddNewStock implements Initializable{
         ab.display("Success","Data Inserted Successfully!");
     }
 
-    private void insertLSpareParts(MongoCollection<Document> sparepartsCollection, String choicetxt2, String idfldText2, String namefldText2, String quantityfldText2, String pricefldText2, String datefldText2, String DescipfldText2) {
+    private void insertLubricantAddReport(MongoCollection<Document> lubricantaddreportCollection, String choicetxt, String idfldText, String namefldText, String quantityfldText, String pricefldText, String datefldText, String DescipfldText) {
 
         Document item = new Document("_id", new ObjectId())
-                .append("Item_ID", idfldText2)
-                .append("Item_Name", namefldText2)
-                .append("Quantity", quantityfldText2)
-                .append("Price", pricefldText2)
-                .append("Date", datefldText2)
-                .append("Description", DescipfldText2);
-        sparepartsCollection.insertOne(item);
+                .append("Item_ID", idfldText)
+                .append("Item_Name", namefldText)
+                .append("Quantity", quantityfldText)
+                .append("Price", pricefldText)
+                .append("Date", datefldText)
+                .append("Description", DescipfldText);
+        lubricantaddreportCollection.insertOne(item);
         System.out.println("Connection S3");
-        ab.display("Success","Data Inserted Successfully!");
+    }
+
+    private void insertItemAddReport(MongoCollection<Document> itemaddreportCollection, String choicetxt1, String idfldText1, String namefldText1, String quantityfldText1, String pricefldText1, String datefldText1, String DescipfldText1) {
+
+        Document item = new Document("_id", new ObjectId())
+                .append("Item_ID", idfldText1)
+                .append("Item_Name", namefldText1)
+                .append("Quantity", quantityfldText1)
+                .append("Price", pricefldText1)
+                .append("Date", datefldText1)
+                .append("Description", DescipfldText1);
+        itemaddreportCollection.insertOne(item);
+        System.out.println("Connection S3");
     }
 
     @FXML
