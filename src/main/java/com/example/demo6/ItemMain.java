@@ -1,5 +1,11 @@
 package com.example.demo6;
 
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,13 +14,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import org.bson.Document;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ItemMain implements Initializable {
 
-
+    private String itid;
+    private String itname;
+    private String itqunt;
+    private MongoClient database;
+    MongoCollection<Document> ItemCollection;
 
     @FXML
     private TextField search_fld;
@@ -76,15 +88,47 @@ public class ItemMain implements Initializable {
 
     public void showItem() {
 
-        ObservableList<Item> list = getCrusherList();
+        ObservableList<Item> list = getItemList();
 
-        cid.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getId()));
-        cname.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Name"));
-        cquan.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Quantity"));
-        cprice.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Price"));
-        cdate.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Date"));
+        item_id.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getId()));
+        item_name.setCellValueFactory(new PropertyValueFactory<Item, String>("Item_Name"));
+        item_qunt.setCellValueFactory(new PropertyValueFactory<Item, String>("Quantity"));
 
-        CrusherParts.setItems(list);
+        StockItem.setItems(list);
+
+    }
+
+    private ObservableList<Item> getItemList() {
+        ObservableList<Item> attend = FXCollections.observableArrayList();
+
+        //initialize database connection
+        Database databaseController = new Database();
+        MongoDatabase database = databaseController.connectToDB("HerathCMD");
+        // get collection
+        ItemCollection = database.getCollection("Item");
+        MongoCursor<Document> cursor = ItemCollection.find().iterator();
+        try {
+
+            for (int i = 0; i < ItemCollection.count(); i++) {
+
+
+                Document doc = cursor.next();
+                itid = doc.getString("Item_ID");
+                //  System.out.println(cruid);
+                itname = doc.getString("Item_Name");
+                itqunt = doc.getString("Quantity");
+
+                attend.add(new Item(itid, itname, itqunt));
+
+            }
+            //  list = FXCollections.observableArrayList(attend);
+        } finally {
+//          close the connection
+            cursor.close();
+        }
+        return  attend;
+//      call the setTable method
+
 
     }
 
