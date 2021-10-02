@@ -18,6 +18,8 @@ public class Crusher {
         this.date = date;
     }
 
+
+
     public String getId() {
         return id;
     }

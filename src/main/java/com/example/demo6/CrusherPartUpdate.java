@@ -11,6 +11,8 @@ import com.mongodb.client.result.DeleteResult;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +29,7 @@ import org.bson.conversions.Bson;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -79,7 +82,7 @@ public class CrusherPartUpdate implements Initializable {
     private TextField tf_price;
 
     @FXML
-    private TextField tf_date1;
+    private DatePicker tf_date;
 
 
     @FXML
@@ -91,9 +94,16 @@ public class CrusherPartUpdate implements Initializable {
     @FXML
     private Button btn_back;
 
+    @FXML
+    private TextField tf_searchbyname;
+
+    @FXML
+    private Button btn_searchbyname;
+
     private AlertBox ab;
 
     public ObservableList<Crusher> list;
+    public ObservableList<Crusher> searchlist;
 
    // public List attend = new ArrayList();
 
@@ -102,6 +112,7 @@ public class CrusherPartUpdate implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //TODO
         showCrusher();
+        searchpart();
 
     }
 
@@ -185,12 +196,12 @@ public class CrusherPartUpdate implements Initializable {
         tf_name.setText(crusher.getName());
         tf_quan.setText(crusher.getQuantity());
         tf_price.setText(crusher.getPrice());
-        tf_date1.setText(crusher.getDate());
+        tf_date.setValue(LocalDate.parse(crusher.getDate().toString()));
 
     }
     @FXML
     void Update(ActionEvent event) {
-        if (tf_id.getText().isEmpty() || tf_name.getText().isEmpty() || tf_quan.getText().isEmpty() || tf_price.getText().isEmpty() || tf_date1.getText().isEmpty()) {
+        if (tf_id.getText().isEmpty() || tf_name.getText().isEmpty() || tf_quan.getText().isEmpty() || tf_price.getText().isEmpty() || tf_date.getValue().toString().isEmpty()) {
             ab.display("Error", " Input Fields can't be empty");
         } else if (!tf_quan.getText().matches("[0-9]+")) {
             ab.display("Error", "Quantity needs to be a number");
@@ -202,7 +213,7 @@ public class CrusherPartUpdate implements Initializable {
                     NameText = tf_name.getText(),
                     QuantityText = tf_quan.getText(),
                     PriceText = tf_price.getText(),
-                    DateText = tf_date1.getText();
+                    DateText = tf_date.getValue().toString();
 
             System.out.println(Stock_ID + NameText + QuantityText + PriceText + DateText);
 
@@ -229,6 +240,47 @@ public class CrusherPartUpdate implements Initializable {
 
 
         }
+
+    }
+    @FXML
+    void searchpart() {
+
+        ObservableList<Crusher>  searchlist = getCrusherList();
+
+        cid.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getId()));
+        cname.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Name"));
+        cquan.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Quantity"));
+        cprice.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Price"));
+        cdate.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Date"));
+
+        CrusherParts.setItems(searchlist);
+
+        FilteredList<Crusher> filterdata = new FilteredList<>(searchlist, b->true);
+        tf_searchbyname.textProperty().addListener((observable, oldValue, newValue)->{
+            filterdata.setPredicate(crusher -> {
+                if(newValue == null || newValue.isEmpty()){
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if(crusher.getDate().toString().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;
+                }else if(crusher.getName().toLowerCase().indexOf(lowerCaseFilter)!= -1){
+                    return true;
+                }else if(crusher.getId().toString().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;
+                }else if(crusher.getPrice().toString().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;
+                }else if(crusher.getQuantity().toString().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;
+                }else{
+                    return false;
+                }
+            });
+        });
+        SortedList<Crusher> sortedData = new SortedList<>(filterdata);
+        sortedData.comparatorProperty().bind(CrusherParts.comparatorProperty());
+        CrusherParts.setItems(sortedData);
 
     }
 }

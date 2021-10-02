@@ -1,5 +1,10 @@
 package com.example.demo6;
 
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import java.net.*;
+import javax.swing.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,9 +15,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class crusherview  {
@@ -20,6 +30,8 @@ public class crusherview  {
     private MainView main;
     private Stage stage;
     private Scene scene;
+    private HashMap<String , Object> map;
+    Database con;
 
     //start of attributes in crusher-view fxml
     @FXML
@@ -77,7 +89,15 @@ public class crusherview  {
     }
 
     @FXML
-    void Generate(ActionEvent event) {
+    void Generate(ActionEvent event) throws FileNotFoundException, JRException {
+        try {
+            File myFile = new File("C:\\Users\\MSI\\JaspersoftWorkspace\\test\\Invoice_1.Jasper");
+            Desktop.getDesktop().open(myFile);
+        } catch (IOException ex) {
+            // no application registered for PDFs
+        }
+
+      //  Report.createReport( con,map);
 
     }
 
