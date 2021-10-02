@@ -50,7 +50,7 @@ public class FinanceCashBookView {
     //************************************************************************************************************
     //DB connection
 
-    MongoCollection<Document> POLCollection;
+    MongoCollection<Document> CBCollection;
 
     @FXML
     public void initialize(){
@@ -59,7 +59,7 @@ public class FinanceCashBookView {
         MongoDatabase database = databaseController.connectToDB("HerathCMD");
 
         // get collection
-        POLCollection = database.getCollection("Finance Cash Book");
+        CBCollection = database.getCollection("Finance Cash Book");
     }
 
 

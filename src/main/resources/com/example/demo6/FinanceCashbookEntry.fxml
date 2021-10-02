@@ -71,11 +71,11 @@
                   <TextField fx:id="value" />
                         <HBox prefHeight="100.0" prefWidth="332.0">
                             <children>
-                                <RadioButton fx:id="Dr" mnemonicParsing="false" text="Debit" textFill="#fff8f8">
+                                <RadioButton fx:id="Dr" mnemonicParsing="false" onAction="#give_typeDr" text="Debit" textFill="#fff8f8">
                                     <toggleGroup>
                                         <ToggleGroup fx:id="Mtype" />
                                     </toggleGroup></RadioButton>
-                                <RadioButton fx:id="Cr" mnemonicParsing="false" text="Credit" textFill="#eeeeee" toggleGroup="$Mtype">
+                                <RadioButton fx:id="Cr" mnemonicParsing="false" onAction="#give_typeCr" text="Credit" textFill="#eeeeee" toggleGroup="$Mtype">
                                     <HBox.margin>
                                         <Insets left="100.0" />
                                     </HBox.margin>
