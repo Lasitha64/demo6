@@ -43,7 +43,7 @@ public class FinanceSalesJournalView {
     //************************************************************************************************************
     //DB connection
 
-    MongoCollection<Document> POLCollection;
+    MongoCollection<Document> SJCollection;
 
     @FXML
     public void initialize(){
@@ -52,7 +52,7 @@ public class FinanceSalesJournalView {
         MongoDatabase database = databaseController.connectToDB("HerathCMD");
 
         // get collection
-        POLCollection = database.getCollection("Finance Sales Journal");
+        SJCollection = database.getCollection("Finance Sales Journal");
     }
 
 

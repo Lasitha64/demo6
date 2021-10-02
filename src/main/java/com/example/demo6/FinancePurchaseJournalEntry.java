@@ -15,10 +15,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import java.io.IOException;
 
 public class FinancePurchaseJournalEntry {
+    @FXML
+    private TextField PJ_ID;
 
     @FXML
     private Label Description;
@@ -50,7 +53,7 @@ public class FinancePurchaseJournalEntry {
     //************************************************************************************************************
     //DB connection
 
-    MongoCollection<Document> POLCollection;
+    MongoCollection<Document> PJCollection;
 
     @FXML
     public void initialize(){
@@ -59,7 +62,7 @@ public class FinancePurchaseJournalEntry {
         MongoDatabase database = databaseController.connectToDB("HerathCMD");
 
         // get collection
-        POLCollection = database.getCollection("Finance Purchase Journal");
+        PJCollection = database.getCollection("Finance Purchase Journal");
     }
 
 
@@ -70,8 +73,46 @@ public class FinancePurchaseJournalEntry {
 
     @FXML
     void add_to_db(ActionEvent event) {
+        try {
 
+            //Auto increment
+//
+//            String GJ_id;
+//
+//            if (count==0){
+//                GJ_id = "1";
+//            }else{
+//                GJ_id = String.valueOf(count+1);
+//            }
+
+            //Get the values from the UI
+            //Enter the id
+            String PurchaseJournal_IDText = PJ_ID.getText() ,
+                    PJDateText = PJDate.getValue().toString() ,
+                    DisText = Description.getText() ,
+                    invoice_noText  = invoice_no.getText(),
+                    SupplierText  = Supplier.getText();
+            double total_valueText = Double.parseDouble(total_value.getText());
+            double ledger_pageText = Double.parseDouble(ledger_page.getText());
+            insertGeneralJournal(PJCollection, PurchaseJournal_IDText, PJDateText, DisText, invoice_noText, SupplierText, total_valueText, ledger_pageText);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+    private void insertGeneralJournal(MongoCollection<Document> PJCollection, String PurchaseJournal_IDText, String PJDateText, String DisText, String invoice_noText, String SupplierText, double total_valueText, double ledger_pageText) {
+        Document generator = new Document("_id", new ObjectId()).append("GeneralJournal_ID", PurchaseJournal_IDText)
+                .append("PJDate", PJDateText)
+                .append("ledger_page", ledger_pageText)
+                .append("Dis", DisText)
+                .append("invoice_no", invoice_noText)
+                .append("Supplier", SupplierText)
+                .append("total_value", total_valueText);
+        PJCollection.insertOne(generator);
+        System.out.println("Connection S3");
+    }
+
 
     @FXML
     void back_to_b(ActionEvent event) {

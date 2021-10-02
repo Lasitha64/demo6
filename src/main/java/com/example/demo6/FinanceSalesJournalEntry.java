@@ -15,10 +15,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import java.io.IOException;
 
 public class FinanceSalesJournalEntry {
+
+    @FXML
+    private TextField SJ_ID;
 
     @FXML
     private Label Description;
@@ -51,7 +55,7 @@ public class FinanceSalesJournalEntry {
     //************************************************************************************************************
     //DB connection
 
-    MongoCollection<Document> POLCollection;
+    MongoCollection<Document> SJCollection;
 
     @FXML
     public void initialize(){
@@ -60,7 +64,7 @@ public class FinanceSalesJournalEntry {
         MongoDatabase database = databaseController.connectToDB("HerathCMD");
 
         // get collection
-        POLCollection = database.getCollection("Finance Sales Journal");
+        SJCollection = database.getCollection("Finance Sales Journal");
     }
 
 
@@ -72,7 +76,34 @@ public class FinanceSalesJournalEntry {
 
     @FXML
     void add_to_db(ActionEvent event) {
+        try {
 
+            //Get the values from the UI
+            //Enter the id
+            String SalesJournal_IDText = SJ_ID.getText() ,
+                    SJDateText = SJDate.getValue().toString() ,
+                    DisText = Description.getText() ,
+                    invoice_noText  = invoice_no.getText(),
+                    customerText  = customer.getText();
+            double total_valueText = Double.parseDouble(total_value.getText());
+            double ledger_pageText = Double.parseDouble(ledger_page.getText());
+            insertGeneralJournal(SJCollection, SalesJournal_IDText, SJDateText, DisText, invoice_noText, customerText, total_valueText, ledger_pageText);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void insertGeneralJournal(MongoCollection<Document> SJCollection, String SalesJournal_IDText, String SJDateText, String DisText, String invoice_noText, String customerText, double total_valueText, double ledger_pageText) {
+        Document generator = new Document("_id", new ObjectId()).append("SalesJournal_ID", SalesJournal_IDText)
+                .append("SJDate", SJDateText)
+                .append("ledger_page", ledger_pageText)
+                .append("Dis", DisText)
+                .append("invoice_no", invoice_noText)
+                .append("customer", customerText)
+                .append("total_value", total_valueText);
+        SJCollection.insertOne(generator);
+        System.out.println("Connection S3");
     }
 
     @FXML

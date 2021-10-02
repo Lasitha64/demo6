@@ -20,7 +20,9 @@ import java.io.IOException;
 
 public class FinanceGeneralJournalEntry {
 
-    int count;
+ //   int count;
+    @FXML
+    private TextField GJ_ID;
 
     @FXML
     private TextField Description;
@@ -73,30 +75,33 @@ public class FinanceGeneralJournalEntry {
         try {
 
             //Auto increment
+//
+//            String GJ_id;
+//
+//            if (count==0){
+//                GJ_id = "1";
+//            }else{
+//                GJ_id = String.valueOf(count+1);
+//            }
 
-            String GJ_id;
-
-            if (count==0){
-                GJ_id = "1";
-            }else{
-                GJ_id = String.valueOf(count+1);
-            }
             //Get the values from the UI
             //Enter the id
-            String GeneralJournal_IDText = GJ_id ,
+            String GeneralJournal_IDText = GJ_ID.getText() ,
+                    GJDateText = GJDate.getValue().toString() ,
                     DisText = Description.getText() ,
                     VoNoText  = VoucherNo.getText();
             double DrText = Double.parseDouble(Debit.getText());
             double CrText = Double.parseDouble(Credit.getText());
-            insertGeneralJournal(GJCollection, GeneralJournal_IDText, DisText, VoNoText, DrText, CrText);
+            insertGeneralJournal(GJCollection, GeneralJournal_IDText, GJDateText, DisText, VoNoText, DrText, CrText);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void insertGeneralJournal(MongoCollection<Document> GJCollection, String GeneralJournal_IDText, String DisText, String VoNoText, double DrText, double CrText) {
+    private void insertGeneralJournal(MongoCollection<Document> GJCollection, String GeneralJournal_IDText, String GJDateText, String DisText, String VoNoText, double DrText, double CrText) {
         Document generator = new Document("_id", new ObjectId()).append("GeneralJournal_ID", GeneralJournal_IDText)
+                .append("GJDate", GJDateText)
                 .append("VoNo", VoNoText)
                 .append("Dis", DisText)
                 .append("Dr", DrText)

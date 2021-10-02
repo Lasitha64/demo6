@@ -20,7 +20,7 @@
         </Label>
         <Pane layoutX="96.0" layoutY="90.0" prefHeight="402.0" prefWidth="611.0" styleClass="formbox" stylesheets="@stylesheet/Finance.css">
             <children>
-                <TableView layoutX="9.0" layoutY="7.0" prefHeight="384.0" prefWidth="593.0">
+                <TableView fx:id="GJdis" layoutX="9.0" layoutY="7.0" prefHeight="384.0" prefWidth="593.0">
                     <columns>
                         <TableColumn fx:id="Date" prefWidth="115.0" text="Date" />
                         <TableColumn fx:id="VoucherNo" prefWidth="106.0" text="Voucher No" />
