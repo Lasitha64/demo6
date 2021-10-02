@@ -1,2 +1,3 @@
 # Project exclude paths
 /target/
+lib/jfoenix-8.0.8.jar
