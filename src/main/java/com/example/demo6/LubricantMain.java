@@ -24,7 +24,7 @@ public class LubricantMain {
 
     @FXML
     void Add(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("add-new-lub.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("add-new-Stock.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/add-new-lub.css").toExternalForm());

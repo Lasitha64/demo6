@@ -77,6 +77,7 @@ public class StockView {
     private MongoClient database;
 
     MongoCollection<Document> ItemCollection;
+    MongoCollection<Document> StockItemReportCollection;
 
     @FXML
 
@@ -87,6 +88,7 @@ public class StockView {
 
         // get collection
         ItemCollection = database.getCollection("Item");
+        StockItemReportCollection = database.getCollection("StockItemReport");
     }
 
     @FXML
