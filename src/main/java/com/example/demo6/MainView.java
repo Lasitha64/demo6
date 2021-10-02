@@ -1,6 +1,9 @@
 package com.example.demo6;
 
 import com.mongodb.client.MongoCollection;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,16 +11,24 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.bson.Document;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainView {
 
+    public Label lblTime;
+    public Label lblDate;
     private Stage stage;
     private Scene scene;
 
@@ -50,6 +61,19 @@ public class MainView {
 
 
     //start -> functions use in main-view fxml
+
+    public void initialize(){
+        lblDate.setText(new SimpleDateFormat("EEEE, MMMM dd yyyy").format(new Date()));
+        Timeline time=new Timeline(new KeyFrame(Duration.ZERO, e -> {
+                LocalTime currentTime=LocalTime.now();
+                lblTime.setText(currentTime.format(DateTimeFormatter.ofPattern("hh:mm:ss a")));//ISO_LOCAL_TIME.substring(0,8)
+            }),
+            new KeyFrame(Duration.seconds(1))
+        );
+        time.setCycleCount(Animation.INDEFINITE);
+        time.play();
+    }
+
     @FXML
     void adminaction(ActionEvent event) throws IOException {
 
