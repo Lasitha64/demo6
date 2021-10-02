@@ -2,6 +2,8 @@
 
 package com.example.demo6;
 
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.bson.Document;
 
 import java.io.IOException;
 
@@ -39,6 +42,28 @@ public class FinanceGeneralJournalEntry {
 
     @FXML
     private Button VeiwGeneralJournal;
+
+
+    //************************************************************************************************************
+    //DB connection
+
+    MongoCollection<Document> POLCollection;
+
+    @FXML
+    public void initialize(){
+        //initialize database connection
+        Database databaseController = new Database();
+        MongoDatabase database = databaseController.connectToDB("HerathCMD");
+
+        // get collection
+        POLCollection = database.getCollection("Finance General Journal");
+    }
+
+
+    MongoDatabase database;
+
+    //************************************************************************************************************
+
 
     @FXML
     void add_to_database(ActionEvent event) {

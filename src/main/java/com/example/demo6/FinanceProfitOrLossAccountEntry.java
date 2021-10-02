@@ -62,6 +62,9 @@ public class FinanceProfitOrLossAccountEntry {
     @FXML
     private Button Update_bn;
 
+
+    //************************************************************************************************************
+    //DB connection
     MongoCollection<Document> POLCollection;
 
     @FXML
@@ -71,54 +74,20 @@ public class FinanceProfitOrLossAccountEntry {
         MongoDatabase database = databaseController.connectToDB("HerathCMD");
 
         // get collection
-        POLCollection = database.getCollection("Profit or loss account");
+        POLCollection = database.getCollection("Finance Profit or loss account");
     }
 
 
     MongoDatabase database;
 
+   //*************************************************************************************************************
+
 
     @FXML
     void Updatedb(ActionEvent event) {
-        // update one document
-
-        String POL_ID = ID.getText();
-        double SalesText = Double.parseDouble(Sales.getText());
-        double Cost_of_salesText = Double.parseDouble(Credit.getText());
-        double other_incomeText = Double.parseDouble(other_income.getText());
-        double other_expensesText = Double.parseDouble(other_expenses.getText());
-
-        System.out.println(POL_ID + SalesText + Cost_of_salesText + other_incomeText + other_expensesText);
-
-        Bson filter = eq("Stock_ID", POL_ID);
-
-
-        Bson updateSales = set("Sales", SalesText);
-        Bson updateCost_of_sales = set("Cost_of_sales", Cost_of_salesText);
-        Bson updateother_income = set("other_income", other_incomeText);
-        Bson updateother_expenses = set("Prise", other_expensesText);
-
-
-
-        List<Bson> updatePredicates = new ArrayList<Bson>();
-        updatePredicates.add(updateSales);
-        updatePredicates.add(updateCost_of_sales);
-        updatePredicates.add(updateother_income);
-        updatePredicates.add(updateother_expenses);
-
-
-        //Bson updateOperation = set("Name", NameText);
-        /*.append("Name", NameText)
-                .append("Quantity", QuantityText)
-                .append("Prise", PriseText);*/
-
-        FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
-        Document newVersion = POLCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
-
-        System.out.println("Updating the Profit or loss account");
-        System.out.println(newVersion);
 
     }
+
 
     @FXML
     void back_to_b(ActionEvent event) {
@@ -138,14 +107,13 @@ public class FinanceProfitOrLossAccountEntry {
 
     }
 
+
     @FXML
     void deletedb(ActionEvent event) {
-        String IDText = ID.getText();
-        Bson filter = eq("ID", IDText);
-        DeleteResult result = POLCollection.deleteOne(filter);
-        System.out.println(result);
 
     }
+
+
 
     @FXML
     void move_to_h(ActionEvent event) {
