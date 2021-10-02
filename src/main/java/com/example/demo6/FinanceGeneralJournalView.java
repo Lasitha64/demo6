@@ -44,7 +44,7 @@ public class FinanceGeneralJournalView {
     //************************************************************************************************************
     //DB connection
 
-    MongoCollection<Document> POLCollection;
+    MongoCollection<Document> GJCollection;
 
     @FXML
     public void initialize(){
@@ -53,7 +53,7 @@ public class FinanceGeneralJournalView {
         MongoDatabase database = databaseController.connectToDB("HerathCMD");
 
         // get collection
-        POLCollection = database.getCollection("Finance General Journal");
+        GJCollection = database.getCollection("Finance General Journal");
     }
 
 

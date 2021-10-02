@@ -14,10 +14,13 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import java.io.IOException;
 
 public class FinanceGeneralJournalEntry {
+
+    int count;
 
     @FXML
     private TextField Description;
@@ -47,7 +50,7 @@ public class FinanceGeneralJournalEntry {
     //************************************************************************************************************
     //DB connection
 
-    MongoCollection<Document> POLCollection;
+    MongoCollection<Document> GJCollection;
 
     @FXML
     public void initialize(){
@@ -56,7 +59,7 @@ public class FinanceGeneralJournalEntry {
         MongoDatabase database = databaseController.connectToDB("HerathCMD");
 
         // get collection
-        POLCollection = database.getCollection("Finance General Journal");
+        GJCollection = database.getCollection("Finance General Journal");
     }
 
 
@@ -67,8 +70,42 @@ public class FinanceGeneralJournalEntry {
 
     @FXML
     void add_to_database(ActionEvent event) {
+        try {
 
+            //Auto increment
+
+            String GJ_id;
+
+            if (count==0){
+                GJ_id = "1";
+            }else{
+                GJ_id = String.valueOf(count+1);
+            }
+            //Get the values from the UI
+            //Enter the id
+            String GeneralJournal_IDText = GJ_id ,
+                    DisText = Description.getText() ,
+                    VoNoText  = VoucherNo.getText();
+            double DrText = Double.parseDouble(Debit.getText());
+            double CrText = Double.parseDouble(Credit.getText());
+            insertGeneralJournal(GJCollection, GeneralJournal_IDText, DisText, VoNoText, DrText, CrText);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+    private void insertGeneralJournal(MongoCollection<Document> GJCollection, String GeneralJournal_IDText, String DisText, String VoNoText, double DrText, double CrText) {
+        Document generator = new Document("_id", new ObjectId()).append("GeneralJournal_ID", GeneralJournal_IDText)
+                .append("VoNo", VoNoText)
+                .append("Dis", DisText)
+                .append("Dr", DrText)
+                .append("Cr", CrText);
+        GJCollection.insertOne(generator);
+        System.out.println("Connection S3");
+    }
+
+
 
     @FXML
     void move_to_b(ActionEvent event) {
