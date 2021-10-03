@@ -31,10 +31,7 @@ public class GeneratorParts {
             e.printStackTrace();
         }
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("stylesheet/main.css");
-        scene.getStylesheets().add("stylesheet/login.css");
-        scene.getStylesheets().add("stylesheet/GeneratorA.css");
-        scene.getStylesheets().add("stylesheet/GeneratorB.css");
+        scene.getStylesheets().add(getClass().getResource("stylesheet/Gene.css").toExternalForm());
         signup.setScene(scene);
         signup.show();
         signup.setResizable(false);
@@ -52,10 +49,7 @@ public class GeneratorParts {
             e.printStackTrace();
         }
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("stylesheet/main.css");
-        scene.getStylesheets().add("stylesheet/login.css");
-        scene.getStylesheets().add("stylesheet/GeneratorA.css");
-        scene.getStylesheets().add("stylesheet/GeneratorB.css");
+        scene.getStylesheets().add(getClass().getResource("stylesheet/Gene.css").toExternalForm());
         signup.setScene(scene);
         signup.show();
         signup.setResizable(false);
