@@ -20,9 +20,6 @@ public class Item {
         this.description = description;
     }
 
-    public Item(String itid, String itname, String itqunt) {
-    }
-
     public String getId() {
         return id;
     }
