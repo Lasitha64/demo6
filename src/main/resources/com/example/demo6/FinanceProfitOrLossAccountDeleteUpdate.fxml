@@ -67,7 +67,7 @@
                 </VBox>
             </children>
         </Pane>
-        <Button fx:id="btn_back" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="96.0" layoutY="503.0" mnemonicParsing="false" onAction="#back_to_b" prefHeight="43.0" prefWidth="102.0" styleClass="btnback" text="Back">
+        <Button fx:id="btn_back" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="35.0" layoutY="503.0" mnemonicParsing="false" onAction="#back_to_b" prefHeight="43.0" prefWidth="102.0" styleClass="btnback" text="Back">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -79,7 +79,7 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="Next" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="598.0" layoutY="503.0" mnemonicParsing="false" onAction="#move_to_h" prefHeight="43.0" prefWidth="109.0" styleClass="btnback" text="Next">
+        <Button fx:id="Next" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="653.0" layoutY="503.0" mnemonicParsing="false" onAction="#move_to_h" prefHeight="43.0" prefWidth="109.0" styleClass="btnback" text="Next">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -91,7 +91,7 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="delete_bn" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="428.0" layoutY="503.0" mnemonicParsing="false" onAction="#deletedb" prefHeight="43.0" prefWidth="122.0" styleClass="btnback" text="Delete">
+        <Button fx:id="delete_bn" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="497.0" layoutY="503.0" mnemonicParsing="false" onAction="#deletedb" prefHeight="43.0" prefWidth="122.0" styleClass="btnback" text="Delete">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -103,7 +103,7 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="Update_bn" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="263.0" layoutY="503.0" mnemonicParsing="false" onAction="#Updatedb" prefHeight="43.0" prefWidth="128.0" styleClass="btnback" text="Update">
+        <Button fx:id="Update_bn" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="336.0" layoutY="503.0" mnemonicParsing="false" onAction="#Updatedb" prefHeight="43.0" prefWidth="128.0" styleClass="btnback" text="Update">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -115,6 +115,18 @@
                 </ImageView>
             </graphic>
         </Button>
+      <Button fx:id="View" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="170.0" layoutY="503.0" mnemonicParsing="false" onAction="#View" prefHeight="43.0" prefWidth="128.0" styleClass="btnback" text="View">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView blendMode="MULTIPLY" fitHeight="25.0" fitWidth="28.0">
+               <image>
+                  <Image url="@img/add.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
     </children>
     <stylesheets>
         <URL value="@stylesheet/Finance.css" />

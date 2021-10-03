@@ -60,6 +60,10 @@ public class FinanceProfitOrLossAccountDeleteUpdate {
     @FXML
     private Button Update_bn;
 
+    @FXML
+    private Button View;
+
+
 
     //************************************************************************************************************
     //DB connection
@@ -79,6 +83,14 @@ public class FinanceProfitOrLossAccountDeleteUpdate {
     MongoDatabase database;
 
     //*************************************************************************************************************
+
+
+
+
+    @FXML
+    void View(ActionEvent event) {
+
+    }
 
 
     @FXML

@@ -47,12 +47,39 @@ public class FinanceProfitOrLossAccountKey {
 
         else {
             System.out.println("Wrong pin");
+
+            btn_back.getScene().getWindow().hide();
+            Stage signup = new Stage();
+            Parent root = null;
+            try {
+                root = FXMLLoader.load(getClass().getResource("FinanceMain.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("stylesheet/Finance.css").toExternalForm());
+            signup.setScene(scene);
+            signup.show();
+            signup.setResizable(false);
         }
 
     }
 
     @FXML
     void move_to_a(ActionEvent event) {
+        btn_back.getScene().getWindow().hide();
+        Stage signup = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("FinanceMain.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/Finance.css").toExternalForm());
+        signup.setScene(scene);
+        signup.show();
+        signup.setResizable(false);
 
     }
 
