@@ -97,8 +97,6 @@
         </VBox>
     </children>
     <stylesheets>
-        <URL value="@stylesheet/main.css" />
-        <URL value="@stylesheet/login.css" />
-        <URL value="@stylesheet/GeneratorA.css" />
+        <URL value="@stylesheet/Gene.css" />
     </stylesheets>
 </AnchorPane>
