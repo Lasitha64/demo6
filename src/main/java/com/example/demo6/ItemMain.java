@@ -25,7 +25,7 @@ public class ItemMain implements Initializable {
     private String itid;
     private String itname;
     private String itqunt;
-    private MongoClient database;
+    MongoClient database;
     MongoCollection<Document> ItemCollection;
 
     @FXML
