@@ -21,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.bson.Document;
 
@@ -189,6 +190,12 @@ public class ItemMain implements Initializable {
         SortedList<Item> sortedData = new SortedList<>(filterdata);
         sortedData.comparatorProperty().bind(StockItem.comparatorProperty());
         StockItem.setItems(sortedData);
+
+    }
+
+
+    @FXML
+    void handleMouseAction(MouseEvent event) {
 
     }
 

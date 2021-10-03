@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600" prefWidth="800" stylesheets="@stylesheet/add-new-lub.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.AddNewStock">
+<AnchorPane prefHeight="600" prefWidth="800" stylesheets="@stylesheet/add-new-Stock.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.AddNewStock">
     <children>
         <Label layoutX="154.0" prefHeight="75.0" prefWidth="490.0" text="ADD NEW STOCK" textFill="#000000e5">
             <font>

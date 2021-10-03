@@ -99,10 +99,10 @@ public class StockView implements Initializable {
 
     @FXML
     void Back(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("stcock-mngt.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("item-main.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/stock-mngt.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("stylesheet/item-main.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

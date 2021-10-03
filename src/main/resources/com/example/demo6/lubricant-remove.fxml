@@ -16,41 +16,32 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="694.0" prefWidth="971.0" stylesheets="@stylesheet/stock-view.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.StockView">
+<AnchorPane prefHeight="694.0" prefWidth="971.0" stylesheets="@stylesheet/lubricant-remove.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.LubricantRemove">
     <children>
-        <Label layoutX="345.0" layoutY="7.0" prefHeight="76.0" prefWidth="373.0" text="STOCK ITEM" textFill="#000000e5">
+        <Label layoutX="306.0" layoutY="7.0" prefHeight="73.0" prefWidth="360.0" text="LUBRICANT" textFill="#000000e5">
             <font>
                 <Font name="System Bold" size="48.0" />
             </font>
-         <graphic>
-            <ImageView blendMode="MULTIPLY" fitHeight="92.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@img/inventory.jpg" />
-               </image>
-            </ImageView>
-         </graphic>
-        </Label>
-        <TextField fx:id="search_fld" layoutX="429.0" layoutY="92.0" prefHeight="33.0" prefWidth="444.0" promptText="Enter Item Name" />
-        <Button fx:id="buttn_search" layoutX="878.0" layoutY="93.0" mnemonicParsing="false" onAction="#Search" prefHeight="24.0" prefWidth="25.0">
             <graphic>
-                <ImageView blendMode="MULTIPLY" fitHeight="25.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView blendMode="MULTIPLY" fitHeight="89.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@img/se.png" />
+                        <Image url="@img/lubricant.png" />
                     </image>
                 </ImageView>
             </graphic>
-        </Button>
+        </Label>
+        <TextField fx:id="search_fld" layoutX="440.0" layoutY="98.0" prefHeight="27.0" prefWidth="486.0" promptText="Enter Item Name" />
         <Pane layoutX="422.0" layoutY="138.0" prefHeight="477.0" prefWidth="518.0">
             <children>
                 <ScrollPane layoutY="1.0" prefHeight="477.0" prefWidth="522.0">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="464.0" prefWidth="522.0">
                             <children>
-                                <TableView fx:id="StockItem" layoutY="-2.0" onMouseClicked="#handleMouseAction" prefHeight="466.0" prefWidth="511.0">
+                                <TableView fx:id="StockLubricant" layoutY="-2.0" onMouseClicked="#handleMouseAction" prefHeight="466.0" prefWidth="511.0">
                                     <columns>
                                         <TableColumn fx:id="item_id" prefWidth="117.66668701171875" text="ITEM ID" />
                                         <TableColumn fx:id="item_name" prefWidth="208.0" text="ITEM NAME" />
-                                        <TableColumn fx:id="item_qunt" prefWidth="186.0" text="QUANTITY" />
+                                        <TableColumn fx:id="Item_qunt" prefWidth="186.0" text="QUANTITY" />
                                     </columns>
                                 </TableView>
                             </children>
@@ -60,7 +51,7 @@
             </children></Pane>
         <Pane layoutX="27.0" layoutY="139.0" prefHeight="476.0" prefWidth="381.0" styleClass="formbox">
             <children>
-                <VBox layoutX="4.0" layoutY="17.0" prefHeight="329.0" prefWidth="113.0" spacing="30.0">
+                <VBox layoutX="14.0" layoutY="17.0" prefHeight="329.0" prefWidth="113.0" spacing="35.0">
                     <children>
                         <Label alignment="CENTER" prefHeight="30.0" prefWidth="114.0" styleClass="label1" text="Item ID">
                             <font>
@@ -76,14 +67,6 @@
                             </VBox.margin>
                         </Label>
                         <Label alignment="CENTER" prefHeight="30.0" prefWidth="150.0" styleClass="label1" text="Quantity">
-                            <font>
-                                <Font name="System Bold" size="14.0" />
-                            </font>
-                            <VBox.margin>
-                                <Insets />
-                            </VBox.margin>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="168.0" styleClass="label1" text="Price">
                             <font>
                                 <Font name="System Bold" size="14.0" />
                             </font>
@@ -108,7 +91,7 @@
                             </VBox.margin>
                         </Label>
                     </children></VBox>
-                <VBox layoutX="142.0" layoutY="17.0" prefHeight="384.0" prefWidth="215.0" spacing="30.0">
+                <VBox layoutX="153.0" layoutY="17.0" prefHeight="384.0" prefWidth="215.0" spacing="35.0">
                     <children>
                         <TextField fx:id="idfld" prefHeight="30.0" promptText="Enter Item ID" styleClass="text-field1">
                             <font>
@@ -124,11 +107,6 @@
                             <font>
                                 <Font size="14.0" />
                             </font></TextField>
-                        <TextField fx:id="pricefld" prefHeight="30.0" promptText="Enter Unit Price" styleClass="text-field1">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </TextField>
                         <DatePicker fx:id="datefld" prefHeight="30.0" prefWidth="215.0" promptText="Select Date" styleClass="date-picker" />
                         <TextArea fx:id="Descipfld" prefHeight="90.0" prefWidth="355.0" promptText="Enter Description" styleClass="text-area">
                             <font>
@@ -136,11 +114,11 @@
                             </font>
                         </TextArea>
                     </children></VBox>
-                <Button fx:id="buttn_add" layoutX="144.0" layoutY="427.0" mnemonicParsing="false" onAction="#Update" prefHeight="35.0" styleClass="bttn2" text="ADD">
+                <Button fx:id="buttn_remove" layoutX="117.0" layoutY="408.0" mnemonicParsing="false" onAction="#Remove" prefHeight="35.0" styleClass="bttn2" text="REMOVE">
                     <graphic>
                         <ImageView blendMode="MULTIPLY" fitHeight="27.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@img/add.png" />
+                                <Image url="@img/minus-icon.jpg" />
                             </image>
                         </ImageView>
                     </graphic>

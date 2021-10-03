@@ -1,9 +1,12 @@
 package com.example.demo6;
 
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.FindOneAndUpdateOptions;
+import com.mongodb.client.model.ReturnDocument;
+import com.mongodb.client.model.Updates;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,18 +20,27 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
-public class LubricantMain implements Initializable {
+import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Updates.set;
+
+public class LubricantRemove implements Initializable {
 
     private String lubid;
     private String lubname;
@@ -36,7 +48,8 @@ public class LubricantMain implements Initializable {
     private String lubprice;
     private String lubdate;
     private String lubdes;
-    MongoClient database;
+    private AlertBox ab;
+    private MongoClient database;
     MongoCollection<Document> LubricantCollection;
 
     @FXML
@@ -52,56 +65,88 @@ public class LubricantMain implements Initializable {
     private TableColumn<Lubricant, String> item_name;
 
     @FXML
-    private TableColumn<Lubricant, String> item_qunt;
+    private TableColumn<Lubricant, String> Item_qunt;
+
+    @FXML
+    private TextField idfld;
+
+    @FXML
+    private TextField namefld;
+
+    @FXML
+    private TextField quantityfld;
+
+    @FXML
+    private DatePicker datefld;
+
+    @FXML
+    private TextArea Descipfld;
 
     @FXML
     private Button buttn_remove;
 
     @FXML
-    private Button buttn_dlt;
-
-    @FXML
-    private Button buttn_add;
-
-    @FXML
     private Button buutn_back;
-
-    public ObservableList<Lubricant> list;
-    public ObservableList<Lubricant> searchlist;
-
-    @FXML
-    void Add(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("stock-lubricant.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/stock-lubricant.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
-    }
 
     @FXML
     void Back(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("stcock-mngt.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("lubricant-main.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/stock-mngt.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("stylesheet/lubricant-main.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
 
     @FXML
-    void Delete(ActionEvent event) {
+    void Remove(ActionEvent event) {
 
+        if(idfld.getText().isEmpty() || namefld.getText().isEmpty() || quantityfld.getText().isEmpty() || datefld.getValue().toString().isEmpty() || Descipfld.getText().isEmpty()){
+            ab.display("Error"," Input Fields can't be empty");
+        }
+        else if(!quantityfld.getText().matches("[0-9]+")){
+            ab.display("Error","Quantity needs to be a number");
+        }
+        else {
+            // update one document
+            String idfldText = idfld.getText(), namefldText = namefld.getText(), quantityfldText = quantityfld.getText(), datefldText = datefld.getValue().toString(), DescipfldText = Descipfld.getText();
+
+            System.out.println(idfldText + namefldText + quantityfldText + datefldText + DescipfldText);
+
+            Bson filter = eq("Item_ID", idfldText);
+
+
+            Bson updateName = set("Item_Name", namefldText); // creating an array with a comment.
+            Bson updateQuantity = set("Quantity", quantityfldText); // using addToSet so no effect.
+            Bson updateDate = set("Date", datefldText);
+            Bson updateDescription = set("Description", DescipfldText);
+
+            List<Bson> updatePredicates = new ArrayList<Bson>();
+            updatePredicates.add(updateName);
+            updatePredicates.add(updateQuantity);
+            updatePredicates.add(updateDate);
+            updatePredicates.add(updateDescription);
+
+
+            //Bson updateOperation = set("Name", NameText);
+        /*.append("Name", NameText)
+                .append("Quantity", QuantityText)
+                .append("Prise", PriseText);*/
+            FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
+            Document newVersion = LubricantCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
+
+            System.out.println("Updating the stock");
+            System.out.println(newVersion);
+            ab.display("Success","Data Updated Successfully!");
+        }
     }
 
+
     @FXML
-    void Remove(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("lubricant-remove.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/lubricant-remove.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
+    void handleMouseAction(MouseEvent event) {
+        Lubricant lubricant = StockLubricant.getSelectionModel().getSelectedItem();
+        idfld.setText(lubricant.getId());
+        namefld.setText(lubricant.getName());
     }
 
     @Override
@@ -110,6 +155,7 @@ public class LubricantMain implements Initializable {
         //initialize database connection
         Database databaseController = new Database();
         MongoDatabase database = databaseController.connectToDB("HerathCMD");
+
         // get collection
         LubricantCollection = database.getCollection("Lubricant");
 
@@ -123,7 +169,7 @@ public class LubricantMain implements Initializable {
 
         item_id.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getId()));
         item_name.setCellValueFactory(new PropertyValueFactory<Lubricant, String>("Name"));
-        item_qunt.setCellValueFactory(new PropertyValueFactory<Lubricant, String>("Quantity"));
+        Item_qunt.setCellValueFactory(new PropertyValueFactory<Lubricant, String>("Quantity"));
 
         StockLubricant.setItems(list);
 
@@ -156,14 +202,13 @@ public class LubricantMain implements Initializable {
 //      call the setTable method
     }
 
-    @FXML
     void searchLubricant() {
 
         ObservableList<Lubricant>  searchlist = getLubricantList();
 
         item_id.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getId()));
         item_name.setCellValueFactory(new PropertyValueFactory<Lubricant, String>("Name"));
-        item_qunt.setCellValueFactory(new PropertyValueFactory<Lubricant, String>("Quantity"));
+        Item_qunt.setCellValueFactory(new PropertyValueFactory<Lubricant, String>("Quantity"));
 
         StockLubricant.setItems(searchlist);
 
@@ -191,6 +236,5 @@ public class LubricantMain implements Initializable {
         StockLubricant.setItems(sortedData);
 
     }
-
 
 }

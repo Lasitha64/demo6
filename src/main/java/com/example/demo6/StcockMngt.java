@@ -26,6 +26,9 @@ public class StcockMngt {
     private Button buttn_back;
 
     @FXML
+    private Button buttn_add;
+
+    @FXML
     void Back(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -61,6 +64,17 @@ public class StcockMngt {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/lubricant-main.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+    @FXML
+    void AddStock(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("add-new-Stock.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/add-new-Stock.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

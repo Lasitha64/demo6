@@ -170,10 +170,10 @@ public class AddNewStock implements Initializable{
 
     @FXML
     void Back(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("lubricant-main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("stcock-mngt.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/lubricant-main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("stylesheet/stock-mngt.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
