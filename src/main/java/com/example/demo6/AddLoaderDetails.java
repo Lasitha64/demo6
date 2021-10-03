@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.bson.Document;
@@ -21,25 +22,24 @@ public class AddLoaderDetails {
     private Scene scene;
     private AlertBox ab;
     @FXML
-    private TextField loaderid;
+    private TextField billNo;
 
     @FXML
-    private TextField brand;
-
-    @FXML
-    private TextField workingsite;
+    private TextField description;
 
     @FXML
     private Button addbutton;
 
     @FXML
-    private TextField condition;
+    private TextField amount;
 
     @FXML
-    private TextField regno;
+    private DatePicker date;
 
     @FXML
     private Button btn_back;
+
+
     private MongoClient database;
 
     MongoCollection<Document> LoaderCollection;
@@ -51,7 +51,7 @@ public class AddLoaderDetails {
         MongoDatabase database = databaseController.connectToDB("HerathCMD");
 
         // get collection
-        LoaderCollection = database.getCollection("Loader");
+        LoaderCollection = database.getCollection("UtilitiesFood");
     }
     @FXML
     void Back(ActionEvent event) throws IOException {
@@ -66,11 +66,11 @@ public class AddLoaderDetails {
     void adddetails(ActionEvent event) {
 
 
-        if(loaderid.getText().isEmpty() || brand.getText().isEmpty() || workingsite.getText().isEmpty() || condition.getText().isEmpty() || regno.getText().isEmpty()){
+        if(billNo.getText().isEmpty() || description.getText().isEmpty() || amount.getText().isEmpty() || date.getValue().toString().isEmpty()){
             ab.display("Error"," Input Fields can't be empty");
         }
-        else if(!regno.getText().matches("[0-9]+(\\.){0,1}[0-9]*")){
-            ab.display("Error","RegNo must be a Number");
+        else if(!amount.getText().matches("[0-9]+(\\.){0,1}[0-9]*")){
+            ab.display("Error","Amount must be a Number");
         }
 
         else {
@@ -79,8 +79,8 @@ public class AddLoaderDetails {
             try {
 
 
-                String loaderidText = loaderid.getText(), brandText = brand.getText(), workingsiteText = workingsite.getText(), conditionText = condition.getText(), regnoText = regno.getText();
-                insertLoader(LoaderCollection, loaderidText, brandText, workingsiteText, conditionText, regnoText);
+                String loaderidText = billNo.getText(), brandText = description.getText(), workingsiteText = amount.getText(), conditionText = date.getValue().toString();
+                insertLoader(LoaderCollection, loaderidText, brandText, workingsiteText, conditionText);
                 ab.display("Data Entry", " Data Entry Sucessfull");
 
             } catch (Exception e) {
@@ -89,14 +89,14 @@ public class AddLoaderDetails {
         }
 
     }
-    private void insertLoader(MongoCollection<Document> LoaderCollection, String loaderidText, String brandText, String workingsiteText, String conditionText, String regnoText) {
+    private void insertLoader(MongoCollection<Document> LoaderCollection, String loaderidText, String brandText, String workingsiteText, String conditionText) {
 
         Document loader = new Document("_id", new ObjectId())
-                .append("LoaderID", loaderidText)
-                .append("Brand", brandText)
-                .append("WorkingSite", workingsiteText)
-                .append("Condition", conditionText)
-                .append("Register No", regnoText);
+                .append("BillNo", loaderidText)
+                .append("Description", brandText)
+                .append("Amount", workingsiteText)
+                .append("Date", conditionText);
+
         LoaderCollection.insertOne(loader);
         System.out.println("Connection S3");
     }

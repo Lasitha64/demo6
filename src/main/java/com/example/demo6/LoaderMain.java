@@ -38,7 +38,7 @@ public class LoaderMain {
             Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("stylesheet/crusher-add.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("stylesheet/main.css").toExternalForm());
             stage.setScene(scene);
             stage.show();
 

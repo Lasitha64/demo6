@@ -12,21 +12,21 @@
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/Excav-main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.LoaderDetails">
 
     <children>
-        <Label alignment="CENTER" layoutX="16.0" layoutY="-228.0" prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/Excav-main.css" text="Loader Details" textAlignment="CENTER" textFill="#aaaaaade">
+        <Label alignment="CENTER" layoutX="89.0" layoutY="14.0" prefHeight="102.0" prefWidth="635.0" stylesheets="@stylesheet/Excav-main.css" text="Food Details" textAlignment="CENTER" textFill="#aaaaaade">
             <font>
                 <Font name="Britannic Bold" size="48.0" />
             </font>
          <graphic>
-            <ImageView blendMode="MULTIPLY" fitHeight="93.0" fitWidth="94.0">
+            <ImageView blendMode="MULTIPLY" fitHeight="75.0" fitWidth="86.0">
                <image>
-                  <Image url="@img/loader.png" />
+                  <Image url="@img/food.png" />
                </image>
             </ImageView>
          </graphic>
         </Label>
         <VBox layoutX="136.0" layoutY="121.0" prefHeight="406.0" prefWidth="518.0" styleClass="formbox">
             <children>
-                <Button fx:id="btn_add" alignment="CENTER" graphicTextGap="12.0" mnemonicParsing="false" onAction="#Add" prefHeight="46.0" prefWidth="249.0" text="Add Loader Details" textOverrun="WORD_ELLIPSIS" wrapText="true" VBox.vgrow="ALWAYS">
+                <Button fx:id="btn_add" alignment="CENTER" graphicTextGap="12.0" mnemonicParsing="false" onAction="#Add" prefHeight="46.0" prefWidth="249.0" text="Add Food Details" textOverrun="WORD_ELLIPSIS" wrapText="true" VBox.vgrow="ALWAYS">
                     <VBox.margin>
                         <Insets bottom="50.0" left="150.0" right="100.0" top="75.0" />
                     </VBox.margin>
@@ -41,7 +41,7 @@
                   </ImageView>
                </graphic>
                 </Button>
-                <Button fx:id="btn_gen" alignment="CENTER" mnemonicParsing="false" onAction="#Generate" prefHeight="46.0" prefWidth="249.0" text="View Loader Details" wrapText="true">
+                <Button fx:id="btn_gen" alignment="CENTER" mnemonicParsing="false" onAction="#Generate" prefHeight="46.0" prefWidth="249.0" text="View Food Details" wrapText="true">
                     <VBox.margin>
                         <Insets bottom="50.0" left="150.0" right="100.0" top="50.0" />
                     </VBox.margin>

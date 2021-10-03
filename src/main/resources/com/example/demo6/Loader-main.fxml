@@ -11,21 +11,21 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/Excav-main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.LoaderMain">
     <children>
-        <Label alignment="TOP_CENTER" layoutX="66.0" layoutY="14.0" prefHeight="88.0" prefWidth="675.0" text="Loader Management" textAlignment="CENTER" textFill="#aaaaaade">
+        <Label alignment="TOP_CENTER" layoutX="66.0" layoutY="14.0" prefHeight="88.0" prefWidth="675.0" text="Utilities Management" textAlignment="CENTER" textFill="#aaaaaade">
             <font>
                 <Font name="Britannic Bold" size="48.0" />
             </font>
          <graphic>
-            <ImageView blendMode="MULTIPLY" fitHeight="73.0" fitWidth="71.0">
+            <ImageView blendMode="MULTIPLY" fitHeight="84.0" fitWidth="90.0">
                <image>
-                  <Image url="@img/loader.png" />
+                  <Image url="@img/utilities.png" />
                </image>
             </ImageView>
          </graphic>
         </Label>
         <VBox layoutX="122.0" layoutY="107.0" prefHeight="384.0" prefWidth="519.0" styleClass="formbox" stylesheets="@stylesheet/Excav-main.css">
             <children>
-                <Button fx:id="btn_add1" alignment="CENTER" graphicTextGap="12.0" mnemonicParsing="false" onAction="#ed" prefHeight="7.0" prefWidth="239.0" text="Loader Details" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                <Button fx:id="btn_add1" alignment="CENTER" graphicTextGap="12.0" mnemonicParsing="false" onAction="#ed" prefHeight="48.0" prefWidth="236.0" text="Food" textOverrun="WORD_ELLIPSIS" wrapText="true">
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
@@ -33,14 +33,14 @@
                         <Insets left="150.0" top="50.0" />
                     </VBox.margin>
                <graphic>
-                  <ImageView blendMode="MULTIPLY" fitHeight="41.0" fitWidth="41.0">
+                  <ImageView blendMode="MULTIPLY" fitHeight="28.0" fitWidth="33.0">
                      <image>
-                        <Image url="@img/loader.png" />
+                        <Image url="@img/food.png" />
                      </image>
                   </ImageView>
                </graphic>
                 </Button>
-                <Button fx:id="btn_add" alignment="CENTER" graphicTextGap="12.0" mnemonicParsing="false" onAction="#sd" prefHeight="46.0" prefWidth="239.0" text="Service Details" textOverrun="WORD_ELLIPSIS" wrapText="true" VBox.vgrow="ALWAYS">
+                <Button fx:id="btn_add" alignment="CENTER" graphicTextGap="12.0" mnemonicParsing="false" onAction="#sd" prefHeight="46.0" prefWidth="239.0" text="Medicine" textOverrun="WORD_ELLIPSIS" wrapText="true" VBox.vgrow="ALWAYS">
                     <VBox.margin>
                         <Insets bottom="50.0" left="150.0" right="100.0" top="50.0" />
                     </VBox.margin>
@@ -48,27 +48,27 @@
                         <Font name="System Bold" size="17.0" />
                     </font>
                <graphic>
-                  <ImageView blendMode="MULTIPLY" fitHeight="24.0" fitWidth="35.0">
+                  <ImageView blendMode="MULTIPLY" fitHeight="34.0" fitWidth="34.0">
                      <image>
-                        <Image url="@img/service.png" />
+                        <Image url="@img/medicine.png" />
                      </image>
                   </ImageView>
                </graphic>
                 </Button>
-                <Button fx:id="btn_gen" alignment="CENTER" mnemonicParsing="false" onAction="#rd" prefHeight="46.0" prefWidth="239.0" text="Repair Details" wrapText="true">
+                <Button fx:id="btn_gen" alignment="CENTER" mnemonicParsing="false" onAction="#rd" prefHeight="46.0" prefWidth="239.0" text="Stationary" wrapText="true">
                     <VBox.margin>
                         <Insets bottom="50.0" left="150.0" right="100.0" />
                     </VBox.margin>
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
-                    <graphic>
-                        <ImageView blendMode="MULTIPLY" fitHeight="30.0" fitWidth="31.0">
-                            <image>
-                                <Image url="@img/repair.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
+               <graphic>
+                  <ImageView blendMode="MULTIPLY" fitHeight="36.0" fitWidth="37.0">
+                     <image>
+                        <Image url="@img/stationary.jfif" />
+                     </image>
+                  </ImageView>
+               </graphic>
                 </Button>
                 <Button fx:id="btn_sea" alignment="CENTER" mnemonicParsing="false" onAction="#e" prefHeight="46.0" prefWidth="239.0" text="Expenses" wrapText="true">
                     <VBox.margin>

@@ -12,10 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -39,34 +36,28 @@ public class ViewLoaderDetails {
     private TableView<?> CrusherParts;
 
     @FXML
-    private TableColumn<?, ?> L_id;
+    private TableColumn<?, ?> tbillNo;
 
     @FXML
-    private TableColumn<?, ?> L_brand;
+    private TableColumn<?, ?> tdescription;
 
     @FXML
-    private TableColumn<?, ?> L_regno;
+    private TableColumn<?, ?> tamount;
 
     @FXML
-    private TableColumn<?, ?> L_price;
+    private TableColumn<?, ?> tdate;
 
     @FXML
-    private TableColumn<?, ?> L_site;
+    private TextField billNo;
 
     @FXML
-    private TextField Lid;
+    private TextField description;
 
     @FXML
-    private TextField Lbrand;
+    private TextField amount;
 
     @FXML
-    private TextField Lregno;
-
-    @FXML
-    private TextField Lcondition;
-
-    @FXML
-    private TextField Lsite;
+    private DatePicker date;
 
     @FXML
     private Button btn_update;
@@ -100,36 +91,35 @@ public class ViewLoaderDetails {
     @FXML
     void Update(ActionEvent event){
 
-        if(Lid.getText().isEmpty() || Lbrand.getText().isEmpty() || Lregno.getText().isEmpty() || Lcondition.getText().isEmpty() || Lsite
-                .getText().isEmpty()){
+        if(billNo.getText().isEmpty() || description.getText().isEmpty() || amount.getText().isEmpty() || date.getValue().toString().isEmpty()){
             ab.display("Error"," Input Fields can't be empty");
         }
-        else if(!Lregno.getText().matches("[0-9]+")){
+        else if(!billNo.getText().matches("[0-9]+")){
             ab.display("Error","RegNo needs to be a number");
         }
         else {
 
-            String Stock_ID = Lid.getText(),
-                    BrandText = Lbrand.getText(),
-                    RegText = Lregno.getText(),
-                    CondiText = Lcondition.getText(),
-                    SiteText = Lsite.getText();
+            String Stock_ID = billNo.getText(),
+                    BrandText = description.getText(),
+                    RegText = amount.getText(),
+                    CondiText = date.getValue().toString();
+
 
             //   System.out.println(Stock_ID + NameText + QuantityText + PriseText);
 
-            Bson filter = eq("LoaderID", Stock_ID);
+            Bson filter = eq("BillNo", Stock_ID);
 
 
-            Bson updateName = set("Brand", BrandText); // creating an array with a comment.
-            Bson updateQuantity = set("WorkingSite", RegText); // using addToSet so no effect.
-            Bson updatePrise = set("Condition", CondiText);
-            Bson updateSite = set("Site", SiteText);// using addToSet so no effect.
+            Bson updateName = set("Description", BrandText); // creating an array with a comment.
+            Bson updateQuantity = set("Amount", RegText); // using addToSet so no effect.
+            Bson updatePrise = set("Date", CondiText);
+
 
             List<Bson> updatePredicates = new ArrayList<Bson>();
             updatePredicates.add(updateName);
             updatePredicates.add(updateQuantity);
             updatePredicates.add(updatePrise);
-            updatePredicates.add(updateSite);
+
 
 
             //Bson updateOperation = set("Name", NameText);
@@ -147,8 +137,8 @@ public class ViewLoaderDetails {
     @FXML
     void Delete(ActionEvent event){
 
-        String Stock_ID = L_id.getText();
-        Bson filter = eq("LoaderID", Stock_ID);
+        String Stock_ID = billNo.getText();
+        Bson filter = eq("BillNo", Stock_ID);
         DeleteResult result = LoaderCollection.deleteOne(filter);
         System.out.println(result);
 
