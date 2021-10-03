@@ -114,7 +114,7 @@ public class ItemMain implements Initializable {
 
                 Document doc = cursor.next();
                 itid = doc.getString("Item_ID");
-                //  System.out.println(cruid);
+                //  System.out.println(itid);
                 itname = doc.getString("Item_Name");
                 itqunt = doc.getString("Quantity");
 

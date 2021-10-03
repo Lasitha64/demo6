@@ -24,7 +24,7 @@ public class StockItemMain {
 
     @FXML
     void Add(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("add-new-item.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("item-main.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/add-new-item.css").toExternalForm());
