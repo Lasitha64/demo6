@@ -27,16 +27,7 @@
                 </ImageView>
             </graphic>
         </Label>
-        <TextField fx:id="search_fld" layoutX="349.0" layoutY="104.0" prefHeight="34.0" prefWidth="390.0" promptText="Enter Item Name" />
-        <Button fx:id="buttn_search" layoutX="739.0" layoutY="104.0" mnemonicParsing="false" onAction="#Search" prefHeight="24.0" prefWidth="25.0">
-            <graphic>
-                <ImageView blendMode="MULTIPLY" fitHeight="25.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@img/se.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
+        <TextField fx:id="search_fld" layoutX="349.0" layoutY="104.0" prefHeight="30.0" prefWidth="418.0" promptText="Enter Item Name" />
         <Pane layoutX="330.0" layoutY="142.0" prefHeight="447.0" prefWidth="462.0">
             <children>
                 <ScrollPane layoutY="1.0" prefHeight="451.0" prefWidth="462.0">

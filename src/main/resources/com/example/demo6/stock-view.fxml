@@ -46,7 +46,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="464.0" prefWidth="522.0">
                             <children>
-                                <TableView layoutY="-2.0" prefHeight="466.0" prefWidth="511.0">
+                                <TableView fx:id="StockItem" layoutY="-2.0" prefHeight="466.0" prefWidth="511.0">
                                     <columns>
                                         <TableColumn fx:id="item_id" prefWidth="117.66668701171875" text="ITEM ID" />
                                         <TableColumn fx:id="item_name" prefWidth="208.0" text="ITEM NAME" />
