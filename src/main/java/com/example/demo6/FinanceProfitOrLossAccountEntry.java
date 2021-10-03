@@ -178,19 +178,25 @@ public class FinanceProfitOrLossAccountEntry {
             double Cost_of_salesText = Double.parseDouble(Credit.getText());
             double other_incomeText = Double.parseDouble(other_income.getText());
             double other_expensesText = Double.parseDouble(other_expenses.getText());
-            insertPOLStock(POLCollection, POL_ID, SalesText, Cost_of_salesText, other_incomeText, other_expensesText);
+
+            double GrossProfit = SalesText - Cost_of_salesText;
+            double NetProfit = GrossProfit + other_incomeText - other_expensesText;
+
+            insertPOLStock(POLCollection, POL_ID, SalesText, Cost_of_salesText, other_incomeText, other_expensesText, GrossProfit, NetProfit);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void insertPOLStock(MongoCollection<Document> POLCollection, String POL_ID, double SalesText, double Cost_of_salesText, double other_incomeText, double other_expensesText) {
+    public void insertPOLStock(MongoCollection<Document> POLCollection, String POL_ID, double SalesText, double Cost_of_salesText, double other_incomeText, double other_expensesText, double GrossProfit, double NetProfit) {
         Document generator = new Document("_id", new ObjectId()).append("entry ID", POL_ID)
                 .append("Sales", SalesText)
                 .append("Cost_of_sales", Cost_of_salesText)
                 .append("other_income", other_incomeText)
-                .append("other_expenses", other_expensesText);
+                .append("other_expenses", other_expensesText)
+                .append("GrossProfit", GrossProfit)
+                .append("NetProfit", NetProfit);
         POLCollection.insertOne(generator);
         System.out.println("Connection S3");
 
