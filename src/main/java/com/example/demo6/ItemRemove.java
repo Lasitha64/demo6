@@ -1,9 +1,12 @@
 package com.example.demo6;
 
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.FindOneAndUpdateOptions;
+import com.mongodb.client.model.ReturnDocument;
+import com.mongodb.client.model.Updates;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,18 +20,27 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
-public class ItemMain implements Initializable {
+import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Updates.set;
+
+public class ItemRemove implements Initializable {
 
     private String itid;
     private String itname;
@@ -36,11 +48,12 @@ public class ItemMain implements Initializable {
     private String itprice;
     private String itdate;
     private String itdes;
-    MongoClient database;
-    MongoCollection<Document> ItemCollection;
 
     @FXML
     private TextField search_fld;
+
+    @FXML
+    private Button buttn_search;
 
     @FXML
     private TableView<Item> StockItem;
@@ -55,57 +68,104 @@ public class ItemMain implements Initializable {
     private TableColumn<Item, String> item_qunt;
 
     @FXML
+    private TextField idfld;
+
+    @FXML
+    private TextField namefld;
+
+    @FXML
+    private TextField quantityfld;
+
+    @FXML
+    private DatePicker datefld;
+
+    @FXML
+    private TextArea Descipfld;
+
+    @FXML
     private Button buttn_remove;
-
-    @FXML
-    private Button buttn_dlt;
-
-    @FXML
-    private Button buttn_add;
 
     @FXML
     private Button buutn_back;
 
-    public ObservableList<Item> list;
-    public ObservableList<Item> searchlist;
+    private AlertBox ab;
+    private MongoClient database;
+
+    MongoCollection<Document> ItemCollection;
 
     @FXML
     void Back(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("stcock-mngt.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("item-main.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/stock-mngt.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("stylesheet/item-main.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
 
     @FXML
-    void Remove(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("item-remove.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/item-remove.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
+    void Remove(ActionEvent event) {
+
+        if(idfld.getText().isEmpty() || namefld.getText().isEmpty() || quantityfld.getText().isEmpty() || datefld.getValue().toString().isEmpty() || Descipfld.getText().isEmpty()){
+            ab.display("Error"," Input Fields can't be empty");
+        }
+        else if(!quantityfld.getText().matches("[0-9]+")){
+            ab.display("Error","Quantity needs to be a number");
+        }
+        else {
+            // update one document
+            String idfldText = idfld.getText(), namefldText = namefld.getText(), quantityfldText = quantityfld.getText(), datefldText = datefld.getValue().toString(), DescipfldText = Descipfld.getText();
+
+            System.out.println(idfldText + namefldText + quantityfldText + datefldText + DescipfldText);
+
+            Bson filter = eq("Item_ID", idfldText);
+
+
+            Bson updateName = set("Item_Name", namefldText); // creating an array with a comment.
+            Bson updateQuantity = set("Quantity", quantityfldText); // using addToSet so no effect.
+            Bson updateDate = set("Date", datefldText);
+            Bson updateDescription = set("Description", DescipfldText);
+
+            List<Bson> updatePredicates = new ArrayList<Bson>();
+            updatePredicates.add(updateName);
+            updatePredicates.add(updateQuantity);
+            updatePredicates.add(updateDate);
+            updatePredicates.add(updateDescription);
+
+
+            //Bson updateOperation = set("Name", NameText);
+        /*.append("Name", NameText)
+                .append("Quantity", QuantityText)
+                .append("Prise", PriseText);*/
+            FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
+            Document newVersion = ItemCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
+
+            System.out.println("Updating the stock");
+            System.out.println(newVersion);
+            ab.display("Success","Data Updated Successfully!");
+        }
     }
 
     @FXML
-    void Delete(ActionEvent event) {
+    void Search(ActionEvent event) {
 
     }
 
     @FXML
-    void Update(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("stock-view.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/stock-view.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
+    void handleMouseAction(MouseEvent event) {
+        Item item = StockItem.getSelectionModel().getSelectedItem();
+        idfld.setText(item.getId());
+        namefld.setText(item.getName());
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        //initialize database connection
+        Database databaseController = new Database();
+        MongoDatabase database = databaseController.connectToDB("HerathCMD");
+
+        // get collection
+        ItemCollection = database.getCollection("Item");
 
         showItem();
         searchitem();
@@ -126,11 +186,6 @@ public class ItemMain implements Initializable {
     private ObservableList<Item> getItemList() {
         ObservableList<Item> attend = FXCollections.observableArrayList();
 
-        //initialize database connection
-        Database databaseController = new Database();
-        MongoDatabase database = databaseController.connectToDB("HerathCMD");
-        // get collection
-        ItemCollection = database.getCollection("Item");
         MongoCursor<Document> cursor = ItemCollection.find().iterator();
         try {
 
@@ -155,11 +210,10 @@ public class ItemMain implements Initializable {
 //      call the setTable method
     }
 
-
     @FXML
     void searchitem() {
 
-        ObservableList<Item>  searchlist = getItemList();
+        ObservableList<Item> searchlist = getItemList();
 
         item_id.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getId()));
         item_name.setCellValueFactory(new PropertyValueFactory<Item, String>("Name"));
@@ -191,5 +245,4 @@ public class ItemMain implements Initializable {
         StockItem.setItems(sortedData);
 
     }
-
 }

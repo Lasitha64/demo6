@@ -47,10 +47,10 @@ public class StcockMngt {
 
     @FXML
     void View(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("stock-item-main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("item-main.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/stock-item-main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("stylesheet/item-main.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
