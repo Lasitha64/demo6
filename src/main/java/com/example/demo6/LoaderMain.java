@@ -60,7 +60,7 @@ public class LoaderMain {
 
     @FXML
     void ed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("LoaderDetails.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FoodDetails.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
@@ -71,7 +71,7 @@ public class LoaderMain {
 
     @FXML
     void rd(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Loader-Repair.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("StationaryDetails.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
@@ -83,7 +83,7 @@ public class LoaderMain {
     @FXML
     void sd(ActionEvent event) throws IOException {
 
-            Parent root = FXMLLoader.load(getClass().getResource("Loader-service.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("MedicineDetails.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());

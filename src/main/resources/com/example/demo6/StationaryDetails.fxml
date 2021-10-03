@@ -8,20 +8,20 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/Excav-main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.LoaderService">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/Excav-main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.LoaderRepair">
 
     <children>
-        <Label alignment="CENTER" layoutX="66.0" layoutY="14.0" prefHeight="110.0" prefWidth="682.0" stylesheets="@stylesheet/Excav-main.css" text="Service Details" textAlignment="CENTER" textFill="#aaaaaade">
+        <Label alignment="CENTER" layoutX="66.0" layoutY="14.0" prefHeight="110.0" prefWidth="682.0" stylesheets="@stylesheet/Excav-main.css" text="Stationary Details" textAlignment="CENTER" textFill="#aaaaaade">
             <font>
                 <Font name="Britannic Bold" size="48.0" />
             </font>
-            <graphic>
-                <ImageView blendMode="MULTIPLY" fitHeight="46.0" fitWidth="94.0">
-                    <image>
-                        <Image url="@img/service.png" />
-                    </image>
-                </ImageView>
-            </graphic>
+         <graphic>
+            <ImageView blendMode="MULTIPLY" fitHeight="90.0" fitWidth="90.0">
+               <image>
+                  <Image url="@img/stationary.jfif" />
+               </image>
+            </ImageView>
+         </graphic>
         </Label>
         <Button fx:id="btn_back" layoutX="25.0" layoutY="539.0" mnemonicParsing="false" onAction="#Back" prefHeight="46.0" prefWidth="116.0" styleClass="btnback" text="Back" wrapText="true">
             <font>
@@ -37,7 +37,7 @@
         </Button>
         <Pane layoutX="93.0" layoutY="109.0" prefHeight="423.0" prefWidth="630.0" styleClass="formbox">
             <children>
-                <Button fx:id="btn_gen" alignment="CENTER" graphicTextGap="8.0" layoutX="197.0" layoutY="224.0" mnemonicParsing="false" onAction="#Generate" prefHeight="46.0" prefWidth="236.0" text="View Service Details" wrapText="true">
+                <Button fx:id="btn_gen" alignment="CENTER" graphicTextGap="8.0" layoutX="197.0" layoutY="223.0" mnemonicParsing="false" onAction="#Generate" prefHeight="46.0" prefWidth="264.0" text="View Stationary Details" wrapText="true">
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
@@ -49,7 +49,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="btn_add1" alignment="CENTER" graphicTextGap="12.0" layoutX="197.0" layoutY="73.0" mnemonicParsing="false" onAction="#Add" prefHeight="45.0" prefWidth="236.0" text="Add Service Details" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                <Button fx:id="btn_add1" alignment="CENTER" graphicTextGap="12.0" layoutX="197.0" layoutY="73.0" mnemonicParsing="false" onAction="#Add" prefHeight="46.0" prefWidth="264.0" text="Add Stationary Details" textOverrun="WORD_ELLIPSIS" wrapText="true">
                     <graphic>
                         <ImageView blendMode="MULTIPLY" fitHeight="35.0" fitWidth="38.0">
                             <image>
@@ -64,5 +64,6 @@
             </children>
         </Pane>
     </children>
+
 
 </AnchorPane>

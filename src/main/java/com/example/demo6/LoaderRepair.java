@@ -26,7 +26,7 @@ public class LoaderRepair {
 
     @FXML
     void Add(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("addLoaderepDetails.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("addStationary.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
@@ -37,7 +37,7 @@ public class LoaderRepair {
 
     @FXML
     void Back(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Loader-main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Utility-main.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
@@ -48,7 +48,7 @@ public class LoaderRepair {
 
     @FXML
     void Generate(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("viewLoaderRepDetails.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("viewStationaryDetails.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());

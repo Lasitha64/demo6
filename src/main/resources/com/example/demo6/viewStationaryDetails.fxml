@@ -15,10 +15,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/update.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.ViewLoaderServiceDetails">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/update.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.ViewStationaryDetails">
 
     <children>
-        <Label layoutX="182.0" layoutY="14.0" prefHeight="78.0" prefWidth="494.0" text="View Service Details" textFill="#aaaaaae5">
+        <Label layoutX="121.0" layoutY="14.0" prefHeight="78.0" prefWidth="558.0" text="View Stationary Details" textFill="#aaaaaae5">
             <font>
                 <Font name="Britannic Bold" size="48.0" />
             </font>
@@ -36,8 +36,8 @@
                     <columns>
                         <TableColumn fx:id="L_id" prefWidth="52.00000077486038" text="ID" />
                         <TableColumn fx:id="L_description" prefWidth="204.79999923706055" text="Description" />
-                        <TableColumn fx:id="L_date" prefWidth="101.59991455078125" text="Date" />
                         <TableColumn fx:id="L_price" prefWidth="100.800048828125" text="Price" />
+                        <TableColumn fx:id="L_date" prefWidth="101.59991455078125" text="Date" />
                     </columns>
                 </TableView>
             </content>
@@ -46,7 +46,7 @@
             <children>
                 <VBox layoutX="14.0" layoutY="14.0" prefHeight="294.0" prefWidth="102.0" spacing="25.0">
                     <children>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="Loader ID">
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="Bill No">
                             <font>
                                 <Font name="Agency FB Bold" size="11.0" />
                             </font>
@@ -56,17 +56,17 @@
                                 <Font name="Agency FB Bold" size="11.0" />
                             </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="Date">
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="Price">
                             <font>
-                                <Font name="Agency FB Bold" size="11.0" />
+                                <Font name="Agency FB Bold" size="10.0" />
                             </font>
                             <VBox.margin>
                                 <Insets top="25.0" />
                             </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="Price">
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="Date">
                             <font>
-                                <Font name="Agency FB Bold" size="10.0" />
+                                <Font name="Agency FB Bold" size="11.0" />
                             </font>
                             <VBox.margin>
                                 <Insets top="25.0" />
@@ -95,10 +95,10 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <TextField fx:id="Lid" layoutX="125.0" layoutY="25.0" prefHeight="30.0" prefWidth="159.0" promptText="Enter Loader ID" styleClass="text-field1" />
-                <TextField fx:id="Ldescription" layoutX="124.0" layoutY="74.0" prefHeight="71.0" prefWidth="159.0" promptText="Enter Description" styleClass="text-field1" />
-                <DatePicker fx:id="Ldate" layoutX="120.0" layoutY="161.0" prefHeight="30.0" prefWidth="159.0" promptText="Enter Date" styleClass="text-field1" />
-                <TextField fx:id="Lprice" layoutX="120.0" layoutY="241.0" prefHeight="30.0" prefWidth="159.0" promptText="Price" styleClass="text-field1" />
+                <TextField fx:id="Lid" layoutX="125.0" layoutY="25.0" prefHeight="30.0" prefWidth="159.0" styleClass="text-field1" />
+                <TextField fx:id="Ldescription" layoutX="124.0" layoutY="74.0" prefHeight="71.0" prefWidth="159.0" styleClass="text-field1" />
+                <DatePicker fx:id="Ldate" layoutX="125.0" layoutY="239.0" prefHeight="30.0" prefWidth="159.0" styleClass="text-field1" />
+                <TextField fx:id="Lprice" layoutX="125.0" layoutY="161.0" prefHeight="30.0" prefWidth="159.0" styleClass="text-field1" />
             </children>
         </Pane>
         <Button fx:id="btn_back" layoutX="14.0" layoutY="546.0" mnemonicParsing="false" onAction="#Back" prefHeight="39.0" prefWidth="95.0" styleClass="btnback" text="Back">

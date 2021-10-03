@@ -17,7 +17,7 @@ import org.bson.types.ObjectId;
 
 import java.io.IOException;
 
-public class AddLoaderDetails {
+public class AddFoodDetails {
     private Stage stage;
     private Scene scene;
     private AlertBox ab;
@@ -55,7 +55,7 @@ public class AddLoaderDetails {
     }
     @FXML
     void Back(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("LoaderDetails.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FoodDetails.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());

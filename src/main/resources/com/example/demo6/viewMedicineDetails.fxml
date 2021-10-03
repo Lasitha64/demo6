@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -14,10 +15,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/update.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.ViewLoaderDetails">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/update.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.ViewMedicineDetails">
 
     <children>
-        <Label layoutX="130.0" layoutY="14.0" prefHeight="78.0" prefWidth="539.0" text="View Loader Details" textFill="#aaaaaae5">
+        <Label layoutX="166.0" layoutY="14.0" prefHeight="78.0" prefWidth="548.0" text="View Medicine Details" textFill="#aaaaaae5">
             <font>
                 <Font name="Britannic Bold" size="48.0" />
             </font>
@@ -34,10 +35,9 @@
                 <TableView fx:id="CrusherParts" prefHeight="394.0" prefWidth="458.0">
                     <columns>
                         <TableColumn fx:id="L_id" prefWidth="52.00000077486038" text="ID" />
-                        <TableColumn fx:id="L_brand" prefWidth="91.19994735717773" text="Brand" />
-                        <TableColumn fx:id="L_regno" prefWidth="88.00006103515625" text="Reg.No" />
-                        <TableColumn fx:id="L_price" prefWidth="103.19996643066406" text="Condition" />
-                        <TableColumn fx:id="L_site" prefWidth="140.0" text="Site" />
+                        <TableColumn fx:id="L_description" prefWidth="204.79999923706055" text="Description" />
+                        <TableColumn fx:id="L_price" prefWidth="100.800048828125" text="Price" />
+                        <TableColumn fx:id="L_date" prefWidth="101.59991455078125" text="Date" />
                     </columns>
                 </TableView>
             </content>
@@ -46,43 +46,32 @@
             <children>
                 <VBox layoutX="14.0" layoutY="14.0" prefHeight="294.0" prefWidth="102.0" spacing="25.0">
                     <children>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="ID">
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="Bill No">
                             <font>
                                 <Font name="Agency FB Bold" size="11.0" />
                             </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="Brand">
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="Description">
                             <font>
                                 <Font name="Agency FB Bold" size="11.0" />
                             </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="Reg.No">
-                            <font>
-                                <Font name="Agency FB Bold" size="11.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="Condition">
-                            <font>
-                                <Font name="Agency FB Bold" size="11.0" />
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="Site">
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="Price">
                             <font>
                                 <Font name="Agency FB Bold" size="10.0" />
                             </font>
+                            <VBox.margin>
+                                <Insets top="25.0" />
+                            </VBox.margin>
                         </Label>
-                    </children>
-                    <padding>
-                        <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
-                    </padding>
-                </VBox>
-                <VBox alignment="TOP_CENTER" layoutX="116.0" layoutY="14.0" prefHeight="294.0" prefWidth="178.0" spacing="30.0">
-                    <children>
-                        <TextField fx:id="Lid" promptText="Enter Part ID" styleClass="text-field1" />
-                        <TextField fx:id="Lbrand" promptText="Enter Brand" styleClass="text-field1" />
-                        <TextField fx:id="Lregno" promptText="Enter Registration Number" styleClass="text-field1" />
-                        <TextField fx:id="Lcondition" promptText="Enter Condition" styleClass="text-field1" />
-                        <TextField fx:id="Lsite" promptText="Enter Site" styleClass="text-field1" />
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="Date">
+                            <font>
+                                <Font name="Agency FB Bold" size="11.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets top="25.0" />
+                            </VBox.margin>
+                        </Label>
                     </children>
                     <padding>
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
@@ -106,6 +95,10 @@
                         </ImageView>
                     </graphic>
                 </Button>
+                <TextField fx:id="Lid" layoutX="125.0" layoutY="25.0" prefHeight="30.0" prefWidth="159.0" styleClass="text-field1" />
+                <TextField fx:id="Ldescription" layoutX="124.0" layoutY="74.0" prefHeight="71.0" prefWidth="159.0" styleClass="text-field1" />
+                <DatePicker fx:id="Ldate" layoutX="120.0" layoutY="239.0" prefHeight="30.0" prefWidth="159.0" promptText="Enter Date" styleClass="text-field1" />
+                <TextField fx:id="Lprice" layoutX="125.0" layoutY="161.0" prefHeight="30.0" prefWidth="159.0" styleClass="text-field1" />
             </children>
         </Pane>
         <Button fx:id="btn_back" layoutX="14.0" layoutY="546.0" mnemonicParsing="false" onAction="#Back" prefHeight="39.0" prefWidth="95.0" styleClass="btnback" text="Back">
@@ -118,5 +111,6 @@
             </graphic>
         </Button>
     </children>
+
 
 </AnchorPane>

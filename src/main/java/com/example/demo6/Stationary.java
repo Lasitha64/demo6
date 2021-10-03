@@ -2,21 +2,22 @@ package com.example.demo6;
 
 import org.bson.codecs.pojo.annotations.BsonId;
 
-public class Food {
+public class Stationary {
+
     @BsonId
     private String billNo;
     private String description;
     private String amount;
     private String date;
 
-    public Food(String billNo, String description, String amount, String date) {
+    public Stationary(String billNo, String description, String amount, String date) {
         this.billNo = billNo;
         this.description = description;
         this.amount = amount;
         this.date = date;
     }
 
-    public Food() {
+    public Stationary() {
     }
 
     public String getBillNo() {

@@ -18,11 +18,10 @@ import org.bson.types.ObjectId;
 import java.io.IOException;
 import java.util.Date;
 
-public class AddLoaderServDetails {
+public class AddStationarydetails {
     private Stage stage;
     private Scene scene;
-    public AlertBox ab;
-
+    private AlertBox ab;
     @FXML
     private TextField Lid;
 
@@ -43,62 +42,68 @@ public class AddLoaderServDetails {
 
     private MongoClient database;
 
-    MongoCollection<Document> LoaderServiceDetailsCollection;
+    MongoCollection<Document> LoaderRepairDetailsCollection;
 
     @FXML
 
 
-    public void initialize(){
+    public void initialize() {
         //initialize database connection
         Database databaseController = new Database();
         MongoDatabase database = databaseController.connectToDB("HerathCMD");
 
         // get collection
-        LoaderServiceDetailsCollection = database.getCollection("LoaderServiceDetails");
+        LoaderRepairDetailsCollection = database.getCollection("UtilitiesStationary");
     }
 
 
     @FXML
     void Back(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Loader-service.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("StationaryDetails.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
     void addD(ActionEvent event) {
 
+
         if (Lid.getText().isEmpty() || Ldescription.getText().isEmpty() || Lprice.getText().isEmpty() || Ldate.getValue().toString().isEmpty()){
             ab.display("Error", " Input Fields can't be empty");
-        } else if (!Lprice.getText().matches("[0-9]+")) {
+        } else if (!Lprice.getText().matches("[0-9]+(\\.){0,1}[0-9]*")) {
             ab.display("Error", "Price needs to be a number");
         } else {
 
             try {
 
 
-                String LidText = Lid.getText(), LdescriptionText = Ldescription.getText(), epriceText = Lprice.getText(), LdateText = Ldate.getValue().toString();
-                insertLoaderServiceDetails(LoaderServiceDetailsCollection, LidText, LdescriptionText, LdateText, epriceText);
-                ab.display("Service Entry", "Service Data Entry Successfull");
+                String LidText = Lid.getText(), LdescriptionText = Ldescription.getText(), LdateText = Ldate.getValue().toString(), LpriceText = Lprice.getText();
+
+                insertLoaderRepairDetails(LoaderRepairDetailsCollection, LidText, LdescriptionText,LpriceText, LdateText);
+                ab.display("INSERT", " Data Entry Successfull");
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
         }
     }
-    private void insertLoaderServiceDetails(MongoCollection<Document> loaderServiceDetailsCollection, String LidText, String LdescriptionText, String LdateText, String LpriceText) {
 
-        Document loaderServiceDetails = new Document("_id", new ObjectId())
-                .append("LoaderID", LidText)
+    private void insertLoaderRepairDetails(MongoCollection<Document> LoaderRepairDetailsCollection, String
+            LidText, String LdescriptionText, String LdateText, String LpriceText) {
+
+        Document loaderRepairDetails = new Document("_id", new ObjectId())
+                .append("BillNo", LidText)
                 .append("Description", LdescriptionText)
-                .append("Date", LdateText)
-                .append("Price", LpriceText);
+                .append("Price", LdateText)
+                .append("Date", LpriceText);
 
 
-        loaderServiceDetailsCollection.insertOne(loaderServiceDetails);
-        System.out.println("Connection S3");
+        LoaderRepairDetailsCollection.insertOne(loaderRepairDetails);
+
     }
 }
 

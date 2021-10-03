@@ -1,11 +1,15 @@
 package com.example.demo6;
 
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.FindOneAndUpdateOptions;
 import com.mongodb.client.model.ReturnDocument;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.DeleteResult;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -24,28 +29,33 @@ import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Updates.set;
 
 
-public class ViewLoaderDetails {
+public class ViewFoodDetails {
 
     private Stage stage;
     private Scene scene;
     private AlertBox ab;
+    private String ttbillNo;
+    private String ttDescription;
+    private String ttAmount;
+    private String ttDate;
 
+    public ObservableList<Crusher> list;
     MongoCollection<Document> LoaderCollection;
 
     @FXML
-    private TableView<?> CrusherParts;
+    private TableView<Food> CrusherParts;
 
     @FXML
-    private TableColumn<?, ?> tbillNo;
+    private TableColumn<Food, String> tbillNo;
 
     @FXML
-    private TableColumn<?, ?> tdescription;
+    private TableColumn<Food, String> tdescription;
 
     @FXML
-    private TableColumn<?, ?> tamount;
+    private TableColumn<Food, String> tamount;
 
     @FXML
-    private TableColumn<?, ?> tdate;
+    private TableColumn<Food, String> tdate;
 
     @FXML
     private TextField billNo;
@@ -71,18 +81,62 @@ public class ViewLoaderDetails {
     @FXML
     public void initialize(){
         //initialize database connection
+        showCrusher();
+
+    }
+
+    private void showCrusher() {
+        ObservableList<Food> list = getCrusherList();
+
+        tbillNo.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getBillNo()));
+        tdescription.setCellValueFactory(new PropertyValueFactory<Food, String>("Description"));
+        tamount.setCellValueFactory(new PropertyValueFactory<Food, String>("Amount"));
+        tdate.setCellValueFactory(new PropertyValueFactory<Food, String>("Date"));
+
+
+        CrusherParts.setItems(list);
+    }
+
+    private ObservableList<Food> getCrusherList() {
+        ObservableList<Food> attend = FXCollections.observableArrayList();
+
+        //initialize database connection
         Database databaseController = new Database();
         MongoDatabase database = databaseController.connectToDB("HerathCMD");
-
         // get collection
-        LoaderCollection = database.getCollection("Loader");
+        LoaderCollection = database.getCollection("UtilitiesFood");
+        MongoCursor<Document> cursor = LoaderCollection.find().iterator();
+        try {
+
+            for (int i = 0; i < LoaderCollection.count(); i++) {
+
+
+                Document doc = cursor.next();
+                ttbillNo = doc.getString("BillNo");
+                //  System.out.println(cruid);
+                ttDescription = doc.getString("Description");
+                ttAmount = doc.getString("Amount");
+                ttDate = doc.getString("Date");
+
+
+                attend.add(new Food(ttbillNo, ttDescription, ttAmount, ttDate));
+
+            }
+            //  list = FXCollections.observableArrayList(attend);
+        } finally {
+//          close the connection
+            cursor.close();
+        }
+        return  attend;
+//      call the setTable method
+
     }
 
 
     @FXML
     void Back(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("Loader-main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Utility-main.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
@@ -94,8 +148,8 @@ public class ViewLoaderDetails {
         if(billNo.getText().isEmpty() || description.getText().isEmpty() || amount.getText().isEmpty() || date.getValue().toString().isEmpty()){
             ab.display("Error"," Input Fields can't be empty");
         }
-        else if(!billNo.getText().matches("[0-9]+")){
-            ab.display("Error","RegNo needs to be a number");
+        else if(!amount.getText().matches("[0-9]+(\\.){0,1}[0-9]*")){
+            ab.display("Error","Amount needs to be a number");
         }
         else {
 
@@ -129,10 +183,12 @@ public class ViewLoaderDetails {
             FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
             Document newVersion = LoaderCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
 
-            System.out.println("Updating the generator maintenence stock");
-            System.out.println(newVersion);
+            ab.display("Error","Data Updated");
+
+
 
         }
+        showCrusher();
     }
     @FXML
     void Delete(ActionEvent event){
@@ -140,7 +196,8 @@ public class ViewLoaderDetails {
         String Stock_ID = billNo.getText();
         Bson filter = eq("BillNo", Stock_ID);
         DeleteResult result = LoaderCollection.deleteOne(filter);
-        System.out.println(result);
+        ab.display("Error","Data Deleted");
+        showCrusher();
 
     }
 
