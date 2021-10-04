@@ -22,6 +22,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -217,5 +218,16 @@ public class ViewLoaderDetails implements Initializable {
             cursor.close();
         }
         return  attend;
+    }
+    @FXML
+    void handleMouseAction(MouseEvent event) {
+        Loader vehicle = LoaderDetails.getSelectionModel().getSelectedItem();
+
+        Lid.setText(vehicle.getId());
+        Lbrand.setText(vehicle.getBrand());
+        Lregno.setText(vehicle.getRegnumber());
+        Lcondition.setText(vehicle.getCondition());
+        Lsite.setText(vehicle.getSite());
+
     }
 }

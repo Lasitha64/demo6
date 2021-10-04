@@ -19,12 +19,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -193,5 +195,14 @@ public class ViewLoaderServiceDetails implements Initializable {
             cursor.close();
         }
         return attend;
+    }
+    @FXML
+    void handleMouseAction(MouseEvent event) {
+        LoadService vehicle = loadService.getSelectionModel().getSelectedItem();
+        Lid.setText(vehicle.getId());
+        Ldescription.setText(vehicle.getName());
+        Ldate.setValue(LocalDate.parse(vehicle.getDate().toString()));
+        Lprice.setText(vehicle.getPrice());
+
     }
 }
