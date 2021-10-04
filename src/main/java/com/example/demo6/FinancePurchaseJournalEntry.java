@@ -102,7 +102,7 @@ public class FinancePurchaseJournalEntry {
     }
 
     private void insertGeneralJournal(MongoCollection<Document> PJCollection, String PurchaseJournal_IDText, String PJDateText, String DisText, String invoice_noText, String SupplierText, double total_valueText, double ledger_pageText) {
-        Document generator = new Document("_id", new ObjectId()).append("GeneralJournal_ID", PurchaseJournal_IDText)
+        Document generator = new Document("_id", new ObjectId()).append("PurchaseJournal_ID", PurchaseJournal_IDText)
                 .append("PJDate", PJDateText)
                 .append("ledger_page", ledger_pageText)
                 .append("Dis", DisText)
