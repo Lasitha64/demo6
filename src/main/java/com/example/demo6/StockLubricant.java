@@ -26,6 +26,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 
 import java.io.IOException;
 import java.net.URL;
@@ -47,6 +48,7 @@ public class StockLubricant implements Initializable {
     private AlertBox ab;
     private MongoClient database;
     MongoCollection<Document> LubricantCollection;
+    MongoCollection<Document> LubricantAddReportCollection;
 
     @FXML
     private TextField search_fld;
@@ -110,6 +112,16 @@ public class StockLubricant implements Initializable {
             ab.display("Error","Price needs to be a double (ex: 1000.90)");
         }
         else {
+            //insert data to LubricantAddReport
+            try {
+                String idfldText1 = idfld.getText(), namefldText1 = namefld.getText(), quantityfldText1 = quantityfld.getText(), pricefldText1 = pricefld.getText(), datefldText1 = datefld.getValue().toString(), DescipfldText1 = Descipfld.getText();
+                insertLubricantAddReport(LubricantAddReportCollection, idfldText1, namefldText1, quantityfldText1, pricefldText1, datefldText1, DescipfldText1);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            //calculate the quantity
             Lubricant lubricant = StockLubricant.getSelectionModel().getSelectedItem();
 
             String Qunt =lubricant.getQuantity();
@@ -164,6 +176,7 @@ public class StockLubricant implements Initializable {
 
         // get collection
         LubricantCollection = database.getCollection("Lubricant");
+        LubricantAddReportCollection = database.getCollection("LubricantAddReport");
 
         showLubricant();
         searchLubricant();
@@ -254,8 +267,22 @@ public class StockLubricant implements Initializable {
         idfld.clear();
         namefld.clear();
         quantityfld.clear();
+        pricefld.clear();
         datefld.getEditor().clear();
         Descipfld.clear();
+    }
+
+    private void insertLubricantAddReport(MongoCollection<Document> lubricantaddreportCollection, String idfldText1, String namefldText1, String quantityfldText1, String pricefldText1, String datefldText1, String DescipfldText1) {
+
+        Document item = new Document("_id", new ObjectId())
+                .append("Item_ID", idfldText1)
+                .append("Item_Name", namefldText1)
+                .append("Quantity", quantityfldText1)
+                .append("Price", pricefldText1)
+                .append("Date", datefldText1)
+                .append("Description", DescipfldText1);
+        lubricantaddreportCollection.insertOne(item);
+        System.out.println("Connection S3");
     }
 
 }

@@ -4,6 +4,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.DeleteResult;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,12 +22,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static com.mongodb.client.model.Filters.eq;
 
 public class LubricantMain implements Initializable {
 
@@ -66,8 +71,18 @@ public class LubricantMain implements Initializable {
     @FXML
     private Button buutn_back;
 
+    @FXML
+    private TextField itemId;
+
+    @FXML
+    private TextField itemName;
+
+    @FXML
+    private TextField itemQuanty;
+
     public ObservableList<Lubricant> list;
     public ObservableList<Lubricant> searchlist;
+    private AlertBox ab;
 
     @FXML
     void Add(ActionEvent event) throws IOException {
@@ -91,7 +106,19 @@ public class LubricantMain implements Initializable {
 
     @FXML
     void Delete(ActionEvent event) {
-
+        Lubricant selectedfordelete = StockLubricant.getSelectionModel().getSelectedItem();
+        if (selectedfordelete == null){
+            ab.display("No item selected", "Please select the item you want to delete.");
+        }
+        else {
+            String idtxt = itemId.getText();
+            System.out.println(idtxt);
+            Bson filter = eq("Item_ID", idtxt);
+            DeleteResult result = LubricantCollection.deleteOne(filter);
+            showLubricant();
+            System.out.println(result);
+            ab.display("OK", "Delete Successful");
+        }
     }
 
     @FXML
@@ -190,6 +217,15 @@ public class LubricantMain implements Initializable {
         sortedData.comparatorProperty().bind(StockLubricant.comparatorProperty());
         StockLubricant.setItems(sortedData);
 
+    }
+
+
+    @FXML
+    void handleMouseAction(MouseEvent event) {
+        Lubricant lubricant = StockLubricant.getSelectionModel().getSelectedItem();
+        itemId.setText(lubricant.getId());
+        itemName.setText(lubricant.getName());
+        itemQuanty.setText(lubricant.getQuantity());
     }
 
 

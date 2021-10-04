@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/item-main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.ItemMain">
+<AnchorPane prefHeight="651.0" prefWidth="800.0" stylesheets="@stylesheet/item-main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.ItemMain">
 
     <children>
         <Label layoutX="213.0" layoutY="14.0" prefHeight="76.0" prefWidth="373.0" text="STOCK ITEM" textFill="#000000e5">
@@ -88,7 +88,7 @@
                 </Button>
             </children>
         </Pane>
-        <Button fx:id="buutn_back" layoutX="97.0" layoutY="546.0" mnemonicParsing="false" onAction="#Back" styleClass="btnback" text="BACK">
+        <Button fx:id="buutn_back" layoutX="97.0" layoutY="568.0" mnemonicParsing="false" onAction="#Back" styleClass="btnback" text="BACK">
             <graphic>
                 <ImageView blendMode="MULTIPLY" fitHeight="29.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -100,6 +100,9 @@
                 <Font name="System Bold" size="18.0" />
             </font>
         </Button>
+      <TextField fx:id="itemId" layoutX="327.0" layoutY="611.0" prefHeight="26.0" prefWidth="118.0" promptText="ITEM ID" />
+      <TextField fx:id="itemName" layoutX="482.0" layoutY="611.0" prefHeight="26.0" prefWidth="181.0" promptText="ITEM NAME" />
+      <TextField fx:id="itemQunty" layoutX="694.0" layoutY="610.0" prefHeight="26.0" prefWidth="94.0" promptText="QUANTITY" />
     </children>
 
 </AnchorPane>

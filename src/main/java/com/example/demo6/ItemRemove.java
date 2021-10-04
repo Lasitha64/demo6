@@ -30,6 +30,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 
 import java.io.IOException;
 import java.net.URL;
@@ -92,6 +93,7 @@ public class ItemRemove implements Initializable {
     private MongoClient database;
 
     MongoCollection<Document> ItemCollection;
+    MongoCollection<Document> ItemRemoveReportCollection;
 
     @FXML
     void Back(ActionEvent event) throws IOException {
@@ -113,6 +115,14 @@ public class ItemRemove implements Initializable {
             ab.display("Error","Quantity needs to be a number");
         }
         else {
+            //insert data to ItemRemoveReport
+            try {
+                String idfldText1 = idfld.getText(), namefldText1 = namefld.getText(), quantityfldText1 = quantityfld.getText(), datefldText1 = datefld.getValue().toString(), DescipfldText1 = Descipfld.getText();
+                insertItemRemoveReport(ItemRemoveReportCollection, idfldText1, namefldText1, quantityfldText1, datefldText1, DescipfldText1);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             Item item = StockItem.getSelectionModel().getSelectedItem();
 
@@ -179,6 +189,7 @@ public class ItemRemove implements Initializable {
 
         // get collection
         ItemCollection = database.getCollection("Item");
+        ItemRemoveReportCollection = database.getCollection("ItemRemoveReport");
 
         showItem();
         searchitem();
@@ -265,5 +276,17 @@ public class ItemRemove implements Initializable {
         quantityfld.clear();
         datefld.getEditor().clear();
         Descipfld.clear();
+    }
+
+    private void insertItemRemoveReport(MongoCollection<Document> itemremovereportCollection, String idfldText1, String namefldText1, String quantityfldText1, String datefldText1, String DescipfldText1) {
+
+        Document item = new Document("_id", new ObjectId())
+                .append("Item_ID", idfldText1)
+                .append("Item_Name", namefldText1)
+                .append("Quantity", quantityfldText1)
+                .append("Date", datefldText1)
+                .append("Description", DescipfldText1);
+        itemremovereportCollection.insertOne(item);
+        System.out.println("Connection S3");
     }
 }

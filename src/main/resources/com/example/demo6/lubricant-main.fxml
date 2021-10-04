@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/lubricant-main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.LubricantMain">
+<AnchorPane prefHeight="651.0" prefWidth="800.0" stylesheets="@stylesheet/lubricant-main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.LubricantMain">
    <children>
       <Label layoutX="213.0" layoutY="14.0" prefHeight="76.0" prefWidth="373.0" text="LUBRICANTS" textFill="#000000e5">
          <font>
@@ -33,7 +33,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="463.0">
                      <children>
-                        <TableView fx:id="StockLubricant" layoutY="-2.0" prefHeight="439.0" prefWidth="450.0">
+                        <TableView fx:id="StockLubricant" layoutY="-2.0" onMouseClicked="#handleMouseAction" prefHeight="439.0" prefWidth="450.0">
                            <columns>
                               <TableColumn fx:id="item_id" prefWidth="113.60003358125687" text="ITEM ID" />
                               <TableColumn fx:id="item_name" prefWidth="164.00001525878906" text="ITEM NAME" />
@@ -87,7 +87,7 @@
             </Button>
          </children>
       </Pane>
-      <Button fx:id="buutn_back" layoutX="97.0" layoutY="546.0" mnemonicParsing="false" onAction="#Back" styleClass="btnback" text="BACK">
+      <Button fx:id="buutn_back" layoutX="95.0" layoutY="568.0" mnemonicParsing="false" onAction="#Back" styleClass="btnback" text="BACK">
          <graphic>
             <ImageView blendMode="MULTIPLY" fitHeight="29.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -99,5 +99,8 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
+      <TextField fx:id="itemId" layoutX="330.0" layoutY="610.0" prefHeight="26.0" prefWidth="118.0" promptText="ITEM ID" />
+      <TextField fx:id="itemName" layoutX="483.0" layoutY="610.0" prefHeight="26.0" prefWidth="170.0" promptText="ITEM NAME" />
+      <TextField fx:id="itemQuanty" layoutX="684.0" layoutY="610.0" prefHeight="26.0" prefWidth="108.0" promptText="QUANTITY" />
    </children>
 </AnchorPane>

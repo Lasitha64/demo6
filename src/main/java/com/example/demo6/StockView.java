@@ -26,6 +26,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
+
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Updates.*;
@@ -95,7 +97,7 @@ public class StockView implements Initializable {
     private MongoClient database;
 
     MongoCollection<Document> ItemCollection;
-    MongoCollection<Document> StockItemReportCollection;
+    MongoCollection<Document> ItemAddReportCollection;
 
     @FXML
     void Back(ActionEvent event) throws IOException {
@@ -105,16 +107,6 @@ public class StockView implements Initializable {
         scene.getStylesheets().add(getClass().getResource("stylesheet/item-main.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
-    }
-
-    @FXML
-    void Delete(ActionEvent event) {
-
-    }
-
-    @FXML
-    void Search(ActionEvent event) {
-
     }
 
     @FXML
@@ -130,7 +122,16 @@ public class StockView implements Initializable {
             ab.display("Error","Price needs to be a double (ex: 1000.90)");
         }
         else {
+            //insert data to ItemAddReport
+            try {
+                String idfldText1 = idfld.getText(), namefldText1 = namefld.getText(), quantityfldText1 = quantityfld.getText(), pricefldText1 = pricefld.getText(), datefldText1 = datefld.getValue().toString(), DescipfldText1 = Descipfld.getText();
+                insertItemAddReport(ItemAddReportCollection, idfldText1, namefldText1, quantityfldText1, pricefldText1, datefldText1, DescipfldText1);
 
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            //calculate the Quantity
             Item item = StockItem.getSelectionModel().getSelectedItem();
 
             String Qunt =item.getQuantity();
@@ -224,6 +225,7 @@ public class StockView implements Initializable {
 
         // get collection
         ItemCollection = database.getCollection("Item");
+        ItemAddReportCollection = database.getCollection("ItemAddReport");
 
         showItem();
         searchitem();
@@ -276,8 +278,22 @@ public class StockView implements Initializable {
         idfld.clear();
         namefld.clear();
         quantityfld.clear();
+        pricefld.clear();
         datefld.getEditor().clear();
         Descipfld.clear();
+    }
+
+    private void insertItemAddReport(MongoCollection<Document> itemaddreportCollection, String idfldText1, String namefldText1, String quantityfldText1, String pricefldText1, String datefldText1, String DescipfldText1) {
+
+        Document item = new Document("_id", new ObjectId())
+                .append("Item_ID", idfldText1)
+                .append("Item_Name", namefldText1)
+                .append("Quantity", quantityfldText1)
+                .append("Price", pricefldText1)
+                .append("Date", datefldText1)
+                .append("Description", DescipfldText1);
+        itemaddreportCollection.insertOne(item);
+        System.out.println("Connection S3");
     }
 
 }

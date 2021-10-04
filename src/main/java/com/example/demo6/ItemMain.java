@@ -71,6 +71,15 @@ public class ItemMain implements Initializable {
     @FXML
     private Button buutn_back;
 
+    @FXML
+    private TextField itemId;
+
+    @FXML
+    private TextField itemName;
+
+    @FXML
+    private TextField itemQunty;
+
     public ObservableList<Item> list;
     public ObservableList<Item> searchlist;
     private AlertBox ab;
@@ -97,6 +106,19 @@ public class ItemMain implements Initializable {
 
     @FXML
     void Delete(ActionEvent event) {
+        Item selectedfordelete = StockItem.getSelectionModel().getSelectedItem();
+        if (selectedfordelete == null){
+            ab.display("No item selected", "Please select the item you want to delete.");
+        }
+        else {
+            String idtxt = itemId.getText();
+            System.out.println(idtxt);
+            Bson filter = eq("Item_ID", idtxt);
+            DeleteResult result = ItemCollection.deleteOne(filter);
+            showItem();
+            System.out.println(result);
+            ab.display("OK", "Delete Successful");
+        }
 
     }
 
@@ -201,6 +223,10 @@ public class ItemMain implements Initializable {
 
     @FXML
     void handleMouseAction(MouseEvent event) {
+        Item item = StockItem.getSelectionModel().getSelectedItem();
+        itemId.setText(item.getId());
+        itemName.setText(item.getName());
+        itemQunty.setText(item.getQuantity());
     }
 
 }
