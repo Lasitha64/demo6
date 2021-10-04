@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.viewVmain">
+    <children>
+        <VBox layoutX="13.0" layoutY="96.0" prefHeight="418.0" prefWidth="774.0" styleClass="catbox">
+         <children>
+              <Button fx:id="btn_lo" alignment="BOTTOM_CENTER" contentDisplay="TOP" mnemonicParsing="false" onAction="#loaderaction" prefHeight="142.0" prefWidth="228.0" styleClass="btncat" text="Loaders" textAlignment="RIGHT" wrapText="true">
+                  <font>
+                      <Font name="System Bold" size="23.0" />
+                  </font>
+               <graphic>
+                      <ImageView blendMode="MULTIPLY" fitHeight="117.0" fitWidth="114.0">
+                          <image>
+                              <Image url="@img/loader.png" />
+                          </image>
+                      </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets left="100.0" top="90.0" />
+               </VBox.margin>
+              </Button>
+         </children>
+        </VBox>
+        <Label layoutX="56.0" layoutY="14.0" prefHeight="78.0" prefWidth="688.0" text="View Heavy Machinery Details" textFill="#aaaaaae5">
+            <font>
+                <Font name="Britannic Bold" size="48.0" />
+            </font>
+            <graphic>
+                <ImageView blendMode="MULTIPLY" fitHeight="54.0" fitWidth="52.0">
+                    <image>
+                        <Image url="@img/report.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Label>
+        <Button fx:id="btn_ex" alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="473.0" layoutY="182.0" lineSpacing="5.0" mnemonicParsing="false" onAction="#excavatoraction" prefHeight="173.0" prefWidth="227.0" styleClass="btncat" text="      Excavators" textAlignment="RIGHT" wrapText="true">
+            <font>
+                <Font name="System Bold" size="23.0" />
+            </font>
+        </Button>
+        <ImageView blendMode="MULTIPLY" fitHeight="85.0" fitWidth="90.0" layoutX="542.0" layoutY="208.0">
+            <image>
+                <Image url="@img/exca.png" />
+            </image>
+        </ImageView>
+      <Button fx:id="btn_back" layoutX="29.0" layoutY="527.0" mnemonicParsing="false" onAction="#Back" prefHeight="46.0" prefWidth="116.0" text="Back" wrapText="true">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+         <graphic>
+            <ImageView blendMode="MULTIPLY" fitHeight="28.0" fitWidth="27.0">
+               <image>
+                  <Image url="@img/arrow-left.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <styleClass>
+            <String fx:value="btnback" />
+            <String fx:value="btncat" />
+         </styleClass>
+      </Button>
+    </children>
+</AnchorPane>

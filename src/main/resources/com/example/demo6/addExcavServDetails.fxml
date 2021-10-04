@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../../../../../../Desktop/src/main/resources/com/example/demo6/stylesheet/Excav-main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.AddExcavServDetails">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/Excav-main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.AddExcavServDetails">
     <children>
-        <Pane layoutX="86.0" layoutY="81.0" prefHeight="454.0" prefWidth="626.0" styleClass="formbox" stylesheets="@../../../../../../../../Desktop/src/main/resources/com/example/demo6/stylesheet/Excav-main.css">
+        <Pane layoutX="86.0" layoutY="81.0" prefHeight="454.0" prefWidth="626.0" styleClass="formbox" stylesheets="@stylesheet/Excav-main.css">
             <children>
                 <TextField fx:id="eid" layoutX="214.0" layoutY="34.0" prefHeight="42.0" prefWidth="340.0" />
                 <TextField fx:id="edescription" layoutX="214.0" layoutY="108.0" prefHeight="103.0" prefWidth="340.0" />
@@ -45,14 +45,14 @@
                 </Button>
             </children>
         </Pane>
-        <Label alignment="CENTER" layoutX="33.0" layoutY="-8.0" prefHeight="110.0" prefWidth="682.0" stylesheets="@../../../../../../../../Desktop/src/main/resources/com/example/demo6/stylesheet/Excav-main.css" text="Add Service Details" textAlignment="CENTER" textFill="#aaaaaade">
+        <Label alignment="CENTER" layoutX="33.0" layoutY="-8.0" prefHeight="110.0" prefWidth="682.0" stylesheets="@stylesheet/Excav-main.css" text="Add Service Details" textAlignment="CENTER" textFill="#aaaaaade">
             <font>
                 <Font name="Britannic Bold" size="48.0" />
             </font>
             <graphic>
                 <ImageView blendMode="MULTIPLY" fitHeight="59.0" fitWidth="63.0">
                     <image>
-                        <Image url="@../../../../../../../../Desktop/src/main/resources/com/example/demo6/img/add.png" />
+                        <Image url="@img/add.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -64,7 +64,7 @@
             <graphic>
                 <ImageView blendMode="MULTIPLY" fitHeight="28.0" fitWidth="27.0">
                     <image>
-                        <Image url="@../../../../../../../../Desktop/src/main/resources/com/example/demo6/img/arrow-left.png" />
+                        <Image url="@img/arrow-left.png" />
                     </image>
                 </ImageView>
             </graphic>

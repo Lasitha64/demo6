@@ -2,38 +2,65 @@ package com.example.demo6;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.FindOneAndUpdateOptions;
 import com.mongodb.client.model.ReturnDocument;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.DeleteResult;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Updates.set;
 
 
-public class ViewExcavRepDetails {
+public class ViewExcavRepDetails implements Initializable {
 
     private Stage stage;
     private Scene scene;
     private AlertBox ab;
+    private String excavid;
+    private String excavname;
+    private String excavpri;
+    private String excavdate;
+
+    MongoCollection<Document> excavatorRepairCollection;
+
+    @FXML
+    private TableView<ExcavatorRepair> ExcavRepair;
+
+    @FXML
+    private TableColumn<ExcavatorRepair, String> exid;
+
+    @FXML
+    private TableColumn<ExcavatorRepair, String> exdes;
+
+    @FXML
+    private TableColumn<ExcavatorRepair, String> exdate;
+
+    @FXML
+    private TableColumn<ExcavatorRepair, String> exprice;
 
     @FXML
     private TextField eid;
@@ -131,5 +158,56 @@ public class ViewExcavRepDetails {
         DeleteResult result = ExcavatorRepairCollection.deleteOne(filter);
         System.out.println(result);
         ab.display("Data Delete ","Data Delete Successfull");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        showCrusher();
+
+    }
+    public void showCrusher() {
+
+        ObservableList<ExcavatorRepair> list = getCrusherList();
+
+        exid.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getId()));
+        exdes.setCellValueFactory(new PropertyValueFactory<ExcavatorRepair, String>("Name"));
+        exprice.setCellValueFactory(new PropertyValueFactory<ExcavatorRepair, String>("Price"));
+        exdate.setCellValueFactory(new PropertyValueFactory<ExcavatorRepair, String>("Date"));
+
+
+        ExcavRepair.setItems(list);
+
+    }
+
+    private ObservableList<ExcavatorRepair> getCrusherList() {
+        ObservableList<ExcavatorRepair> attend = FXCollections.observableArrayList();
+
+        //initialize database connection
+        Database databaseController = new Database();
+        MongoDatabase database = databaseController.connectToDB("HerathCMD");
+        // get collection
+        excavatorRepairCollection = database.getCollection("ExcavatorRepair");
+        MongoCursor<Document> cursor = excavatorRepairCollection.find().iterator();
+        try {
+
+            for (int i = 0; i < excavatorRepairCollection.count(); i++) {
+
+
+                Document doc = cursor.next();
+                excavid = doc.getString("ExcavatorID");
+                //  System.out.println(cruid);
+                excavname = doc.getString("Description");
+                excavpri = doc.getString("Price");
+                excavdate = doc.getString("Date");
+
+                attend.add(new ExcavatorRepair(excavid, excavname, excavpri, excavdate));
+
+            }
+            //  list = FXCollections.observableArrayList(attend);
+        } finally {
+//          close the connection
+            cursor.close();
+        }
+        return attend;
     }
 }
