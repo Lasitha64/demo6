@@ -15,7 +15,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.bson.Document;
-import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.types.ObjectId;
 
 import java.io.IOException;
@@ -27,6 +26,7 @@ public class crusherpartsaddview {
     private Scene scene;
     private AlertBox ab;
     private MongoClient database;
+    private String cruid;
 
     MongoCollection<Document> crusherCollection;
 
@@ -71,15 +71,16 @@ public class crusherpartsaddview {
             ab.display("Error", "Quantity needs to be a number");
         } else if (!tx_pri.getText().matches("[0-9]+(\\.){0,1}[0-9]*")) {
             ab.display("Error", "Price needs to be a double (ex: 200.90)");
+        }else if(checkdup()){
+            ab.display("Error", "ID already exists");
         }
-      //  else if(crusherCollection.find(){
-           // ab.display("Error", "Duplicate ID");
-      //  }
         else {
 
 
             try {
 
+
+                checkdup();
               //  System.out.println(checkdup());
                 String crusherid = tx_id.getText(), crushername = tx_name.getText(), crusherquan = tx_quan.getText(), crusherpri = tx_pri.getText(), crusherdate = tx_date.getValue().toString();
                 insertAdmin(crusherCollection, crusherid, crushername, crusherquan, crusherpri, crusherdate);
@@ -94,28 +95,40 @@ public class crusherpartsaddview {
         }
     }
 
-//    public boolean checkdup(){
-//
-//
-//        String dbid = null;
-//
-//
-//        MongoCursor<Document> cursor = crusherCollection.find().iterator();
-//
-//
-//
-//
-//        while (tx_id.getText() != dbid){
-//            Document doc = cursor.next();
-//            dbid = doc.getString("ID");
-//
-//
-//
-//
-//        }
-//
-//
-//    }
+    public boolean checkdup(){
+
+
+        boolean res = false;
+        String tid = tx_id.getText().toString();
+
+        MongoCursor<Document> cursor = crusherCollection.find().iterator();
+
+        for (int i = 0; i < crusherCollection.count() ; i++) {
+
+
+            Document doc = cursor.next();
+            cruid = doc.getString("ID");
+
+
+            System.out.println(tid);
+            System.out.println(cruid);
+
+            if(tid.equals(cruid)){
+
+
+                res = true;
+               return res;
+            }
+
+
+        }
+
+
+        return res;
+    }
+
+
+
 
     private void insertAdmin(MongoCollection<Document> crusherCollection, String crusherid, String crushername, String crusherquan, String crusherpri, String crusherdate) {
 

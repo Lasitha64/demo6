@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JRViewer;
 import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.*;
@@ -89,11 +90,15 @@ public class crusherview  {
     }
 
     @FXML
-    void Generate(ActionEvent event) throws FileNotFoundException, JRException {
+    void Generate(ActionEvent event)  {
         try {
-            File myFile = new File("C:\\Users\\MSI\\JaspersoftWorkspace\\test\\Invoice_1.Jasper");
+//            JasperDesign jdesign = JRXmlLoader.load("C:\\Users\\MSI\\IdeaProjects\\demo6\\src\\main\\resources\\com\\example\\demo6\\Jasper\\Invoice_1.jrxml");
+//            JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+//            JasperPrint jprint = JasperFillManager.fillReport(jreport,map, (JRDataSource) con);
+//            JRViewer viewer = new JRViewer(jprint);
+            File myFile = new File("C:\\Users\\MSI\\IdeaProjects\\demo6\\src\\main\\resources\\com\\example\\demo6\\Jasper\\Invoice_1.jasper");
             Desktop.getDesktop().open(myFile);
-        } catch (IOException ex) {
+        } catch (  IOException ex) {
             // no application registered for PDFs
         }
 
