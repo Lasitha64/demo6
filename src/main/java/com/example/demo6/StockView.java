@@ -109,11 +109,7 @@ public class StockView implements Initializable {
 
     @FXML
     void Delete(ActionEvent event) {
-        String idfldText = idfld.getText();
-        Bson filter = eq("Item_ID", idfldText);
-        DeleteResult result = ItemCollection.deleteOne(filter);
-        System.out.println(result);
-        ab.display("Success","Data Deleted Successfully!");
+
     }
 
     @FXML
@@ -173,16 +169,11 @@ public class StockView implements Initializable {
             FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
             Document newVersion = ItemCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
 
+            showItem();
+            clearText();
             System.out.println("Updating the stock");
             System.out.println(newVersion);
             ab.display("Success","Data Updated Successfully!");
-
-            Parent root = FXMLLoader.load(getClass().getResource("stcock-mngt.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("stylesheet/stock-mngt.css").toExternalForm());
-            stage.setScene(scene);
-            stage.show();
         }
     }
 
@@ -279,6 +270,14 @@ public class StockView implements Initializable {
         Item item = StockItem.getSelectionModel().getSelectedItem();
         idfld.setText(item.getId());
         namefld.setText(item.getName());
+    }
+
+    private void clearText(){
+        idfld.clear();
+        namefld.clear();
+        quantityfld.clear();
+        datefld.getEditor().clear();
+        Descipfld.clear();
     }
 
 }

@@ -147,16 +147,11 @@ public class StockLubricant implements Initializable {
             FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
             Document newVersion = LubricantCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
 
+            showLubricant();
+            clearText();
             System.out.println("Updating the stock");
             System.out.println(newVersion);
             ab.display("Success","Data Updated Successfully!");
-
-            Parent root = FXMLLoader.load(getClass().getResource("stcock-mngt.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("stylesheet/stock-mngt.css").toExternalForm());
-            stage.setScene(scene);
-            stage.show();
         }
     }
 
@@ -253,6 +248,14 @@ public class StockLubricant implements Initializable {
         Lubricant lubricant = StockLubricant.getSelectionModel().getSelectedItem();
         idfld.setText(lubricant.getId());
         namefld.setText(lubricant.getName());
+    }
+
+    private void clearText(){
+        idfld.clear();
+        namefld.clear();
+        quantityfld.clear();
+        datefld.getEditor().clear();
+        Descipfld.clear();
     }
 
 }

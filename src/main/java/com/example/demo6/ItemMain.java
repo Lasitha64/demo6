@@ -4,6 +4,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.DeleteResult;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,10 +25,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static com.mongodb.client.model.Filters.eq;
 
 public class ItemMain implements Initializable {
 
@@ -69,6 +73,7 @@ public class ItemMain implements Initializable {
 
     public ObservableList<Item> list;
     public ObservableList<Item> searchlist;
+    private AlertBox ab;
 
     @FXML
     void Back(ActionEvent event) throws IOException {
@@ -196,7 +201,6 @@ public class ItemMain implements Initializable {
 
     @FXML
     void handleMouseAction(MouseEvent event) {
-
     }
 
 }
