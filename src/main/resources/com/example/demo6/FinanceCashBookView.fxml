@@ -20,8 +20,9 @@
                 <Font name="System Bold" size="18.0" />
             </font>
         </Button>
-          <TableView layoutX="27.0" layoutY="108.0" prefHeight="384.0" prefWidth="746.0">
+          <TableView fx:id="CashBook" layoutX="7.0" layoutY="108.0" prefHeight="384.0" prefWidth="784.0">
               <columns>
+            <TableColumn fx:id="CashBookID" prefWidth="40.0" text="ID" />
                   <TableColumn fx:id="DateCr" prefWidth="92.0" text="Date" />
                   <TableColumn fx:id="DiscriptionCr" prefWidth="129.0" text="Discription" />
                   <TableColumn fx:id="LFcr" prefWidth="40.0" text="LF(Ledger Forlio)" />

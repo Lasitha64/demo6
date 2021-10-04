@@ -21,6 +21,7 @@ import org.bson.types.ObjectId;
 import java.io.IOException;
 
 public class FinanceCashbookEntry {
+
     int n = 0;
     int m = 0;
 
@@ -91,6 +92,7 @@ public class FinanceCashbookEntry {
     @FXML
     void Add_to_the_database(ActionEvent event) {
         try {
+            System.out.println(n);
             //Get the values from the UI
             //Enter the id
             String enter_idText = enter_id.getText() ,
@@ -99,14 +101,26 @@ public class FinanceCashbookEntry {
                     Ledger_forlioText  = Ledger_forlio.getText();
             double valueText = Double.parseDouble(value.getText());
 
+            String CBDat = "n" ,
+                    CBdiscriptio = "n" ,
+                    Ledger_forli  = "n";
+            double valu = 0;
+
+
             if(n == 1 && m == 0) {
+
               //  String DrCrText = Cr.getText();
-                insertCB_Dr(CBCollection, enter_idText, CBDateText, CBdiscriptionText, Ledger_forlioText, valueText/*, DrCrText*/);
+                insertCB_Dr(CBCollection, enter_idText, CBDateText, CBdiscriptionText, Ledger_forlioText, valueText, CBDat, CBdiscriptio, Ledger_forli, valu);
+
             }
+
+
             else if (n == 0 && m == 1){
                // String DrCrText = Cr.getText();
-                insertCB_Cr(CBCollection, enter_idText, CBDateText, CBdiscriptionText, Ledger_forlioText, valueText /*, DrCrText*/);
+                insertCB_Cr(CBCollection, enter_idText, CBDateText, CBdiscriptionText, Ledger_forlioText, valueText, CBDat, CBdiscriptio, Ledger_forli, valu);
+
             }
+
             else {System.out.println("please enter suitable values");}
 
 
@@ -117,23 +131,34 @@ public class FinanceCashbookEntry {
 
     }
 
-    private void insertCB_Dr(MongoCollection<Document> CBCollection, String enter_idText, String CBDateText, String CBdiscriptionText, String Ledger_forlioText, double valueText/*, String DrCrText*/) {
+    private void insertCB_Dr(MongoCollection<Document> CBCollection, String enter_idText, String CBDateText, String CBdiscriptionText, String Ledger_forlioText, double valueText, String CBDat, String CBdiscriptio, String Ledger_forli, double valu) {
         Document generator = new Document("_id", new ObjectId()).append("CB ID", enter_idText)
                 .append("Dr CBDate", CBDateText)
                 .append("Dr CBdiscription", CBdiscriptionText)
                 .append("Dr Ledger_forlio", Ledger_forlioText)
-                .append("Dr value", valueText);
+                .append("Dr value", valueText)
+
+                .append("Cr CBDate", CBDat)
+                .append("Cr CBdiscription", CBdiscriptio)
+                .append("Cr Ledger_forlio", Ledger_forli)
+                .append("Cr value", valu);
+
             //    .append("Type", DrCrText);
         CBCollection.insertOne(generator);
         System.out.println("Connection S3");
     }
 
-    private void insertCB_Cr(MongoCollection<Document> CBCollection, String enter_idText, String CBDateText, String CBdiscriptionText, String Ledger_forlioText, double valueText/*, String DrCrText*/) {
+    private void insertCB_Cr(MongoCollection<Document> CBCollection, String enter_idText, String CBDateText, String CBdiscriptionText, String Ledger_forlioText, double valueText, String CBDat, String CBdiscriptio, String Ledger_forli, double valu) {
         Document generator = new Document("_id", new ObjectId()).append("CB ID", enter_idText)
                 .append("Cr CBDate", CBDateText)
                 .append("Cr CBdiscription", CBdiscriptionText)
                 .append("Cr Ledger_forlio", Ledger_forlioText)
-                .append("Cr value", valueText);
+                .append("Cr value", valueText)
+
+                .append("Dr CBDate", CBDat)
+                .append("Dr CBdiscription", CBdiscriptio)
+                .append("Dr Ledger_forlio", Ledger_forli)
+                .append("Dr value", valu);
               //  .append("Type", DrCrText);
         CBCollection.insertOne(generator);
         System.out.println("Connection S3");
