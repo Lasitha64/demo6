@@ -104,7 +104,7 @@ public class ItemRemove implements Initializable {
     }
 
     @FXML
-    void Remove(ActionEvent event) {
+    void Remove(ActionEvent event) throws IOException {
 
         if(idfld.getText().isEmpty() || namefld.getText().isEmpty() || quantityfld.getText().isEmpty() || datefld.getValue().toString().isEmpty() || Descipfld.getText().isEmpty()){
             ab.display("Error"," Input Fields can't be empty");
@@ -113,6 +113,16 @@ public class ItemRemove implements Initializable {
             ab.display("Error","Quantity needs to be a number");
         }
         else {
+
+            Item item = StockItem.getSelectionModel().getSelectedItem();
+
+            String Qunt =item.getQuantity();
+
+            int Qunty=Integer.parseInt(item.getQuantity().toString());
+            int qunt=Integer.parseInt(quantityfld.getText().toString());
+
+            quantityfld.setText(Integer.toString(Qunty-qunt));
+
             // update one document
             String idfldText = idfld.getText(), namefldText = namefld.getText(), quantityfldText = quantityfld.getText(), datefldText = datefld.getValue().toString(), DescipfldText = Descipfld.getText();
 
@@ -143,6 +153,13 @@ public class ItemRemove implements Initializable {
             System.out.println("Updating the stock");
             System.out.println(newVersion);
             ab.display("Success","Data Updated Successfully!");
+
+            Parent root = FXMLLoader.load(getClass().getResource("Stcock-mngt.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("stylesheet/stock-mngt.css").toExternalForm());
+            stage.setScene(scene);
+            stage.show();
         }
     }
 

@@ -124,7 +124,7 @@
                             <font>
                                 <Font size="14.0" />
                             </font></TextField>
-                        <TextField fx:id="pricefld" prefHeight="30.0" promptText="Enter Unit Price" styleClass="text-field1">
+                        <TextField fx:id="pricefld" prefHeight="30.0" promptText="Enter Price" styleClass="text-field1">
                             <font>
                                 <Font size="14.0" />
                             </font>

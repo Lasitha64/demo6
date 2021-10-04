@@ -122,7 +122,7 @@ public class StockView implements Initializable {
     }
 
     @FXML
-    void Update(ActionEvent event) {
+    void Update(ActionEvent event) throws IOException {
 
         if(idfld.getText().isEmpty() || namefld.getText().isEmpty() || quantityfld.getText().isEmpty() || pricefld.getText().isEmpty() || datefld.getValue().toString().isEmpty() || Descipfld.getText().isEmpty()){
             ab.display("Error"," Input Fields can't be empty");
@@ -134,6 +134,16 @@ public class StockView implements Initializable {
             ab.display("Error","Price needs to be a double (ex: 1000.90)");
         }
         else {
+
+            Item item = StockItem.getSelectionModel().getSelectedItem();
+
+            String Qunt =item.getQuantity();
+
+            int Qunty=Integer.parseInt(item.getQuantity().toString());
+            int qunt=Integer.parseInt(quantityfld.getText().toString());
+
+            quantityfld.setText(Integer.toString(Qunty+qunt));
+
             // update one document
             String idfldText = idfld.getText(), namefldText = namefld.getText(), quantityfldText = quantityfld.getText(), pricefldText = pricefld.getText(), datefldText = datefld.getValue().toString(), DescipfldText = Descipfld.getText();
 
@@ -166,6 +176,13 @@ public class StockView implements Initializable {
             System.out.println("Updating the stock");
             System.out.println(newVersion);
             ab.display("Success","Data Updated Successfully!");
+
+            Parent root = FXMLLoader.load(getClass().getResource("stcock-mngt.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("stylesheet/stock-mngt.css").toExternalForm());
+            stage.setScene(scene);
+            stage.show();
         }
     }
 
