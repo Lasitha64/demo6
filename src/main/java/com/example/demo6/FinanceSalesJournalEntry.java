@@ -21,6 +21,8 @@ import java.io.IOException;
 
 public class FinanceSalesJournalEntry {
 
+    private AlertBox ab;
+
     @FXML
     private TextField SJ_ID;
 
@@ -88,6 +90,8 @@ public class FinanceSalesJournalEntry {
             double total_valueText = Double.parseDouble(total_value.getText());
             double ledger_pageText = Double.parseDouble(ledger_page.getText());
             insertGeneralJournal(SJCollection, SalesJournal_IDText, SJDateText, DisText, invoice_noText, customerText, total_valueText, ledger_pageText);
+
+            ab.display("OK", "Entry Added Successfully");
 
         } catch (Exception e) {
             e.printStackTrace();

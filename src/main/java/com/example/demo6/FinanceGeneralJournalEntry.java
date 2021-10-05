@@ -20,6 +20,8 @@ import java.io.IOException;
 
 public class FinanceGeneralJournalEntry {
 
+    private AlertBox ab;
+
  //   int count;
     @FXML
     private TextField GJ_ID;
@@ -49,6 +51,7 @@ public class FinanceGeneralJournalEntry {
     private Button VeiwGeneralJournal;
 
 
+
     //************************************************************************************************************
     //DB connection
 
@@ -72,9 +75,16 @@ public class FinanceGeneralJournalEntry {
 
     @FXML
     void add_to_database(ActionEvent event) {
-        try {
 
-            //Auto increment
+        if(GJ_ID.getText().isEmpty() || Description.getText().isEmpty() || VoucherNo.getText().isEmpty()){
+            ab.display("Error"," Input Fields can't be empty");
+        }
+        else {
+
+            try {
+
+
+                //Auto increment
 //
 //            String GJ_id;
 //
@@ -84,18 +94,21 @@ public class FinanceGeneralJournalEntry {
 //                GJ_id = String.valueOf(count+1);
 //            }
 
-            //Get the values from the UI
-            //Enter the id
-            String GeneralJournal_IDText = GJ_ID.getText() ,
-                    GJDateText = GJDate.getValue().toString() ,
-                    DisText = Description.getText() ,
-                    VoNoText  = VoucherNo.getText();
-            double DrText = Double.parseDouble(Debit.getText());
-            double CrText = Double.parseDouble(Credit.getText());
-            insertGeneralJournal(GJCollection, GeneralJournal_IDText, GJDateText, DisText, VoNoText, DrText, CrText);
+                //Get the values from the UI
+                //Enter the id
+                String GeneralJournal_IDText = GJ_ID.getText(),
+                        GJDateText = GJDate.getValue().toString(),
+                        DisText = Description.getText(),
+                        VoNoText = VoucherNo.getText();
+                double DrText = Double.parseDouble(Debit.getText());
+                double CrText = Double.parseDouble(Credit.getText());
+                insertGeneralJournal(GJCollection, GeneralJournal_IDText, GJDateText, DisText, VoNoText, DrText, CrText);
 
-        } catch (Exception e) {
-            e.printStackTrace();
+                ab.display("OK", "Entry Added Successfully");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

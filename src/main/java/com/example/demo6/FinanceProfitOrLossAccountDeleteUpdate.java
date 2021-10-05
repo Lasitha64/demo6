@@ -37,6 +37,8 @@ import static com.mongodb.client.model.Updates.set;
 
 public class FinanceProfitOrLossAccountDeleteUpdate /*implements Initializable*/ {
 
+    private AlertBox ab;
+
     @FXML
     private Label Cost_of_sales;
 
@@ -148,6 +150,9 @@ public class FinanceProfitOrLossAccountDeleteUpdate /*implements Initializable*/
         FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
         Document newVersion = POLCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
 
+        ab.display("OK", "Entry Updated Successfully");
+
+
         System.out.println("Updating the Profit or loss account");
         System.out.println(newVersion);
 
@@ -179,6 +184,9 @@ public class FinanceProfitOrLossAccountDeleteUpdate /*implements Initializable*/
         Bson filter = eq("entry ID", POL_ID);
         DeleteResult result = POLCollection.deleteOne(filter);
         System.out.println(result);
+
+        ab.display("OK", "Entry deleted Successfully");
+
 
     }
 
@@ -218,6 +226,8 @@ public class FinanceProfitOrLossAccountDeleteUpdate /*implements Initializable*/
             double NetProfit = GrossProfit + other_incomeText - other_expensesText;
 
             insertPOLStock(POLCollection, POL_ID, PLdateText, SalesText, Cost_of_salesText, other_incomeText, other_expensesText, GrossProfit, NetProfit);
+
+            ab.display("OK", "Entry Added Successfully");
 
         } catch (Exception e) {
             e.printStackTrace();

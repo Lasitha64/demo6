@@ -15,6 +15,8 @@ import java.io.IOException;
 
 public class FinanceProfitOrLossAccountKey {
 
+    private AlertBox ab;
+
     @FXML
     private Button btn_back;
 
@@ -46,6 +48,8 @@ public class FinanceProfitOrLossAccountKey {
         }
 
         else {
+            ab.display("OK", "Wrong pin");
+
             System.out.println("Wrong pin");
 
             btn_back.getScene().getWindow().hide();

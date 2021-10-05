@@ -33,6 +33,8 @@ import java.util.List;
 
 public class FinanceProfitOrLossAccountEntry {
 
+    private AlertBox ab;
+
     @FXML
     private Label Cost_of_sales;
 
@@ -135,6 +137,8 @@ public class FinanceProfitOrLossAccountEntry {
             double NetProfit = GrossProfit + other_incomeText - other_expensesText;
 
             insertPOLStock(POLCollection, POL_ID, PLdateText, SalesText, Cost_of_salesText, other_incomeText, other_expensesText, GrossProfit, NetProfit);
+
+            ab.display("OK", "Entry Added Successfully");
 
         } catch (Exception e) {
             e.printStackTrace();

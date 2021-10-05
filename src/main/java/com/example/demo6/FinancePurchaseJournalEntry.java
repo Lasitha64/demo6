@@ -20,6 +20,9 @@ import org.bson.types.ObjectId;
 import java.io.IOException;
 
 public class FinancePurchaseJournalEntry {
+
+    private AlertBox ab;
+
     @FXML
     private TextField PJ_ID;
 
@@ -96,20 +99,22 @@ public class FinancePurchaseJournalEntry {
             double ledger_pageText = Double.parseDouble(ledger_page.getText());
             insertGeneralJournal(PJCollection, PurchaseJournal_IDText, PJDateText, DisText, invoice_noText, SupplierText, total_valueText, ledger_pageText);
 
+            ab.display("OK", "Entry Added Successfully");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     private void insertGeneralJournal(MongoCollection<Document> PJCollection, String PurchaseJournal_IDText, String PJDateText, String DisText, String invoice_noText, String SupplierText, double total_valueText, double ledger_pageText) {
-        Document generator = new Document("_id", new ObjectId()).append("PurchaseJournal_ID", PurchaseJournal_IDText)
+        Document Purchasej = new Document("_id", new ObjectId()).append("PurchaseJournal_ID", PurchaseJournal_IDText)
                 .append("PJDate", PJDateText)
                 .append("ledger_page", ledger_pageText)
                 .append("Dis", DisText)
                 .append("invoice_no", invoice_noText)
                 .append("Supplier", SupplierText)
                 .append("total_value", total_valueText);
-        PJCollection.insertOne(generator);
+        PJCollection.insertOne(Purchasej);
         System.out.println("Connection S3");
     }
 

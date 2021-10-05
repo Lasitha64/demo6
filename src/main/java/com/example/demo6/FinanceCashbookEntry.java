@@ -22,6 +22,8 @@ import java.io.IOException;
 
 public class FinanceCashbookEntry {
 
+    private AlertBox ab;
+
     int n = 0;
     int m = 0;
 
@@ -112,6 +114,8 @@ public class FinanceCashbookEntry {
               //  String DrCrText = Cr.getText();
                 insertCB_Dr(CBCollection, enter_idText, CBDateText, CBdiscriptionText, Ledger_forlioText, valueText, CBDat, CBdiscriptio, Ledger_forli, valu);
 
+                ab.display("OK", "Entry Added Successfully");
+
             }
 
 
@@ -119,9 +123,15 @@ public class FinanceCashbookEntry {
                // String DrCrText = Cr.getText();
                 insertCB_Cr(CBCollection, enter_idText, CBDateText, CBdiscriptionText, Ledger_forlioText, valueText, CBDat, CBdiscriptio, Ledger_forli, valu);
 
+                ab.display("OK", "Entry Added Successfully");
+
             }
 
-            else {System.out.println("please enter suitable values");}
+            else {
+                System.out.println("please enter suitable values");
+
+                ab.display("OK", "System error please contact ID department");
+            }
 
 
         } catch (Exception e) {
