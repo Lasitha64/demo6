@@ -41,7 +41,7 @@
                           <columns>
                             <TableColumn fx:id="item_id" prefWidth="117.66668701171875" text="ITEM ID" />
                             <TableColumn fx:id="item_name" prefWidth="208.0" text="ITEM NAME" />
-                              <TableColumn fx:id="Item_qunt" prefWidth="186.0" text="QUANTITY" />
+                              <TableColumn fx:id="Item_qunt" prefWidth="186.0" text="QUANTITY (Liters)" />
                           </columns>
                         </TableView>
                      </children>

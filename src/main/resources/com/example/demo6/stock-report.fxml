@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -9,21 +8,19 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="655.0" prefWidth="816.0" stylesheets="@stylesheet/stock-report.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.StockReport">
    <children>
-      <Label contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="150.0" layoutY="4.0" prefHeight="83.0" prefWidth="473.0" text="INVETORY REPORTS" textFill="#030303e5">
+      <Label contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="174.0" layoutY="10.0" prefHeight="83.0" prefWidth="546.0" text="ITEM EXPESES REPORTS" textFill="#030303e5">
          <font>
             <Font name="System Bold" size="48.0" />
          </font>
       </Label>
-      <DatePicker fx:id="datefld" layoutX="602.0" layoutY="129.0" prefHeight="25.0" prefWidth="189.0" promptText="Select Date" />
-      <ScrollPane layoutX="269.0" layoutY="162.0" prefHeight="464.0" prefWidth="535.0">
+      <ScrollPane layoutX="49.0" layoutY="122.0" prefHeight="434.0" prefWidth="704.0">
          <content>
-            <TableView fx:id="StockItem" prefHeight="454.0" prefWidth="703.0">
+            <TableView fx:id="StockItem" prefHeight="421.0" prefWidth="703.0">
                <columns>
                   <TableColumn fx:id="item_date" prefWidth="96.79998475313187" text="DATE" />
                   <TableColumn fx:id="item_id" prefWidth="101.60003662109375" text="ITEM ID" />
@@ -35,21 +32,7 @@
             </TableView>
          </content>
       </ScrollPane>
-      <Pane layoutY="232.0" prefHeight="288.0" prefWidth="255.0" styleClass="formbox">
-         <children>
-            <Button fx:id="btn_daily" alignment="CENTER" graphicTextGap="12.0" layoutY="64.0" mnemonicParsing="false" onAction="#Add" prefHeight="45.0" prefWidth="248.0" styleClass="button1" text="Daily Inventory Report" textOverrun="WORD_ELLIPSIS" wrapText="true">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="btn_month" alignment="CENTER" graphicTextGap="12.0" layoutY="181.0" mnemonicParsing="false" onAction="#Generate" prefHeight="45.0" prefWidth="249.0" styleClass="button1" text="Monthly Inventory Report" textOverrun="WORD_ELLIPSIS" wrapText="true">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
-      <Button fx:id="buttn_back" layoutX="41.0" layoutY="578.0" mnemonicParsing="false" onAction="#Back" prefHeight="39.0" prefWidth="95.0" styleClass="btnback" text="Back">
+      <Button fx:id="buttn_back" layoutX="364.0" layoutY="582.0" mnemonicParsing="false" onAction="#Back" prefHeight="39.0" prefWidth="95.0" styleClass="btnback" text="Back">
          <graphic>
             <ImageView blendMode="MULTIPLY" fitHeight="28.0" fitWidth="21.0">
                <image>

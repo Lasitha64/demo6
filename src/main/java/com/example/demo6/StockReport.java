@@ -63,18 +63,7 @@ public class StockReport implements Initializable {
     private TableColumn<Item, String> item_desc;
 
     @FXML
-    private Button btn_daily;
-
-    @FXML
-    private Button btn_month;
-
-    @FXML
     private Button buttn_back;
-
-    @FXML
-    void Add(ActionEvent event) {
-
-    }
 
     @FXML
     void Back(ActionEvent event) throws IOException {
@@ -84,11 +73,6 @@ public class StockReport implements Initializable {
         scene.getStylesheets().add(getClass().getResource("stylesheet/stock-mngt.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
-    }
-
-    @FXML
-    void Generate(ActionEvent event) {
-
     }
 
     @Override
