@@ -44,8 +44,8 @@ public class LoaderExpenses {
 
     @FXML
     void Add(ActionEvent event) {
-        File myFile = new File("C:\\Users\\MSI\\IdeaProjects\\demo6\\src\\main\\resources\\com\\example\\demo6\\Jasper\\Invoice_1.jasper");
-        Desktop.getDesktop().open(myFile);
+//        File myFile = new File("C:\\Users\\MSI\\IdeaProjects\\demo6\\src\\main\\resources\\com\\example\\demo6\\Jasper\\Invoice_1.jasper");
+//        Desktop.getDesktop().open(myFile);
     }
 
     @FXML
