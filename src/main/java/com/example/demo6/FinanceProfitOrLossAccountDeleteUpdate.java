@@ -8,28 +8,34 @@ import com.mongodb.client.model.FindOneAndUpdateOptions;
 import com.mongodb.client.model.ReturnDocument;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.DeleteResult;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Updates.set;
 
-public class FinanceProfitOrLossAccountDeleteUpdate {
+public class FinanceProfitOrLossAccountDeleteUpdate /*implements Initializable*/ {
 
     @FXML
     private Label Cost_of_sales;
@@ -68,6 +74,8 @@ public class FinanceProfitOrLossAccountDeleteUpdate {
     private Button View;
 
 
+    public ObservableList<FinanceProfitOrLossAccountMain> list;
+    public ObservableList<FinanceProfitOrLossAccountMain> searchlist;
 
     //************************************************************************************************************
     //DB connection
@@ -231,4 +239,72 @@ public class FinanceProfitOrLossAccountDeleteUpdate {
 
     }
 
+
+//    @Override
+//    public void initialize(URL url, ResourceBundle resourceBundle) {
+//        searchpart();
+//    }
+//
+//    private void searchpart() {
+//        ObservableList<FinanceProfitOrLossAccountMain>  searchlist = getProfitOrLossAccount();
+
+//        ID.getText(data -> new SimpleStringProperty(data.getValue().getPLid()));
+//        POLdate.setCellValueFactory(new PropertyValueFactory<FinanceProfitOrLossAccountMain, String>("PLdate"));
+//        Sales.setTextFormatter(new <FinanceProfitOrLossAccountMain>("PLsales"));
+//        Credit.setCellValueFactory(new PropertyValueFactory<FinanceProfitOrLossAccountMain, String>("PLcos"));
+//        other_income.setCellValueFactory(new PropertyValueFactory<FinanceProfitOrLossAccountMain, String>("PLoi"));
+//        other_expenses.setCellValueFactory(new PropertyValueFactory<FinanceProfitOrLossAccountMain, String>("PLox"));
+//
+//
+//
+//        YourObject yourObject = TableView.getSelectionModel().getSelectedItem();
+
+//        TextField editinput = ID;
+//        editfirstnameinput.setText(FinanceProfitOrLossAccountMain.getPLid());
+
+//        TextField editSalesinput = Sales;
+//        editSalesinput.setText(FinanceProfitOrLossAccountMain.getPLsales());
+//
+//        TextField editCreditinput = Credit;
+//        editCreditinput.setText(FinanceProfitOrLossAccountMain.getPLcos());
+//
+//        TextField editother_incomeinput = other_income;
+//        editother_incomeinput.setText(FinanceProfitOrLossAccountMain.getPLoi());
+//
+//        TextField editother_expensesinput = other_expenses;
+//        editother_expensesinput.setText(FinanceProfitOrLossAccountMain.getPLox());
+//
+//
+//        ID.setItems(searchlist);
+//
+//        FilteredList<Crusher> filterdata = new FilteredList<>(searchlist, b->true);
+//        tf_searchbyname.textProperty().addListener((observable, oldValue, newValue)->{
+//            filterdata.setPredicate(crusher -> {
+//                if(newValue == null || newValue.isEmpty()){
+//                    return true;
+//                }
+//                String lowerCaseFilter = newValue.toLowerCase();
+//
+//                if(crusher.getPLsales().toString().toLowerCase().indexOf(lowerCaseFilter) != -1){
+//                    return true;
+//                }else if(crusher.getName().toLowerCase().indexOf(lowerCaseFilter)!= -1){
+//                    return true;
+//                }else if(crusher.getId().toString().toLowerCase().indexOf(lowerCaseFilter) != -1){
+//                    return true;
+//                }else if(crusher.getPrice().toString().toLowerCase().indexOf(lowerCaseFilter) != -1){
+//                    return true;
+//                }else if(crusher.getQuantity().toString().toLowerCase().indexOf(lowerCaseFilter) != -1){
+//                    return true;
+//                }else{
+//                    return false;
+//                }
+//            });
+//        });
+//        SortedList<Crusher> sortedData = new SortedList<>(filterdata);
+//        sortedData.comparatorProperty().bind(CrusherParts.comparatorProperty());
+//        CrusherParts.setItems(sortedData);
+//    }
+//
+//    private ObservableList<FinanceProfitOrLossAccountMain> getProfitOrLossAccount() {
+//    }
 }
