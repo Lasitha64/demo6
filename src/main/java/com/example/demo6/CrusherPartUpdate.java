@@ -8,8 +8,11 @@ import com.mongodb.client.model.FindOneAndUpdateOptions;
 import com.mongodb.client.model.ReturnDocument;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.DeleteResult;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,12 +22,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -39,8 +44,8 @@ public class CrusherPartUpdate implements Initializable {
     private int pos;
     private String cruid;
     private String cruname;
-    private int cruquan;
-    private Double crupri;
+    private String cruquan;
+    private String crupri;
     private String crudate;
     MongoClient database;
     MongoCollection<Document> crusherCollection;
@@ -56,10 +61,10 @@ public class CrusherPartUpdate implements Initializable {
     private TableColumn<Crusher, String> cname;
 
     @FXML
-    private TableColumn<Crusher, Integer> cquan;
+    private TableColumn<Crusher, String> cquan;
 
     @FXML
-    private TableColumn<Crusher, Double> cprice;
+    private TableColumn<Crusher, String> cprice;
 
     @FXML
     private TableColumn<Crusher, String> cdate;
@@ -77,7 +82,7 @@ public class CrusherPartUpdate implements Initializable {
     private TextField tf_price;
 
     @FXML
-    private TextField tf_date1;
+    private DatePicker tf_date;
 
 
     @FXML
@@ -89,16 +94,45 @@ public class CrusherPartUpdate implements Initializable {
     @FXML
     private Button btn_back;
 
+    @FXML
+    private TextField tf_searchbyname;
+
+    @FXML
+    private Button btn_searchbyname;
+
     private AlertBox ab;
 
     public ObservableList<Crusher> list;
+    public ObservableList<Crusher> searchlist;
 
-    public List attend = new ArrayList();
+   // public List attend = new ArrayList();
 
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+   public void initialize(URL url, ResourceBundle rb) {
         //TODO
+        showCrusher();
+        searchpart();
+
+    }
+
+
+    public void showCrusher() {
+
+        ObservableList<Crusher>  list = getCrusherList();
+
+        cid.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getId()));
+        cname.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Name"));
+        cquan.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Quantity"));
+        cprice.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Price"));
+        cdate.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Date"));
+
+        CrusherParts.setItems(list);
+
+    }
+
+    private ObservableList<Crusher> getCrusherList() {
+        ObservableList<Crusher> attend = FXCollections.observableArrayList();
 
         //initialize database connection
         Database databaseController = new Database();
@@ -106,48 +140,32 @@ public class CrusherPartUpdate implements Initializable {
         // get collection
         crusherCollection = database.getCollection("Metal Crusher");
         MongoCursor<Document> cursor = crusherCollection.find().iterator();
-//        try {
+        try {
 
-//            for (int i = 0; i < crusherCollection.count(); i++) {
-//                pos = i + 1;
-//
-//                Document doc = cursor.next();
-//                cruid = doc.getString("cid");
-//                cruname = doc.getString("cname");
+            for (int i = 0; i < crusherCollection.count(); i++) {
 
-//                //  System.out.println(cruid+cruname);
-//
-//                cruquan = doc.getInteger("cquan");
-//                crupri = doc.getDouble("cprice");
-//                crudate = doc.getString("cdate");
-//
-//
-//                attend.add(new Crusher(cruid, cruname, cruquan, crupri, crudate));
-//            }
-//            list = FXCollections.observableArrayList(attend);
-//        } finally {
-////          close the connection
-//            cursor.close();
-//        }
-//
-////      call the setTable method
-//        showCrusher();
+
+                Document doc = cursor.next();
+                cruid = doc.getString("ID");
+              //  System.out.println(cruid);
+                cruname = doc.getString("Name");
+                cruquan = doc.getString("Quantity");
+                crupri = doc.getString("Price");
+                crudate = doc.getString("Date");
+
+                attend.add(new Crusher(cruid, cruname, cruquan, crupri, crudate));
+
+            }
+          //  list = FXCollections.observableArrayList(attend);
+        } finally {
+//          close the connection
+            cursor.close();
+        }
+        return  attend;
+//      call the setTable method
+
 
     }
-
-
-//    public void showCrusher() {
-//
-//
-//        cid.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Part ID"));
-//        cname.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Name"));
-//        cquan.setCellValueFactory(new PropertyValueFactory<Crusher, Integer>("Quantity"));
-//        cprice.setCellValueFactory(new PropertyValueFactory<Crusher, Double>("Price"));
-//        cdate.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Date"));
-//
-//        CrusherParts.setItems(list);
-//
-//    }
 
 
     @FXML
@@ -163,16 +181,27 @@ public class CrusherPartUpdate implements Initializable {
     @FXML
     void Delete(ActionEvent event) {
         String Stock_ID = tf_id.getText();
-        Bson filter = eq("Part ID", Stock_ID);
+        Bson filter = eq("ID", Stock_ID);
         DeleteResult result = crusherCollection.deleteOne(filter);
-        System.out.println(result);
+        showCrusher();
+
         ab.display("OK", "Delete Successful");
 
-    }
 
+    }
+    @FXML
+    void handleMouseAction(MouseEvent event) {
+        Crusher crusher = CrusherParts.getSelectionModel().getSelectedItem();
+        tf_id.setText(crusher.getId());
+        tf_name.setText(crusher.getName());
+        tf_quan.setText(crusher.getQuantity());
+        tf_price.setText(crusher.getPrice());
+        tf_date.setValue(LocalDate.parse(crusher.getDate().toString()));
+
+    }
     @FXML
     void Update(ActionEvent event) {
-        if (tf_id.getText().isEmpty() || tf_name.getText().isEmpty() || tf_quan.getText().isEmpty() || tf_price.getText().isEmpty() || tf_date1.getText().isEmpty()) {
+        if (tf_id.getText().isEmpty() || tf_name.getText().isEmpty() || tf_quan.getText().isEmpty() || tf_price.getText().isEmpty() || tf_date.getValue().toString().isEmpty()) {
             ab.display("Error", " Input Fields can't be empty");
         } else if (!tf_quan.getText().matches("[0-9]+")) {
             ab.display("Error", "Quantity needs to be a number");
@@ -184,11 +213,11 @@ public class CrusherPartUpdate implements Initializable {
                     NameText = tf_name.getText(),
                     QuantityText = tf_quan.getText(),
                     PriceText = tf_price.getText(),
-                    DateText = tf_date1.getText();
+                    DateText = tf_date.getValue().toString();
 
             System.out.println(Stock_ID + NameText + QuantityText + PriceText + DateText);
 
-            Bson filter = eq("Part ID", Stock_ID);
+            Bson filter = eq("ID", Stock_ID);
 
             Bson updateName = set("Name", NameText);
             Bson updateQuan = set("Quantity", QuantityText);
@@ -204,11 +233,53 @@ public class CrusherPartUpdate implements Initializable {
             FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
             Document newVersion = crusherCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
 
-            System.out.println("Updating the generator maintenence stock");
-            System.out.println(newVersion);
+            showCrusher();
+
             ab.display("OK", "Update Successful");
 
+
         }
+
+    }
+    @FXML
+    void searchpart() {
+
+        ObservableList<Crusher>  searchlist = getCrusherList();
+
+        cid.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getId()));
+        cname.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Name"));
+        cquan.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Quantity"));
+        cprice.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Price"));
+        cdate.setCellValueFactory(new PropertyValueFactory<Crusher, String>("Date"));
+
+        CrusherParts.setItems(searchlist);
+
+        FilteredList<Crusher> filterdata = new FilteredList<>(searchlist, b->true);
+        tf_searchbyname.textProperty().addListener((observable, oldValue, newValue)->{
+            filterdata.setPredicate(crusher -> {
+                if(newValue == null || newValue.isEmpty()){
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if(crusher.getDate().toString().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;
+                }else if(crusher.getName().toLowerCase().indexOf(lowerCaseFilter)!= -1){
+                    return true;
+                }else if(crusher.getId().toString().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;
+                }else if(crusher.getPrice().toString().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;
+                }else if(crusher.getQuantity().toString().toLowerCase().indexOf(lowerCaseFilter) != -1){
+                    return true;
+                }else{
+                    return false;
+                }
+            });
+        });
+        SortedList<Crusher> sortedData = new SortedList<>(filterdata);
+        sortedData.comparatorProperty().bind(CrusherParts.comparatorProperty());
+        CrusherParts.setItems(sortedData);
 
     }
 }

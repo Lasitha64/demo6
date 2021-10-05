@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.bson.Document;
@@ -34,6 +35,9 @@ public class MainView {
 
 
     //start of attributes in main-view fxml
+
+
+
     @FXML
     private Button btn_ve;
 
@@ -57,6 +61,9 @@ public class MainView {
 
     @FXML
     private Button btn_ad;
+
+
+
     //end of attributes in main-view xml
 
 

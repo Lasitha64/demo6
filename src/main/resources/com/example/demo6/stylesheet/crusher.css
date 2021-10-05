@@ -7,21 +7,21 @@
     -fx-background-radius: 30 30 30 30;
 }
 
-.button{
+.button1{
     -fx-background-color:   #aaaaaa;
     -fx-text-fill: black;
     -fx-text:Bold;
     -fx-background-radius: 20 20 20 20;
 }
 
-.button:hover{
+.button1:hover{
     -fx-background-color:   #cccccc ;
     -fx-text-fill: black;
     -fx-text:Bold;
     -fx-background-radius: 20 20 20 20;
 }
 
-.button:pressed{
+.button1:pressed{
     -fx-background-color: #eeeeee     ;
     -fx-text-fill: black;
     -fx-text:Bold;
@@ -44,4 +44,30 @@
 
 .btnback:pressed{
     -fx-background-color:  #005b96;
+}
+
+.btnfrag{
+ -fx-background-color:  #03396c;
+    -fx-text-fill: white;
+    -fx-background-radius: 20 20 20 20;
+}
+
+.btnfrag:pressed{
+ -fx-background-color:  black;
+    -fx-text-fill: white;
+    -fx-background-radius: 20 20 20 20;
+}
+
+
+.btnfrag:hover{
+ -fx-background-color:  #b3cde0;
+    -fx-text-fill: white;
+    -fx-background-radius: 20 20 20 20;
+}
+
+
+.btnfragactive{
+ -fx-background-color:  #03396c;
+    -fx-text-fill: white;
+    -fx-background-radius: 20 0 0 20;
 }

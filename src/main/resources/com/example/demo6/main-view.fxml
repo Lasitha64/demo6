@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.MainView">
    <children>
       <Label alignment="CENTER" layoutX="248.0" layoutY="45.0" prefHeight="31.0" prefWidth="321.0" text="Select Category" textFill="#fffcfc" AnchorPane.leftAnchor="248.0" AnchorPane.rightAnchor="231.0" AnchorPane.topAnchor="45.0">
