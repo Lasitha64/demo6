@@ -7,7 +7,6 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.FindOneAndUpdateOptions;
 import com.mongodb.client.model.ReturnDocument;
 import com.mongodb.client.model.Updates;
-import com.mongodb.client.result.DeleteResult;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,7 +19,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -37,7 +41,7 @@ import java.util.ResourceBundle;
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Updates.set;
 
-public class StockLubricant implements Initializable {
+public class LubricantRemove implements Initializable {
 
     private String lubid;
     private String lubname;
@@ -48,7 +52,7 @@ public class StockLubricant implements Initializable {
     private AlertBox ab;
     private MongoClient database;
     MongoCollection<Document> LubricantCollection;
-    MongoCollection<Document> LubricantAddReportCollection;
+    MongoCollection<Document> LubricantRemoveReportCollection;
 
     @FXML
     private TextField search_fld;
@@ -75,16 +79,13 @@ public class StockLubricant implements Initializable {
     private TextField quantityfld;
 
     @FXML
-    private TextField pricefld;
-
-    @FXML
     private DatePicker datefld;
 
     @FXML
     private TextArea Descipfld;
 
     @FXML
-    private Button buttn_add;
+    private Button buttn_remove;
 
     @FXML
     private Button buutn_back;
@@ -100,22 +101,19 @@ public class StockLubricant implements Initializable {
     }
 
     @FXML
-    void Add(ActionEvent event) throws IOException {
+    void Remove(ActionEvent event) throws IOException {
 
-        if(idfld.getText().isEmpty() || namefld.getText().isEmpty() || quantityfld.getText().isEmpty() || pricefld.getText().isEmpty() || datefld.getValue().toString().isEmpty() || Descipfld.getText().isEmpty()){
+        if(idfld.getText().isEmpty() || namefld.getText().isEmpty() || quantityfld.getText().isEmpty() || datefld.getValue().toString().isEmpty() || Descipfld.getText().isEmpty()){
             ab.display("Error"," Input Fields can't be empty");
         }
         else if(!quantityfld.getText().matches("[0-9]+")){
             ab.display("Error","Quantity needs to be a number");
         }
-        else if(!pricefld.getText().matches("[0-9]+(\\.){0,1}[0-9]*")){
-            ab.display("Error","Price needs to be a double (ex: 1000.90)");
-        }
         else {
-            //insert data to LubricantAddReport
+            //insert data to LubricantRemoveReport
             try {
-                String idfldText1 = idfld.getText(), namefldText1 = namefld.getText(), quantityfldText1 = quantityfld.getText(), pricefldText1 = pricefld.getText(), datefldText1 = datefld.getValue().toString(), DescipfldText1 = Descipfld.getText();
-                insertLubricantAddReport(LubricantAddReportCollection, idfldText1, namefldText1, quantityfldText1, pricefldText1, datefldText1, DescipfldText1);
+                String idfldText1 = idfld.getText(), namefldText1 = namefld.getText(), quantityfldText1 = quantityfld.getText(), datefldText1 = datefld.getValue().toString(), DescipfldText1 = Descipfld.getText();
+                insertLubricantRemoveReport(LubricantRemoveReportCollection, idfldText1, namefldText1, quantityfldText1, datefldText1, DescipfldText1);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -129,25 +127,24 @@ public class StockLubricant implements Initializable {
             int Qunty=Integer.parseInt(lubricant.getQuantity().toString());
             int qunt=Integer.parseInt(quantityfld.getText().toString());
 
-            quantityfld.setText(Integer.toString(Qunty+qunt));
+            quantityfld.setText(Integer.toString(Qunty-qunt));
 
             // update one document
-            String idfldText = idfld.getText(), namefldText = namefld.getText(), quantityfldText = quantityfld.getText(), pricefldText = pricefld.getText(), datefldText = datefld.getValue().toString(), DescipfldText = Descipfld.getText();
+            String idfldText = idfld.getText(), namefldText = namefld.getText(), quantityfldText = quantityfld.getText(), datefldText = datefld.getValue().toString(), DescipfldText = Descipfld.getText();
 
-            System.out.println(idfldText + namefldText + quantityfldText + pricefldText + datefldText + DescipfldText);
+            System.out.println(idfldText + namefldText + quantityfldText + datefldText + DescipfldText);
 
             Bson filter = eq("Item_ID", idfldText);
 
+
             Bson updateName = set("Item_Name", namefldText); // creating an array with a comment.
             Bson updateQuantity = set("Quantity", quantityfldText); // using addToSet so no effect.
-            Bson updatePrice = set("Price", pricefldText); // using addToSet so no effect.
             Bson updateDate = set("Date", datefldText);
             Bson updateDescription = set("Description", DescipfldText);
 
             List<Bson> updatePredicates = new ArrayList<Bson>();
             updatePredicates.add(updateName);
             updatePredicates.add(updateQuantity);
-            updatePredicates.add(updatePrice);
             updatePredicates.add(updateDate);
             updatePredicates.add(updateDescription);
 
@@ -167,6 +164,14 @@ public class StockLubricant implements Initializable {
         }
     }
 
+
+    @FXML
+    void handleMouseAction(MouseEvent event) {
+        Lubricant lubricant = StockLubricant.getSelectionModel().getSelectedItem();
+        idfld.setText(lubricant.getId());
+        namefld.setText(lubricant.getName());
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -176,7 +181,7 @@ public class StockLubricant implements Initializable {
 
         // get collection
         LubricantCollection = database.getCollection("Lubricant");
-        LubricantAddReportCollection = database.getCollection("LubricantAddReport");
+        LubricantRemoveReportCollection = database.getCollection("LubricantRemoveReport");
 
         showLubricant();
         searchLubricant();
@@ -256,32 +261,23 @@ public class StockLubricant implements Initializable {
 
     }
 
-    @FXML
-    void handleMouseAction(MouseEvent event) {
-        Lubricant lubricant = StockLubricant.getSelectionModel().getSelectedItem();
-        idfld.setText(lubricant.getId());
-        namefld.setText(lubricant.getName());
-    }
-
     private void clearText(){
         idfld.clear();
         namefld.clear();
         quantityfld.clear();
-        pricefld.clear();
         datefld.getEditor().clear();
         Descipfld.clear();
     }
 
-    private void insertLubricantAddReport(MongoCollection<Document> lubricantaddreportCollection, String idfldText1, String namefldText1, String quantityfldText1, String pricefldText1, String datefldText1, String DescipfldText1) {
+    private void insertLubricantRemoveReport(MongoCollection<Document> lubricantremovereportCollection, String idfldText1, String namefldText1, String quantityfldText1, String datefldText1, String DescipfldText1) {
 
         Document item = new Document("_id", new ObjectId())
                 .append("Item_ID", idfldText1)
                 .append("Item_Name", namefldText1)
                 .append("Quantity", quantityfldText1)
-                .append("Price", pricefldText1)
                 .append("Date", datefldText1)
                 .append("Description", DescipfldText1);
-        lubricantaddreportCollection.insertOne(item);
+        lubricantremovereportCollection.insertOne(item);
         System.out.println("Connection S3");
     }
 

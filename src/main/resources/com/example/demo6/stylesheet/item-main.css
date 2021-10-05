@@ -72,3 +72,19 @@
     -fx-background-color:  #005b96;
 }
 
+.bttn2{
+    -fx-background-color:  #03396c;
+    -fx-text-fill: white;
+    -fx-background-radius: 20 20 20 20;
+}
+
+.bttn2:hover{
+    -fx-background-color:  #b3cde0;
+    -fx-text-fill: black;
+    -fx-background-radius: 20 20 20 20;
+
+}
+
+.bttn2:pressed{
+    -fx-background-color:  #005b96;
+}

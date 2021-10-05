@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -13,9 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600" prefWidth="800" stylesheets="@stylesheet/add-new-lub.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.AddNewLub">
+<AnchorPane prefHeight="600" prefWidth="800" stylesheets="@stylesheet/add-new-Stock.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.AddNewStock">
     <children>
-        <Label layoutX="17.0" prefHeight="75.0" prefWidth="766.0" text="ADD NEW LUBRICANT STOCK" textFill="#000000e5">
+        <Label layoutX="154.0" prefHeight="75.0" prefWidth="490.0" text="ADD NEW STOCK" textFill="#000000e5">
             <font>
                 <Font name="System Bold" size="48.0" />
             </font>
@@ -29,14 +30,19 @@
         </Label>
         <Pane layoutX="90.0" layoutY="89.0" prefHeight="443.0" prefWidth="610.0" styleClass="formbox">
             <children>
-                <VBox layoutX="33.0" layoutY="21.0" prefHeight="365.0" prefWidth="137.0" spacing="30.0">
+                <VBox layoutX="33.0" layoutY="21.0" prefHeight="414.0" prefWidth="137.0" spacing="27.0">
                     <children>
-                  <Label alignment="CENTER" prefHeight="33.0" prefWidth="176.0" styleClass="label1" text="Item ID">
+                  <Label alignment="CENTER" prefHeight="32.0" prefWidth="150.0" styleClass="label1" text="Stock Type">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                        <Label alignment="CENTER" prefHeight="33.0" prefWidth="143.0" styleClass="label1" text="Item Name" textAlignment="CENTER">
+                  <Label alignment="CENTER" prefHeight="32.0" prefWidth="176.0" styleClass="label1" text="Item ID">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                        <Label alignment="CENTER" prefHeight="32.0" prefWidth="143.0" styleClass="label1" text="Item Name" textAlignment="CENTER">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
@@ -44,7 +50,7 @@
                                 <Insets />
                             </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="33.0" prefWidth="150.0" styleClass="label1" text="Quantity">
+                        <Label alignment="CENTER" prefHeight="32.0" prefWidth="150.0" styleClass="label1" text="Quantity">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
@@ -52,7 +58,7 @@
                                 <Insets />
                             </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="33.0" prefWidth="168.0" styleClass="label1" text="Price">
+                        <Label alignment="CENTER" prefHeight="32.0" prefWidth="168.0" styleClass="label1" text="Price">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
@@ -60,7 +66,7 @@
                                 <Insets />
                             </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="33.0" prefWidth="150.0" styleClass="label1" text="Date">
+                        <Label alignment="CENTER" prefHeight="32.0" prefWidth="150.0" styleClass="label1" text="Date">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
@@ -68,7 +74,7 @@
                                 <Insets />
                             </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="33.0" prefWidth="147.0" styleClass="label1" text="Description">
+                        <Label alignment="CENTER" prefHeight="32.0" prefWidth="147.0" styleClass="label1" text="Description">
                             <font>
                                 <Font name="System Bold" size="18.0" />
                             </font>
@@ -78,29 +84,30 @@
                         </Label>
                     </children>
                 </VBox>
-                <VBox layoutX="217.0" layoutY="21.0" prefHeight="414.0" prefWidth="355.0" spacing="30.0">
+                <VBox layoutX="217.0" layoutY="21.0" prefHeight="414.0" prefWidth="355.0" spacing="27.0">
                     <children>
-                  <TextField fx:id="idfld" prefHeight="33.0" promptText="Enter Item Id" styleClass="text-field1">
+                  <ChoiceBox fx:id="choiceBox" prefHeight="32.0" prefWidth="366.0" styleClass="text-field1" />
+                  <TextField fx:id="idfld" prefHeight="32.0" promptText="Enter Item Id" styleClass="text-field1">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                        <TextField fx:id="namefld" prefHeight="33.0" promptText="Enter Item Name" styleClass="text-field1">
+                        <TextField fx:id="namefld" prefHeight="32.0" promptText="Enter Item Name" styleClass="text-field1">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="quantityfld" prefHeight="33.0" promptText="Enter Quantity" styleClass="text-field1">
+                        <TextField fx:id="quantityfld" prefHeight="32.0" promptText="Enter Quantity" styleClass="text-field1">
                             <font>
                                 <Font size="14.0" />
                             </font></TextField>
-                        <TextField fx:id="pricefld" prefHeight="33.0" promptText="Enter Unit Price" styleClass="text-field1">
+                        <TextField fx:id="pricefld" prefHeight="32.0" promptText="Enter Price" styleClass="text-field1">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </TextField>
-                  <DatePicker fx:id="datefld" prefHeight="33.0" prefWidth="208.0" promptText="Select Date" styleClass="date-picker" />
-                        <TextArea fx:id="Descipfld" prefHeight="106.0" prefWidth="355.0" promptText="Enter Description" styleClass="text-area">
+                  <DatePicker fx:id="datefld" prefHeight="32.0" prefWidth="208.0" promptText="Select Date" styleClass="date-picker" />
+                        <TextArea fx:id="Descipfld" prefHeight="58.0" prefWidth="355.0" promptText="Enter Description" styleClass="text-area">
                             <font>
                                 <Font size="14.0" />
                             </font>
