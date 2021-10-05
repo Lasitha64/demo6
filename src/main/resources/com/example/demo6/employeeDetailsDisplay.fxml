@@ -35,7 +35,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="23.0" layoutY="149.0" text="Address" textFill="#f8f5f5">
+            <Label layoutX="18.0" layoutY="149.0" text="Address" textFill="#f8f5f5">
                <font>
                   <Font size="18.0" />
                </font>
@@ -45,17 +45,17 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="243.0" text="Mobile No" textFill="#fffafa">
+            <Label layoutX="18.0" layoutY="243.0" text="Mobile No" textFill="#fffafa">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="employeeinputaddress" layoutX="105.0" layoutY="150.0" prefHeight="25.0" prefWidth="184.0" />
+            <TextField fx:id="employeeinputaddress" layoutX="107.0" layoutY="150.0" prefHeight="25.0" prefWidth="184.0" />
             <TextField fx:id="nicdisplay" layoutX="107.0" layoutY="196.0" prefHeight="25.0" prefWidth="184.0" />
             <TextField fx:id="employeeinputmobile" layoutX="107.0" layoutY="244.0" prefHeight="25.0" prefWidth="184.0" />
          </children>
       </Pane>
-      <TextField fx:id="employeeinputname" layoutX="141.0" layoutY="187.0" prefHeight="25.0" prefWidth="194.0" />
+      <TextField fx:id="employeeinputname" layoutX="151.0" layoutY="187.0" prefHeight="25.0" prefWidth="184.0" />
       <Button fx:id="backbutton" alignment="CENTER_RIGHT" layoutX="56.0" layoutY="534.0" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="85.0" styleClass="back" text="BACK">
          <font>
             <Font name="System Bold" size="14.0" />
