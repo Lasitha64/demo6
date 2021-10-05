@@ -1,0 +1,90 @@
+.root{
+    -fx-background-color:#03396c ;
+}
+
+.formbox{
+    -fx-background-color:#005b96;
+    -fx-background-radius: 30 30 30 30;
+}
+
+.label1{
+    -fx-background-color:#b3cde0;
+    -fx-background-radius: 30 0 0 30;
+}
+
+.text-field1{
+    -fx-background-color:#b3cde0;
+    -fx-prompt-text-fill: gray;
+    -fx-background-radius: 0 30 30 0;
+}
+
+.text-field1:hover{
+    -fx-background-color:#03396c;
+    -fx-prompt-text-fill: black;
+    -fx-background-radius: 0 30 30 0;
+}
+
+.text-field1:pressed{
+    -fx-background-color:gray;
+    -fx-prompt-text-fill: black;
+    -fx-background-radius: 0 30 30 0;
+}
+
+.text-area {
+    -fx-prompt-text-fill: gray;
+}
+
+.text-area .content {
+    -fx-background-color:#b3cde0;
+}
+
+.text-area:hover{
+    -fx-prompt-text-fill: black;
+}
+
+.text-area .content:hover {
+    -fx-background-color:#03396c;
+}
+
+.text-area .content:pressed{
+    -fx-background-color:gray;
+}
+
+.date-picker > .text-field {
+    -fx-prompt-text-fill: gray;
+    -fx-background-color:#b3cde0;
+}
+
+.btnback{
+    -fx-background-color:  #005b96;
+    -fx-text-fill: white;
+    -fx-background-radius: 20 20 20 20;
+}
+
+.btnback:hover{
+    -fx-background-color:  #b3cde0;
+    -fx-text-fill: black;
+    -fx-background-radius: 20 20 20 20;
+
+}
+
+.btnback:pressed{
+    -fx-background-color:  #005b96;
+}
+
+.bttn2{
+    -fx-background-color:  #03396c;
+    -fx-text-fill: white;
+    -fx-background-radius: 20 20 20 20;
+}
+
+.bttn2:hover{
+    -fx-background-color:  #b3cde0;
+    -fx-text-fill: black;
+    -fx-background-radius: 20 20 20 20;
+
+}
+
+.bttn2:pressed{
+    -fx-background-color:  #005b96;
+}
