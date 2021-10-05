@@ -21,27 +21,28 @@
          </font>
       </Label>
       <DatePicker fx:id="datefld" layoutX="602.0" layoutY="129.0" prefHeight="25.0" prefWidth="189.0" promptText="Select Date" />
-      <ScrollPane layoutX="330.0" layoutY="162.0" prefHeight="464.0" prefWidth="474.0">
+      <ScrollPane layoutX="269.0" layoutY="162.0" prefHeight="464.0" prefWidth="535.0">
          <content>
-            <TableView fx:id="StockItem" prefHeight="462.0" prefWidth="474.0">
+            <TableView fx:id="StockItem" prefHeight="454.0" prefWidth="703.0">
                <columns>
-                  <TableColumn fx:id="item_date" prefWidth="84.00005799531937" text="DATE" />
-                  <TableColumn fx:id="item_id" prefWidth="78.39996337890625" text="ITEM ID" />
-                  <TableColumn fx:id="item_name" prefWidth="138.3999786376953" text="ITEM NAME" />
-                  <TableColumn fx:id="item_qunt" prefWidth="106.40008544921875" text="QUANTITY" />
-                  <TableColumn fx:id="Item_price" minWidth="7.199951171875" prefWidth="68.7999267578125" text="Price" />
+                  <TableColumn fx:id="item_date" prefWidth="96.79998475313187" text="DATE" />
+                  <TableColumn fx:id="item_id" prefWidth="101.60003662109375" text="ITEM ID" />
+                  <TableColumn fx:id="item_name" prefWidth="133.59999084472656" text="ITEM NAME" />
+                  <TableColumn fx:id="item_qunt" prefWidth="108.0" text="QUANTITY" />
+                  <TableColumn fx:id="Item_price" minWidth="7.199951171875" prefWidth="112.533447265625" text="PRICE" />
+                  <TableColumn fx:id="item_desc" prefWidth="148.7999145507813" text="DESCRIPTION" />
                </columns>
             </TableView>
          </content>
       </ScrollPane>
-      <Pane layoutX="25.0" layoutY="232.0" prefHeight="288.0" prefWidth="286.0" styleClass="formbox">
+      <Pane layoutY="232.0" prefHeight="288.0" prefWidth="255.0" styleClass="formbox">
          <children>
-            <Button fx:id="btn_daily" alignment="CENTER" graphicTextGap="12.0" layoutX="24.0" layoutY="66.0" mnemonicParsing="false" onAction="#Add" prefHeight="45.0" prefWidth="236.0" styleClass="button1" text="Daily Inventory Report" textOverrun="WORD_ELLIPSIS" wrapText="true">
+            <Button fx:id="btn_daily" alignment="CENTER" graphicTextGap="12.0" layoutY="64.0" mnemonicParsing="false" onAction="#Add" prefHeight="45.0" prefWidth="248.0" styleClass="button1" text="Daily Inventory Report" textOverrun="WORD_ELLIPSIS" wrapText="true">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn_month" alignment="CENTER" graphicTextGap="12.0" layoutX="16.0" layoutY="183.0" mnemonicParsing="false" onAction="#Generate" prefHeight="45.0" prefWidth="249.0" styleClass="button1" text="Monthly Inventory Report" textOverrun="WORD_ELLIPSIS" wrapText="true">
+            <Button fx:id="btn_month" alignment="CENTER" graphicTextGap="12.0" layoutY="181.0" mnemonicParsing="false" onAction="#Generate" prefHeight="45.0" prefWidth="249.0" styleClass="button1" text="Monthly Inventory Report" textOverrun="WORD_ELLIPSIS" wrapText="true">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

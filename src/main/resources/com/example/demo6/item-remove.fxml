@@ -19,7 +19,7 @@
 <AnchorPane prefHeight="694" prefWidth="971" stylesheets="@stylesheet/item-remove.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.ItemRemove">
 
     <children>
-        <Label layoutX="345.0" layoutY="7.0" prefHeight="76.0" prefWidth="373.0" text="STOCK ITEM" textFill="#000000e5">
+        <Label layoutX="264.0" layoutY="5.0" prefHeight="76.0" prefWidth="414.0" text="REMOVE ITEM" textFill="#000000e5">
             <font>
                 <Font name="System Bold" size="48.0" />
             </font>
@@ -31,16 +31,7 @@
                 </ImageView>
             </graphic>
         </Label>
-        <TextField fx:id="search_fld" layoutX="429.0" layoutY="92.0" prefHeight="33.0" prefWidth="444.0" promptText="Enter Item Name" />
-        <Button fx:id="buttn_search" layoutX="878.0" layoutY="93.0" mnemonicParsing="false" onAction="#Search" prefHeight="24.0" prefWidth="25.0">
-            <graphic>
-                <ImageView blendMode="MULTIPLY" fitHeight="25.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@img/se.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
+        <TextField fx:id="search_fld" layoutX="429.0" layoutY="92.0" prefHeight="34.0" prefWidth="498.0" promptText="Enter Item Name" />
         <Pane layoutX="422.0" layoutY="138.0" prefHeight="477.0" prefWidth="518.0">
             <children>
                 <ScrollPane layoutY="1.0" prefHeight="477.0" prefWidth="522.0">

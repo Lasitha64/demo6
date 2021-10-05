@@ -18,7 +18,7 @@
 
 <AnchorPane prefHeight="694.0" prefWidth="971.0" stylesheets="@stylesheet/stock-view.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.StockView">
     <children>
-        <Label layoutX="345.0" layoutY="7.0" prefHeight="76.0" prefWidth="373.0" text="STOCK ITEM" textFill="#000000e5">
+        <Label layoutX="345.0" layoutY="7.0" prefHeight="76.0" prefWidth="373.0" text="ADD ITEM" textFill="#000000e5">
             <font>
                 <Font name="System Bold" size="48.0" />
             </font>

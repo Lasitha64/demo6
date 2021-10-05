@@ -124,6 +124,7 @@ public class ItemRemove implements Initializable {
                 e.printStackTrace();
             }
 
+            //calculate the quantity
             Item item = StockItem.getSelectionModel().getSelectedItem();
 
             String Qunt =item.getQuantity();
@@ -167,11 +168,6 @@ public class ItemRemove implements Initializable {
             ab.display("Success","Data Updated Successfully!");
 
         }
-    }
-
-    @FXML
-    void Search(ActionEvent event) {
-
     }
 
     @FXML

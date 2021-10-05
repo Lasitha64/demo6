@@ -58,6 +58,10 @@ public class StockReport implements Initializable {
     @FXML
     private TableColumn<Item, String> item_date;
 
+
+    @FXML
+    private TableColumn<Item, String> item_desc;
+
     @FXML
     private Button btn_daily;
 
@@ -108,6 +112,7 @@ public class StockReport implements Initializable {
         item_qunt.setCellValueFactory(new PropertyValueFactory<Item, String>("Quantity"));
         Item_price.setCellValueFactory(new PropertyValueFactory<Item, String>("Price"));
         item_date.setCellValueFactory(new PropertyValueFactory<Item, String>("Date"));
+        item_desc.setCellValueFactory(new PropertyValueFactory<Item, String>("Description"));
 
         StockItem.setItems(list);
 
@@ -128,6 +133,7 @@ public class StockReport implements Initializable {
                 itqunt = doc.getString("Quantity");
                 itprice = doc.getString("Price");
                 itdate = doc.getString("Date");
+                itdes = doc.getString("Description");
 
                 attend.add(new Item(itid, itname, itqunt, itprice, itdate, itdes));
 

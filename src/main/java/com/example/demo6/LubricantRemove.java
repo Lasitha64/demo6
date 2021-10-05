@@ -119,6 +119,7 @@ public class LubricantRemove implements Initializable {
                 e.printStackTrace();
             }
 
+            //calculate the quantity
             Lubricant lubricant = StockLubricant.getSelectionModel().getSelectedItem();
 
             String Qunt =lubricant.getQuantity();
