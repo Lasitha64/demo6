@@ -2,18 +2,25 @@ package com.example.demo6;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.FindOneAndUpdateOptions;
 import com.mongodb.client.model.ReturnDocument;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.DeleteResult;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -24,10 +31,19 @@ import static com.mongodb.client.model.Updates.*;
 
 
 import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class ViewRepairDetails {
+public class ViewRepairDetails implements Initializable {
+
+    private String rpid;
+    private String rpds;
+    private String rpda;
+    private String rpp;
+
 
     private AlertBox ab;
 
@@ -36,19 +52,20 @@ public class ViewRepairDetails {
     private Scene scene;
 
     @FXML
-    private TableView<?> CrusherParts;
+    private TableView<repairR> repairR;
 
     @FXML
-    private TableColumn<?, ?> cid;
+    private TableColumn<repairR, String> rid;
 
     @FXML
-    private TableColumn<?, ?> cname;
+    private TableColumn<repairR, String> rd;
 
     @FXML
-    private TableColumn<?, ?> cquan;
+    private TableColumn<repairR, String> rda;
 
     @FXML
-    private TableColumn<?, ?> cprice;
+    private TableColumn<repairR, String> rp;
+
 
     @FXML
     private Button btn_update;
@@ -153,9 +170,73 @@ public class ViewRepairDetails {
             System.out.println("Updating the Vehicle repair Details");
             System.out.println(newVersion);
 
-            ab.display("Done"," Data Updated Successfully");
+            ab.display("Done", " Data Updated Successfully");
 
         }
-    }
 
-}
+    }
+        @Override
+        public void initialize(URL location, ResourceBundle resources) {
+            showRepair();
+        }
+
+        public void showRepair() {
+
+            ObservableList<repairR> list = getRepairList();
+
+            rid.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getId()));
+            rd.setCellValueFactory(new PropertyValueFactory<repairR, String>("Description"));
+            rda.setCellValueFactory(new PropertyValueFactory<repairR, String>("Date"));
+            rp.setCellValueFactory(new PropertyValueFactory<repairR, String>("Price"));
+
+            repairR.setItems(list);
+
+        }
+
+        private ObservableList<repairR> getRepairList() {
+            ObservableList<repairR> attend = FXCollections.observableArrayList();
+
+            //initialize database connection
+            Database databaseController = new Database();
+            MongoDatabase database = databaseController.connectToDB("HerathCMD");
+            // get collection
+            vRepairCollection = database.getCollection("vRepair");
+            MongoCursor<Document> cursor = vRepairCollection.find().iterator();
+            try {
+
+                for (int i = 0; i < vRepairCollection.count(); i++) {
+
+
+                    Document doc = cursor.next();
+
+                    //  System.out.println(cruid);
+
+                    rpid = doc.getString("Vehicle_id");
+                    rpds = doc.getString("Description");
+                    rpda= doc.getString("Date");
+                    rpp= doc.getString("Price");
+
+                    attend.add(new repairR(rpid, rpds, rpda, rpp));
+
+                }
+                //  list = FXCollections.observableArrayList(attend);
+            } finally {
+//          close the connection
+                cursor.close();
+            }
+            return attend;
+//      call the setTable method
+        }
+
+        @FXML
+        void handleMouseAction(MouseEvent event) {
+            repairR vehicle = repairR.getSelectionModel().getSelectedItem();
+
+            vid.setText(vehicle.getId());
+            des.setText(vehicle.getDescription());
+            dt.setValue(LocalDate.parse(vehicle.getDate().toString()));
+            p.setText(vehicle.getPrice());
+
+        }
+
+    }
