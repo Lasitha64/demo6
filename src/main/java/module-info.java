@@ -3,7 +3,7 @@ module com.example.demo6 {
     requires javafx.fxml;
 
     requires org.controlsfx.controls;
-    requires com.dlsc.formsfx;
+    //requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
     requires mongo.java.driver;
     requires java.sql;
