@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.FinanceGeneralJournalView">
+    <children>
+        <Label alignment="CENTER" layoutX="154.0" layoutY="14.0" prefHeight="82.0" prefWidth="491.0" text="General Journal" textAlignment="RIGHT" textFill="#dbdbe6" wrapText="true">
+            <font>
+                <Font name="System Bold" size="36.0" />
+            </font>
+        </Label>
+        <Pane layoutX="96.0" layoutY="90.0" prefHeight="402.0" prefWidth="611.0" styleClass="formbox" stylesheets="@stylesheet/Finance.css">
+            <children>
+                <TableView fx:id="GJdis" layoutX="9.0" layoutY="7.0" prefHeight="384.0" prefWidth="597.0">
+                    <columns>
+                  <TableColumn fx:id="GJID" prefWidth="70.0" text="ID" />
+                        <TableColumn fx:id="Date" prefWidth="92.0" text="Date" />
+                        <TableColumn fx:id="VoucherNo" prefWidth="119.0" text="Voucher No" />
+                        <TableColumn fx:id="Description" prefWidth="151.0" text="Description" />
+                        <TableColumn fx:id="Dr" prefWidth="87.0" text="Dr" />
+                  <TableColumn fx:id="Cr" prefWidth="75.0" text="Cr" />
+                    </columns>
+                </TableView>
+            </children>
+        </Pane>
+        <Button fx:id="back" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="96.0" layoutY="525.0" mnemonicParsing="false" onAction="#back_to_n" prefHeight="43.0" prefWidth="115.0" styleClass="btnback" text="Back">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+            <graphic>
+                <ImageView blendMode="MULTIPLY" fitHeight="23.0" fitWidth="24.0">
+                    <image>
+                        <Image url="@img/arrow-left.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+      <Button fx:id="btn_back1" alignment="CENTER_RIGHT" graphicTextGap="10.0" layoutX="552.0" layoutY="525.0" mnemonicParsing="false" onAction="#back_to_a" prefHeight="43.0" prefWidth="155.0" styleClass="btnback" text="Finance Home">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+    </children>
+    <stylesheets>
+        <URL value="@stylesheet/Finance.css" />
+    </stylesheets>
+</AnchorPane>
