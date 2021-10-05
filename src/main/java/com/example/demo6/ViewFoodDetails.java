@@ -29,7 +29,8 @@ import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Updates.set;
 
 
-public class ViewFoodDetails {
+public class
+ViewFoodDetails {
 
     private Stage stage;
     private Scene scene;
