@@ -22,8 +22,8 @@
             <children>
                 <TableView fx:id="SJ" layoutX="23.0" layoutY="9.0" prefHeight="384.0" prefWidth="694.0">
                     <columns>
-                  <TableColumn fx:id="SJID" prefWidth="96.0" text="ID" />
-                        <TableColumn fx:id="Date" prefWidth="105.0" text="Date" />
+                  <TableColumn fx:id="SJID" prefWidth="96.0" text="Date" />
+                        <TableColumn fx:id="Date" prefWidth="105.0" text="Dis" />
                         <TableColumn fx:id="InvoiceNo" prefWidth="116.0" text="Invoice No" />
                         <TableColumn fx:id="Customer" prefWidth="153.0" text="Customer" />
                         <TableColumn fx:id="TotalValue" prefWidth="120.0" text="Total Value" />

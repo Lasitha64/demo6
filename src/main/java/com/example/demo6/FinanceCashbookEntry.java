@@ -82,12 +82,12 @@ public class FinanceCashbookEntry {
     //************************************************************************************************************
 
     @FXML
-    int give_typeDr(ActionEvent event) {
+    public  int give_typeDr(ActionEvent event) {
         return n = 1;
     }
 
     @FXML
-    int give_typeCr(ActionEvent event) {
+    public  int give_typeCr(ActionEvent event) {
         return m = 1;
     }
 
