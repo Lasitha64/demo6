@@ -2,14 +2,19 @@ package com.example.demo6;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.FindOneAndUpdateOptions;
 import com.mongodb.client.model.ReturnDocument;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.DeleteResult;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,6 +22,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -26,33 +33,43 @@ import static com.mongodb.client.model.Updates.*;
 
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class ViewVehicleDetails {
+public class ViewVehicleDetails implements Initializable {
 
     private AlertBox ab;
 
     private Stage stage;
     private Scene scene;
 
-    @FXML
-    private TableView<?> CrusherParts;
+
+    private String vht;
+    private String vhc;
+    private String vhs;
+    private String vhr;
 
     @FXML
-    private TableColumn<?, ?> cid;
+    private TableView<vehicleV> vehiclev;
 
     @FXML
-    private TableColumn<?, ?> cname;
+    private TableColumn<vehicleV, String> vid;
+
 
     @FXML
-    private TableColumn<?, ?> cquan;
+    private TableColumn<vehicleV, String> vc;
 
     @FXML
-    private TableColumn<?, ?> cprice;
+    private TableColumn<vehicleV, String> vs;
 
     @FXML
-    private TableColumn<?, ?> cdate;
+    private TableColumn<vehicleV, String> vr;
+
+    @FXML
+    private TableColumn<vehicleV, String> vtype;
+
 
     @FXML
     private TextField vt;
@@ -155,8 +172,70 @@ public class ViewVehicleDetails {
 
         }
     }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        showVehicle();
+    }
+
+    public void showVehicle() {
+
+        ObservableList<vehicleV> list = getVehicleList();
+
+        vr.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getRegnumber()));
+        vc.setCellValueFactory(new PropertyValueFactory<vehicleV, String>("Condition"));
+        vs.setCellValueFactory(new PropertyValueFactory<vehicleV, String>("Site"));
+        //vr.setCellValueFactory(new PropertyValueFactory<vehicleV, String>("Regnumber"));
+        vtype.setCellValueFactory(new PropertyValueFactory<vehicleV, String>("Brand"));
+
+        vehiclev.setItems(list);
+
+    }
+
+    private ObservableList<vehicleV> getVehicleList() {
+        ObservableList<vehicleV> attend = FXCollections.observableArrayList();
+
+        //initialize database connection
+        Database databaseController = new Database();
+        MongoDatabase database = databaseController.connectToDB("HerathCMD");
+        // get collection
+        VehicleCollection = database.getCollection("Vehicle");
+        MongoCursor<Document> cursor = VehicleCollection.find().iterator();
+        try {
+
+            for (int i = 0; i < VehicleCollection.count(); i++) {
+
+
+                Document doc = cursor.next();
+
+                //  System.out.println(cruid);
+
+                vht = doc.getString("Vehicle_Type");
+                vhc = doc.getString("Condition");
+                vhs = doc.getString("Site");
+                vhr = doc.getString("Reg_No");
+
+                attend.add(new vehicleV(vht, vhc, vhs, vhr));
+
+            }
+            //  list = FXCollections.observableArrayList(attend);
+        } finally {
+//          close the connection
+            cursor.close();
+        }
+        return attend;
+//      call the setTable method
+    }
+
+    @FXML
+    void handleMouseAction(MouseEvent event) {
+        vehicleV vehicle = vehiclev.getSelectionModel().getSelectedItem();
+
+        vt.setText(vehicle.getBrand());
+        c.setText(vehicle.getCondition());
+        st.setText(vehicle.getSite());
+        rpn.setText(vehicle.getRegnumber());
+
+    }
+
 }
-
-
-
-
