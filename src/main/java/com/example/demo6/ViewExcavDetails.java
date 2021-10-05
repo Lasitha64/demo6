@@ -2,19 +2,28 @@ package com.example.demo6;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.FindOneAndUpdateOptions;
 import com.mongodb.client.model.ReturnDocument;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.DeleteResult;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -23,15 +32,42 @@ import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Updates.*;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 
-public class ViewExcavDetails {
+public class ViewExcavDetails implements Initializable {
 
     private Stage stage;
     private Scene scene;
     private AlertBox ab;
+    private String excavid;
+    private String excavbrand;
+    private String excavreg;
+    private String excavcon;
+    private String excavsite;
+
+    MongoCollection<Document> excavatorCollection;
+
+    @FXML
+    private TableView<Excavator> ExcavatorDetails;
+
+    @FXML
+    private TableColumn<Excavator, String> exid;
+
+    @FXML
+    private TableColumn<Excavator, String> exbrand;
+
+    @FXML
+    private TableColumn<Excavator, String> exreg;
+
+    @FXML
+    private TableColumn<Excavator, String> excon;
+
+    @FXML
+    private TableColumn<Excavator, String> exsite;
 
     @FXML
     private TextField eid;
@@ -60,7 +96,7 @@ public class ViewExcavDetails {
 
     private MongoClient database;
 
-    MongoCollection<Document> ExcavatorCollection;
+    //MongoCollection<Document> ExcavatorCollection;
 
 
 
@@ -73,7 +109,7 @@ public class ViewExcavDetails {
         MongoDatabase database = databaseController.connectToDB("HerathCMD");
 
         // get collection
-        ExcavatorCollection = database.getCollection("Excavator");
+        excavatorCollection = database.getCollection("Excavator");
     }
 
     @FXML
@@ -119,7 +155,7 @@ public class ViewExcavDetails {
                 .append("Quantity", QuantityText)
                 .append("Prise", PriseText);*/
             FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
-            Document newVersion = ExcavatorCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
+            Document newVersion = excavatorCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
 
             System.out.println("Updating the Excavator Details");
             System.out.println(newVersion);
@@ -131,11 +167,72 @@ public class ViewExcavDetails {
     void Delete(ActionEvent event){
         String eidText = eid.getText();
         Bson filter = eq("ExcavatorID", eidText);
-        DeleteResult result = ExcavatorCollection.deleteOne(filter);
+        DeleteResult result = excavatorCollection.deleteOne(filter);
         System.out.println(result);
         ab.display("Data Delete ","Data Delete Successfull");
     }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        showCrusher();
+    }
+    public void showCrusher() {
+
+        ObservableList<Excavator> list = getCrusherList();
+
+        exid.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getId()));
+        exbrand.setCellValueFactory(new PropertyValueFactory<Excavator, String>("Brand"));
+        exreg.setCellValueFactory(new PropertyValueFactory<Excavator, String>("Regnumber"));
+        excon.setCellValueFactory(new PropertyValueFactory<Excavator, String>("Condition"));
+        exsite.setCellValueFactory(new PropertyValueFactory<Excavator, String>("Site"));
+
+        ExcavatorDetails.setItems(list);
 
     }
+
+    private ObservableList<Excavator> getCrusherList() {
+        ObservableList<Excavator> attend = FXCollections.observableArrayList();
+
+        //initialize database connection
+        Database databaseController = new Database();
+        MongoDatabase database = databaseController.connectToDB("HerathCMD");
+        // get collection
+        excavatorCollection = database.getCollection("Excavator");
+        MongoCursor<Document> cursor = excavatorCollection.find().iterator();
+        try {
+
+            for (int i = 0; i < excavatorCollection.count(); i++) {
+
+
+                Document doc = cursor.next();
+                excavid = doc.getString("ExcavatorID");
+                //  System.out.println(cruid);
+                excavbrand = doc.getString("Brand");
+                excavreg = doc.getString("Registration No");
+                excavcon = doc.getString("Condition");
+                excavsite = doc.getString("Site");
+
+                attend.add(new Excavator(excavid, excavbrand, excavreg, excavcon , excavsite));
+
+            }
+            //  list = FXCollections.observableArrayList(attend);
+        } finally {
+//          close the connection
+            cursor.close();
+        }
+        return  attend;
+    }
+    @FXML
+    void handleMouseAction(MouseEvent event) {
+        Excavator vehicle = ExcavatorDetails.getSelectionModel().getSelectedItem();
+
+        eid.setText(vehicle.getId());
+        ebrand.setText(vehicle.getBrand());
+        ereg.setText(vehicle.getRegnumber());
+        econ.setText(vehicle.getCondition());
+        esite.setText(vehicle.getSite());
+
+    }
+
+}

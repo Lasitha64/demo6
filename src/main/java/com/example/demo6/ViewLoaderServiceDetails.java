@@ -1,50 +1,65 @@
 package com.example.demo6;
 
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.FindOneAndUpdateOptions;
 import com.mongodb.client.model.ReturnDocument;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.DeleteResult;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
 import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Updates.set;
 
 
-public class ViewLoaderServiceDetails {
+public class ViewLoaderServiceDetails implements Initializable {
 
     private Stage stage;
     private Scene scene;
+    private  String loadid;
+    private  String loadname;
+    private  String loadpri;
+    private  String loaddate;
 
     MongoCollection<Document> LoaderCollection;
 
-    private TableView<?> CrusherParts;
+    @FXML
+    private TableView<LoadService> loadService;
 
     @FXML
-    private TableColumn<?, ?> L_id;
+    private TableColumn<LoadService, String> L_id;
 
     @FXML
-    private TableColumn<?, ?> L_description;
+    private TableColumn<LoadService, String> L_description;
 
     @FXML
-    private TableColumn<?, ?> L_date;
+    private TableColumn<LoadService, String> L_date;
 
     @FXML
-    private TableColumn<?, ?> L_price;
+    private TableColumn<LoadService, String> L_price;
 
     @FXML
     private TextField Lid;
@@ -130,5 +145,64 @@ public class ViewLoaderServiceDetails {
             Bson filter = eq("LoaderID", Stock_ID);
             DeleteResult result = LoaderCollection.deleteOne(filter);
             System.out.println(result);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        showCrusher();
+    }
+    public void showCrusher() {
+
+        ObservableList<LoadService> list = getCrusherList();
+
+        L_id.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getId()));
+        L_description.setCellValueFactory(new PropertyValueFactory<LoadService, String>("Name"));
+        L_price.setCellValueFactory(new PropertyValueFactory<LoadService, String>("Price"));
+        L_date.setCellValueFactory(new PropertyValueFactory<LoadService, String>("Date"));
+
+
+        loadService.setItems(list);
+
+    }
+
+    private ObservableList<LoadService> getCrusherList() {
+        ObservableList<LoadService> attend = FXCollections.observableArrayList();
+
+        //initialize database connection
+        Database databaseController = new Database();
+        MongoDatabase database = databaseController.connectToDB("HerathCMD");
+        // get collection
+        LoaderCollection = database.getCollection("LoaderServiceDetails");
+        MongoCursor<Document> cursor = LoaderCollection.find().iterator();
+        try {
+
+            for (int i = 0; i < LoaderCollection.count(); i++) {
+
+
+                Document doc = cursor.next();
+                loadid = doc.getString("LoaderID");
+                //  System.out.println(cruid);
+                loadname = doc.getString("Description");
+                loadpri = doc.getString("Price");
+                loaddate = doc.getString("Date");
+
+                attend.add(new LoadService(loadid, loadname, loadpri, loaddate));
+
+            }
+            //  list = FXCollections.observableArrayList(attend);
+        } finally {
+//          close the connection
+            cursor.close();
+        }
+        return attend;
+    }
+    @FXML
+    void handleMouseAction(MouseEvent event) {
+        LoadService vehicle = loadService.getSelectionModel().getSelectedItem();
+        Lid.setText(vehicle.getId());
+        Ldescription.setText(vehicle.getName());
+        Ldate.setValue(LocalDate.parse(vehicle.getDate().toString()));
+        Lprice.setText(vehicle.getPrice());
+
     }
 }

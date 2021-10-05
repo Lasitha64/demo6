@@ -9,17 +9,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../../../../../../Desktop/src/main/resources/com/example/demo6/stylesheet/Excav-main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.ExcavDetails">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/Excav-main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.ExcavDetails">
 
     <children>
-        <Label alignment="CENTER" layoutX="16.0" layoutY="-228.0" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../../../../../../Desktop/src/main/resources/com/example/demo6/stylesheet/Excav-main.css" text="Excavator Details" textAlignment="CENTER" textFill="#aaaaaade">
+        <Label alignment="CENTER" layoutX="16.0" layoutY="-228.0" prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/Excav-main.css" text="Excavator Details" textAlignment="CENTER" textFill="#aaaaaade">
             <font>
                 <Font name="Britannic Bold" size="48.0" />
             </font>
          <graphic>
             <ImageView blendMode="MULTIPLY" fitHeight="61.0" fitWidth="76.0">
                <image>
-                  <Image url="@../../../../../../../../Desktop/src/main/resources/com/example/demo6/img/exca.png" />
+                  <Image url="@img/exca.png" />
                </image>
             </ImageView>
          </graphic>
@@ -36,7 +36,7 @@
                <graphic>
                   <ImageView blendMode="MULTIPLY" fitHeight="31.0" fitWidth="36.0">
                      <image>
-                        <Image url="@../../../../../../../../Desktop/src/main/resources/com/example/demo6/img/add.png" />
+                        <Image url="@img/add.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -51,7 +51,7 @@
                <graphic>
                   <ImageView blendMode="MULTIPLY" fitHeight="34.0" fitWidth="37.0">
                      <image>
-                        <Image url="@../../../../../../../../Desktop/src/main/resources/com/example/demo6/img/report.png" />
+                        <Image url="@img/report.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -65,7 +65,7 @@
          <graphic>
             <ImageView blendMode="MULTIPLY" fitHeight="22.0" fitWidth="27.0">
                <image>
-                  <Image url="@../../../../../../../../Desktop/src/main/resources/com/example/demo6/img/arrow-left.png" />
+                  <Image url="@img/arrow-left.png" />
                </image>
             </ImageView>
          </graphic>
