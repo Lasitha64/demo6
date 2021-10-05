@@ -135,9 +135,9 @@ public class ViewLoaderDetails implements Initializable {
 
 
             Bson updateName = set("Brand", BrandText); // creating an array with a comment.
-            Bson updateQuantity = set("WorkingSite", RegText); // using addToSet so no effect.
+            Bson updateQuantity = set("WorkingSite", SiteText); // using addToSet so no effect.
             Bson updatePrise = set("Condition", CondiText);
-            Bson updateSite = set("Site", SiteText);// using addToSet so no effect.
+            Bson updateSite = set("Register No", RegText);// using addToSet so no effect.
 
             List<Bson> updatePredicates = new ArrayList<Bson>();
             updatePredicates.add(updateName);
@@ -161,7 +161,7 @@ public class ViewLoaderDetails implements Initializable {
     @FXML
     void Delete(ActionEvent event){
 
-        String Stock_ID = L_id.getText();
+        String Stock_ID = Lid.getText();
         Bson filter = eq("LoaderID", Stock_ID);
         DeleteResult result = LoaderCollection.deleteOne(filter);
         System.out.println(result);

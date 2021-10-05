@@ -85,7 +85,7 @@ public class ViewExcavServDetails implements Initializable {
 
     private MongoClient database;
 
-    MongoCollection<Document> ExcavatorServiceCollection;
+    //MongoCollection<Document> ExcavatorServiceCollection;
 
     @FXML
 
@@ -96,7 +96,7 @@ public class ViewExcavServDetails implements Initializable {
         MongoDatabase database = databaseController.connectToDB("HerathCMD");
 
         // get collection
-        ExcavatorServiceCollection = database.getCollection("ExcavatorService");
+        excavatorServiceCollection = database.getCollection("ExcavatorService");
     }
 
     @FXML
@@ -142,7 +142,7 @@ public class ViewExcavServDetails implements Initializable {
                 .append("Quantity", QuantityText)
                 .append("Prise", PriseText);*/
             FindOneAndUpdateOptions optionAfter = new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER);
-            Document newVersion = ExcavatorServiceCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
+            Document newVersion = excavatorServiceCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
 
             System.out.println("Updating Excavator Service Details");
             System.out.println(newVersion);
@@ -155,7 +155,7 @@ public class ViewExcavServDetails implements Initializable {
     void Delete(ActionEvent event) {
         String eidText = eid.getText();
         Bson filter = eq("ExcavatorID", eidText);
-        DeleteResult result = ExcavatorServiceCollection.deleteOne(filter);
+        DeleteResult result = excavatorServiceCollection.deleteOne(filter);
         System.out.println(result);
         ab.display("Data Delete ","Data Delete Successfull");
     }
