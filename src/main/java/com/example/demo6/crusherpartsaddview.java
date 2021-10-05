@@ -1,5 +1,8 @@
 package com.example.demo6;
 
+
+import com.example.demo6.AlertBox;
+import com.example.demo6.Database;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
@@ -110,8 +113,7 @@ public class crusherpartsaddview {
             cruid = doc.getString("ID");
 
 
-            System.out.println(tid);
-            System.out.println(cruid);
+
 
             if(tid.equals(cruid)){
 

@@ -184,7 +184,7 @@ public class CrusherPartUpdate implements Initializable {
         Bson filter = eq("ID", Stock_ID);
         DeleteResult result = crusherCollection.deleteOne(filter);
         showCrusher();
-        System.out.println(result);
+
         ab.display("OK", "Delete Successful");
 
 
@@ -234,8 +234,7 @@ public class CrusherPartUpdate implements Initializable {
             Document newVersion = crusherCollection.findOneAndUpdate(filter, Updates.combine(updatePredicates));
 
             showCrusher();
-            System.out.println("Updating the generator maintenence stock");
-            System.out.println(newVersion);
+
             ab.display("OK", "Update Successful");
 
 

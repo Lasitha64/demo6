@@ -90,21 +90,28 @@ public class crusherview  {
     }
 
     @FXML
-    void Generate(ActionEvent event)  {
-        try {
-//            JasperDesign jdesign = JRXmlLoader.load("C:\\Users\\MSI\\IdeaProjects\\demo6\\src\\main\\resources\\com\\example\\demo6\\Jasper\\Invoice_1.jrxml");
-//            JasperReport jreport = JasperCompileManager.compileReport(jdesign);
-//            JasperPrint jprint = JasperFillManager.fillReport(jreport,map, (JRDataSource) con);
-//            JRViewer viewer = new JRViewer(jprint);
-            File myFile = new File("C:\\Users\\MSI\\IdeaProjects\\demo6\\src\\main\\resources\\com\\example\\demo6\\Jasper\\Invoice_1.jasper");
-            Desktop.getDesktop().open(myFile);
-        } catch (  IOException ex) {
-            // no application registered for PDFs
-        }
-
-      //  Report.createReport( con,map);
-
+    void Generate(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Charts.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/charts.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
     }
+//        try {
+////            JasperDesign jdesign = JRXmlLoader.load("C:\\Users\\MSI\\IdeaProjects\\demo6\\src\\main\\resources\\com\\example\\demo6\\Jasper\\Invoice_1.jrxml");
+////            JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+////            JasperPrint jprint = JasperFillManager.fillReport(jreport,map, (JRDataSource) con);
+////            JRViewer viewer = new JRViewer(jprint);
+//            File myFile = new File("C:\\Users\\MSI\\IdeaProjects\\demo6\\src\\main\\resources\\com\\example\\demo6\\Jasper\\Invoice_1.jasper");
+//            Desktop.getDesktop().open(myFile);
+//        } catch (  IOException ex) {
+//            // no application registered for PDFs
+//        }
+//
+//      //  Report.createReport( con,map);
+//
+//    }
 
     @FXML
     void Search(ActionEvent event) throws IOException {

@@ -10,107 +10,77 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: blue;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.crusherview">
+<AnchorPane fx:id="crusherviewfrag" prefHeight="600.0" prefWidth="800.0" styleClass="root" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.crusherview">
    <children>
-      <AnchorPane fx:id="crusherviewfrag" layoutX="235.0" prefHeight="600.0" prefWidth="800.0" styleClass="root">
+      <Label alignment="CENTER_RIGHT" layoutX="66.0" layoutY="14.0" prefHeight="110.0" prefWidth="682.0" text="Metal Crusher Management" textAlignment="CENTER" textFill="#aaaaaade">
+         <font>
+            <Font name="Britannic Bold" size="48.0" />
+         </font>
+         <graphic>
+            <ImageView blendMode="MULTIPLY" fitHeight="93.0" fitWidth="87.0">
+               <image>
+                  <Image url="@img/crusher.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <VBox layoutX="141.0" layoutY="142.0" prefHeight="373.0" prefWidth="518.0" styleClass="formbox">
          <children>
-            <Label alignment="CENTER_RIGHT" layoutX="66.0" layoutY="14.0" prefHeight="110.0" prefWidth="682.0" text="Metal Crusher Management" textAlignment="CENTER" textFill="#aaaaaade">
-               <font>
-                  <Font name="Britannic Bold" size="48.0" />
-               </font>
+            <Button fx:id="btn_add" alignment="CENTER" graphicTextGap="12.0" mnemonicParsing="false" onAction="#Add" prefHeight="45.0" prefWidth="218.0" styleClass="button1" text="Add Spare parts" textOverrun="WORD_ELLIPSIS" wrapText="true" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets bottom="50.0" left="150.0" right="100.0" top="75.0" />
+               </VBox.margin>
                <graphic>
-                  <ImageView blendMode="MULTIPLY" fitHeight="93.0" fitWidth="87.0">
+                  <ImageView blendMode="MULTIPLY" fitHeight="35.0" fitWidth="38.0">
                      <image>
-                        <Image url="@img/crusher.png" />
+                        <Image url="@img/add.png" />
                      </image>
                   </ImageView>
                </graphic>
-            </Label>
-            <VBox layoutX="141.0" layoutY="142.0" prefHeight="373.0" prefWidth="518.0" styleClass="formbox">
-               <children>
-                  <Button fx:id="btn_add" alignment="CENTER" graphicTextGap="12.0" mnemonicParsing="false" onAction="#Add" prefHeight="45.0" prefWidth="218.0" styleClass="button1" text="Add Spare parts" textOverrun="WORD_ELLIPSIS" wrapText="true" VBox.vgrow="ALWAYS">
-                     <VBox.margin>
-                        <Insets bottom="50.0" left="150.0" right="100.0" top="75.0" />
-                     </VBox.margin>
-                     <graphic>
-                        <ImageView blendMode="MULTIPLY" fitHeight="35.0" fitWidth="38.0">
-                           <image>
-                              <Image url="@img/add.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btn_gen" alignment="CENTER" mnemonicParsing="false" onAction="#Generate" prefHeight="45.0" prefWidth="218.0" styleClass="button1" text="Generate Reports" wrapText="true">
-                     <VBox.margin>
-                        <Insets bottom="50.0" left="150.0" right="150.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                     <graphic>
-                        <ImageView blendMode="MULTIPLY" fitHeight="30.0" fitWidth="31.0">
-                           <image>
-                              <Image url="@img/report.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btn_sea" alignment="CENTER" mnemonicParsing="false" onAction="#Search" prefHeight="45.0" prefWidth="218.0" styleClass="button1" text="Search Spare Parts" wrapText="true">
-                     <VBox.margin>
-                        <Insets bottom="50.0" left="150.0" right="150.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                     <graphic>
-                        <ImageView blendMode="MULTIPLY" fitHeight="34.0" fitWidth="33.0">
-                           <image>
-                              <Image url="@img/se.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </VBox>
-            <Button fx:id="btn_back" layoutX="25.0" layoutY="539.0" mnemonicParsing="false" onAction="#Back" prefHeight="46.0" prefWidth="116.0" styleClass="btnback" text="Back" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_gen" alignment="CENTER" mnemonicParsing="false" onAction="#Generate" prefHeight="45.0" prefWidth="218.0" styleClass="button1" text="Generate Reports" wrapText="true">
+               <VBox.margin>
+                  <Insets bottom="50.0" left="150.0" right="150.0" />
+               </VBox.margin>
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
                <graphic>
-                  <ImageView blendMode="MULTIPLY" fitHeight="28.0" fitWidth="27.0">
+                  <ImageView blendMode="MULTIPLY" fitHeight="30.0" fitWidth="31.0">
                      <image>
-                        <Image url="@img/arrow-left.png" />
+                        <Image url="@img/report.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_sea" alignment="CENTER" mnemonicParsing="false" onAction="#Search" prefHeight="45.0" prefWidth="218.0" styleClass="button1" text="Search Spare Parts" wrapText="true">
+               <VBox.margin>
+                  <Insets bottom="50.0" left="150.0" right="150.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <graphic>
+                  <ImageView blendMode="MULTIPLY" fitHeight="34.0" fitWidth="33.0">
+                     <image>
+                        <Image url="@img/se.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
          </children>
-      </AnchorPane>
-      <VBox layoutX="-3.0" layoutY="218.0" prefHeight="374.0" prefWidth="238.0" spacing="25.0">
-         <children>
-            <Button fx:id="btnvechicle" mnemonicParsing="false" onAction="#vechicleaction" prefHeight="26.0" prefWidth="241.0" styleClass="btnfrag" text="Vechicle Management" />
-            <Button fx:id="btncrusher" mnemonicParsing="false"  prefHeight="26.0" prefWidth="241.0" styleClass="btnfragactive" text="Crusher Management" />
-            <Button fx:id="btnloader" mnemonicParsing="false" onAction="#loaderaction" prefHeight="26.0" prefWidth="241.0" styleClass="btnfrag" text="Loader Management" />
-            <Button fx:id="btnexcvator" mnemonicParsing="false" onAction="#excavatoraction" prefHeight="26.0" prefWidth="241.0" styleClass="btnfrag" text="Excavator Management" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="241.0" styleClass="btnfrag" text="Hammer and Compressor management" />
-            <Button fx:id="btnother" mnemonicParsing="false" onAction="#otheraction" prefHeight="26.0" prefWidth="241.0" styleClass="btnfrag" text="Other Item Management" />
-            <Button fx:id="btngen" mnemonicParsing="false" onAction="#genaction" prefHeight="26.0" prefWidth="241.0" styleClass="btnfrag" text="Generator Management" />
-            <Button fx:id="btnemp" mnemonicParsing="false" onAction="#empaction" prefHeight="26.0" prefWidth="241.0" styleClass="btnfrag" text="Employee Management" />
-         </children>
       </VBox>
-      <ImageView fitHeight="133.0" fitWidth="200.0" layoutX="16.0" layoutY="72.0">
-         <image>
-            <Image url="@img/Logo.jpeg" />
-         </image>
-      </ImageView>
-      <Button fx:id="btnadmin" blendMode="MULTIPLY" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#adminaction" prefHeight="38.0" prefWidth="79.0" styleClass="btnfrag">
+      <Button fx:id="btn_back" layoutX="25.0" layoutY="539.0" mnemonicParsing="false" onAction="#Back" prefHeight="46.0" prefWidth="116.0" styleClass="btnback" text="Back" wrapText="true">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
          <graphic>
-            <ImageView blendMode="MULTIPLY" fitHeight="29.0" fitWidth="28.0">
+            <ImageView blendMode="MULTIPLY" fitHeight="28.0" fitWidth="27.0">
                <image>
-                  <Image url="@img/admin.png" />
+                  <Image url="@img/arrow-left.png" />
                </image>
             </ImageView>
          </graphic>
