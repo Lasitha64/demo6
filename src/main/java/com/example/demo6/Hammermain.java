@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-public class Excavmain {
+public class Hammermain {
 
     private Stage stage;
     private Scene scene;
@@ -35,7 +35,7 @@ public class Excavmain {
     @FXML
     void Back(ActionEvent event) throws IOException {
 
-            Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("h&cMain.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
@@ -53,7 +53,7 @@ public class Excavmain {
 
     @FXML
     void ed(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("ExcavDetails.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("hammerDetails.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
@@ -64,7 +64,7 @@ public class Excavmain {
 
     @FXML
     void rd(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Excav-repair.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("hammer-Repair.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
@@ -76,7 +76,7 @@ public class Excavmain {
     @FXML
     void sd(ActionEvent event) throws IOException {
 
-            Parent root = FXMLLoader.load(getClass().getResource("Excav-service.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("hammer-service.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());

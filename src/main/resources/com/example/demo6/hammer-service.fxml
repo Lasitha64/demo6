@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.layout.Pane ?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/Excav-main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.ExcavRepair">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/Excav-main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.HammerService">
 
     <children>
-        <Label alignment="CENTER" layoutX="66.0" layoutY="14.0" prefHeight="110.0" prefWidth="682.0" stylesheets="@stylesheet/Excav-main.css" text="Repair Details" textAlignment="CENTER" textFill="#aaaaaade">
+        <Label alignment="CENTER" layoutX="66.0" layoutY="14.0" prefHeight="110.0" prefWidth="682.0" stylesheets="@stylesheet/Excav-main.css" text="Service Details" textAlignment="CENTER" textFill="#aaaaaade">
             <font>
                 <Font name="Britannic Bold" size="48.0" />
             </font>
             <graphic>
-                <ImageView blendMode="MULTIPLY" fitHeight="60.0" fitWidth="68.0">
+                <ImageView blendMode="MULTIPLY" fitHeight="46.0" fitWidth="94.0">
                     <image>
-                        <Image url="@img/repair.png" />
+                        <Image url="@img/service.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -39,7 +37,7 @@
         </Button>
         <Pane layoutX="93.0" layoutY="109.0" prefHeight="423.0" prefWidth="630.0" styleClass="formbox">
             <children>
-                <Button fx:id="btn_gen" alignment="CENTER" graphicTextGap="8.0" layoutX="197.0" layoutY="172.0" mnemonicParsing="false" onAction="#Generate" prefHeight="46.0" prefWidth="236.0" text="View Repair Details" wrapText="true">
+                <Button fx:id="btn_gen" alignment="CENTER" graphicTextGap="8.0" layoutX="197.0" layoutY="172.0" mnemonicParsing="false" onAction="#Generate" prefHeight="46.0" prefWidth="236.0" text="View Service Details" wrapText="true">
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
@@ -51,7 +49,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button fx:id="btn_add1" alignment="CENTER" graphicTextGap="12.0" layoutX="197.0" layoutY="73.0" mnemonicParsing="false" onAction="#Add" prefHeight="45.0" prefWidth="236.0" text="Add Repair Details" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                <Button fx:id="btn_add1" alignment="CENTER" graphicTextGap="12.0" layoutX="197.0" layoutY="73.0" mnemonicParsing="false" onAction="#Add" prefHeight="45.0" prefWidth="236.0" text="Add Service Details" textOverrun="WORD_ELLIPSIS" wrapText="true">
                     <graphic>
                         <ImageView blendMode="MULTIPLY" fitHeight="35.0" fitWidth="38.0">
                             <image>
@@ -76,6 +74,5 @@
             </children>
         </Pane>
     </children>
-
 
 </AnchorPane>

@@ -11,33 +11,39 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ExcavService {
+public class CompressorDetails {
+
     private Stage stage;
     private Scene scene;
 
-    @FXML
-    private Button btn_add;
+
+
+
 
     @FXML
-    private Button btn_gen;
+    private Button comaddId;
+
+    @FXML
+    private Button viewcomId;
 
     @FXML
     private Button btn_back;
 
     @FXML
-    void Add(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("addExcavServDetails.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
-
-    }
-
-    @FXML
     void Back(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Excav-main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Compressor-main.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+
+
+    }
+
+    @FXML
+    void comAdd(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("addCompressorDetails.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
@@ -47,13 +53,14 @@ public class ExcavService {
     }
 
     @FXML
-    void Generate(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("viewExcavServDetails.fxml"));
+    void viewCom(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("viewCompDetails.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
+
 
     }
 

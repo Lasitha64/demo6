@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -10,13 +9,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/Excav-main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.AddExcavServDetails">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/Excav-main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.AddHammerServDetails">
     <children>
         <Pane layoutX="86.0" layoutY="81.0" prefHeight="454.0" prefWidth="626.0" styleClass="formbox" stylesheets="@stylesheet/Excav-main.css">
             <children>
-                <TextField layoutX="214.0" layoutY="34.0" prefHeight="42.0" prefWidth="340.0" />
-                <TextField layoutX="214.0" layoutY="108.0" prefHeight="103.0" prefWidth="340.0" />
-                <TextField layoutX="214.0" layoutY="319.0" prefHeight="42.0" prefWidth="340.0" />
+                <TextField fx:id="Hid" layoutX="214.0" layoutY="34.0" prefHeight="42.0" prefWidth="340.0" />
+                <TextField fx:id="Hdes" layoutX="214.0" layoutY="108.0" prefHeight="103.0" prefWidth="340.0" />
+                <TextField fx:id="Hprice" layoutX="214.0" layoutY="319.0" prefHeight="42.0" prefWidth="340.0" />
                 <Label layoutX="68.0" layoutY="129.0" text="Description :">
                     <font>
                         <Font name="System Bold" size="20.0" />
@@ -32,17 +31,17 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-                <Label layoutX="61.0" layoutY="40.0" text="Excavator ID :">
+                <Label layoutX="61.0" layoutY="40.0" text="Hammer ID :">
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
-                <DatePicker layoutX="214.0" layoutY="241.0" prefHeight="42.0" prefWidth="340.0" />
-                <Button layoutX="272.0" layoutY="391.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="161.0" text="Add Details">
+                <Button fx:id="hammerS" layoutX="451.0" layoutY="388.0" mnemonicParsing="false" onAction="#adddetails" prefHeight="42.0" prefWidth="161.0" text="Add Details">
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Button>
+            <TextField fx:id="Hdate" layoutX="214.0" layoutY="247.0" prefHeight="42.0" prefWidth="340.0" />
             </children>
         </Pane>
         <Label alignment="CENTER" layoutX="33.0" layoutY="-8.0" prefHeight="110.0" prefWidth="682.0" stylesheets="@stylesheet/Excav-main.css" text="Add Service Details" textAlignment="CENTER" textFill="#aaaaaade">

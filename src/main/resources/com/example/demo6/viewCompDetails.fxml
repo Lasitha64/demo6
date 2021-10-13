@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo6.ViewCompDetails">
+   <children>
+      <AnchorPane layoutX="5.0" layoutY="5.0" prefHeight="600.0" prefWidth="800.0" stylesheets="@stylesheet/update.css">
+         <children>
+            <Label layoutX="43.0" layoutY="14.0" prefHeight="78.0" prefWidth="698.0" text="View Air compressor Details" textFill="#aaaaaae5">
+               <font>
+                  <Font name="Britannic Bold" size="48.0" />
+               </font>
+               <graphic>
+                  <ImageView blendMode="MULTIPLY" fitHeight="54.0" fitWidth="52.0">
+                     <image>
+                        <Image url="@img/report.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <ScrollPane layoutX="330.0" layoutY="92.0">
+               <content>
+                  <TableView fx:id="CrusherParts" prefHeight="394.0" prefWidth="458.0">
+                     <columns>
+                        <TableColumn fx:id="chid" prefWidth="52.00000077486038" text="ID" />
+                        <TableColumn fx:id="csname" prefWidth="104.0" text="spare part name" />
+                        <TableColumn fx:id="cquan" prefWidth="77.0" text="Quntity" />
+                        <TableColumn fx:id="cprice" prefWidth="103.19996643066406" text="Price" />
+                        <TableColumn fx:id="cdate" prefWidth="140.0" text="Date" />
+                     </columns>
+                  </TableView>
+               </content>
+            </ScrollPane>
+            <Pane layoutX="14.0" layoutY="92.0" prefHeight="398.0" prefWidth="303.0" styleClass="formbox">
+               <children>
+                  <VBox layoutX="14.0" layoutY="14.0" prefHeight="294.0" prefWidth="102.0" spacing="25.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="ID">
+                           <font>
+                              <Font name="Agency FB Bold" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="spare part name">
+                           <font>
+                              <Font name="Agency FB Bold" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="Quantity">
+                           <font>
+                              <Font name="Agency FB Bold" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="Price">
+                           <font>
+                              <Font name="Agency FB Bold" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="80.0" styleClass="label1" text="Date">
+                           <font>
+                              <Font name="Agency FB Bold" size="10.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" layoutX="116.0" layoutY="14.0" prefHeight="294.0" prefWidth="178.0" spacing="30.0">
+                     <children>
+                        <TextField fx:id="comid" promptText="Enter Part ID" styleClass="text-field1" />
+                        <TextField fx:id="combrand" promptText="Enter spare part Brand" styleClass="text-field1" />
+                        <TextField fx:id="com_quan" promptText="Enter the Quantity" styleClass="text-field1" />
+                        <TextField fx:id="comv_price" promptText="Enter the price." styleClass="text-field1" />
+                        <TextField fx:id="comv_date" promptText="Enter the date" styleClass="text-field1" />
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <Button fx:id="btn_update" layoutX="14.0" layoutY="318.0" mnemonicParsing="false" onAction="#Update" prefHeight="39.0" prefWidth="95.0" styleClass="button1" text="Update">
+                     <graphic>
+                        <ImageView blendMode="MULTIPLY" fitHeight="23.0" fitWidth="20.0">
+                           <image>
+                              <Image url="@img/update.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btn_delete" layoutX="199.0" layoutY="318.0" mnemonicParsing="false" onAction="#Delete" prefHeight="39.0" prefWidth="95.0" styleClass="button1" text="Delete">
+                     <graphic>
+                        <ImageView blendMode="MULTIPLY" fitHeight="25.0" fitWidth="22.0">
+                           <image>
+                              <Image url="@img/delete.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+            <Button fx:id="btn_back" layoutX="14.0" layoutY="546.0" mnemonicParsing="false" onAction="#Back" prefHeight="39.0" prefWidth="95.0" styleClass="btnback" text="Back">
+               <graphic>
+                  <ImageView blendMode="MULTIPLY" fitHeight="28.0" fitWidth="21.0">
+                     <image>
+                        <Image url="@img/arrow-left.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

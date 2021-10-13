@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ExcavRepair {
+public class HammerService {
     private Stage stage;
     private Scene scene;
 
@@ -26,7 +26,7 @@ public class ExcavRepair {
 
     @FXML
     void Add(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("addExcavRepDetails.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("addHammerServDetails.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
@@ -37,7 +37,7 @@ public class ExcavRepair {
 
     @FXML
     void Back(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Excav-main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("hammer-main.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
@@ -48,7 +48,7 @@ public class ExcavRepair {
 
     @FXML
     void Generate(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("viewExcavRepDetails.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("viewHammerServDetails.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheet/Excav-main.css").toExternalForm());
